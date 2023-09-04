@@ -1,6 +1,11 @@
 package domain;
 
 public class Menu {
+    /**
+     * // todos los atritbutos que tienen el la base de datos, y por ende el menu
+     *     // seializa el objeto
+     */
+
     private final String plate1 = "Hamburguesa" ;
     private final String plate2 = "Crazy Potato" ;
     private final String plate3 = "Hot Perro" ;
@@ -14,6 +19,16 @@ public class Menu {
     private int tiempoPrepLen;
     private String product;
     private double precio;
+
+    /**
+     * // constructores para la creacion del objeto
+     * @param idPr
+     * @param choice
+     * @param camtProd
+     * @param tiempoPrepRa
+     * @param precio
+     * @param tiempLe
+     */
 
     public Menu(int idPr, String choice,int camtProd, int tiempoPrepRa, int precio, int tiempLe){
         this.idProducto = idPr;
@@ -33,6 +48,12 @@ public class Menu {
         this.tiempoPrepLen = tiempoPrepLen;
         this.precio = precio;
     }
+
+    /**
+     * // getters y setters para los atributos
+     * @param id
+     */
+
     public Menu(int id){this.idProducto = id;}
     public double getPrecio() {
         return precio;

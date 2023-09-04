@@ -1,4 +1,4 @@
-package co.edu.upb.Proyecto;
+package Pantallas;
 
 import java.awt.Color;
 import java.awt.EventQueue;

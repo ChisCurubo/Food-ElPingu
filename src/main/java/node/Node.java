@@ -3,6 +3,11 @@ package node;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * // tipo nodo para la lista
+ * @param <T>
+ */
+
 public class Node<T> implements NodeInterface<T> {
     private T object;
     public Node(){

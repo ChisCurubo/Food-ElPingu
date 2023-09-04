@@ -5,6 +5,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
 
+/**
+ * Pantalla menu
+ */
 public class Menu extends JFrame {
     private JPanel contentPane;
     JLabel lblMenu;
@@ -42,6 +45,10 @@ public class Menu extends JFrame {
         ComponentesDePagina();
         this.setExtendedState(this.MAXIMIZED_BOTH);
     }
+
+    /**
+     * Metodo para inilizacion de componentes
+     */
 
     public void ComponentesDePagina() {
 

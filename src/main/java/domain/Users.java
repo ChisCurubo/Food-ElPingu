@@ -1,12 +1,20 @@
 package domain;
 
 public class Users {
+    /**
+     * // atributos de la clase users, tambien son atributos de la tabla de la bases de datos de user
+     */
+
     private int ID;
     private String email;
     private String pwd;
     private int tipo;
     private String nombre;
     private String apellido;
+
+    /**
+     * //constructores para la creacion del usuario dependiendo de la necesidad se usa uno u otro
+     */
 
     public Users(){
         //this is the empty constructor
@@ -28,6 +36,12 @@ public class Users {
         this.nombre = nombreEn;
         this.apellido = apellidoEn;
     }
+
+    /**
+     * // getters y setters para los atributos.
+     * @return
+     */
+
 
     public int getID() {
         return ID;

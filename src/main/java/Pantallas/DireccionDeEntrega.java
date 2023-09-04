@@ -1,4 +1,4 @@
-package co.edu.upb.Proyecto;
+package Pantallas;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -12,6 +12,10 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+
+/**
+ * Ingreso de la dirreccion
+ */
 
 public class DireccionDeEntrega extends JFrame {
 
@@ -39,6 +43,10 @@ public class DireccionDeEntrega extends JFrame {
 		ComponentesDePagina();
 		//this.setExtendedState(this.MAXIMIZED_BOTH);
 	}
+
+	/**
+	 * Metetodo para inicializar componentes
+	 */
 	public void ComponentesDePagina() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 20, 600, 800);

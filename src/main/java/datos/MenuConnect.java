@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MenuConnect {
+    /**
+     * // estas son las instruciones para la base de datos para la tabla de productos
+     */
+
     private static final String SQL_SELECT = "SELECT * FROM pingu.productos";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.productos WHERE producto = ? ";
     private static final String SQL_INSERT = "INSERT INTO pingu.productos (producto, cantidad, tiempoprep , precio, tiemporapi ) VALUES ( ?, ?, ?, ?, ?)";
@@ -15,6 +19,13 @@ public class MenuConnect {
     private static final String SQL_DELETE = "DELETE FROM pingu.productos WHERE idproducto =?";
 
     //Metodos  para dataBase
+
+    /**
+     * // Metodo de sect para comprobar el producto, se hace una busqueda en la base de datos.
+     *
+     * @param product
+     * @return
+     */
 
     public Menu select(String product) {
         Connection conn = null;
@@ -41,6 +52,12 @@ public class MenuConnect {
         return menu;
     }
 
+    /**
+     * // metodo para insertar un nuevo producto al menu
+     *
+     * @param menu
+     * @return
+     */
     public int insert(Menu menu) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -67,6 +84,12 @@ public class MenuConnect {
         return registros;
     }
 
+    /**
+     * // actualizar un producto del menu
+     *
+     * @param menu
+     * @return
+     */
     public int update(Menu menu) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -95,6 +118,12 @@ public class MenuConnect {
         return registros;
     }
 
+    /**
+     * // borrar un producto del menu
+     *
+     * @param menu
+     * @return
+     */
     public int delete(Menu menu) {
         Connection conn = null;
         PreparedStatement stmt = null;

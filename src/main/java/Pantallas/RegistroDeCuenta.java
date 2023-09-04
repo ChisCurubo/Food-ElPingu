@@ -1,5 +1,4 @@
-package co.edu.upb.Proyecto;
-
+package Pantallas;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -25,6 +24,10 @@ import javax.swing.BoxLayout;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
+
+/**
+ * Pantalla de registro de cuenta
+ */
 
 public class RegistroDeCuenta extends JFrame {
 
@@ -54,6 +57,10 @@ public class RegistroDeCuenta extends JFrame {
 		ComponentesDePagina();
 		this.setExtendedState(this.MAXIMIZED_BOTH);
 	}
+
+	/**
+	 * Metodo de inicializacion componentes
+	 */
 	private void ComponentesDePagina() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 100, 1190, 766);

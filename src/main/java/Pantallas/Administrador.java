@@ -1,4 +1,4 @@
-package co.edu.upb.Proyecto;
+package Pantallas;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -16,6 +16,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
+
+/**
+ * Pantalla administrador
+ */
 
 public class Administrador extends JFrame {
 
@@ -57,6 +61,10 @@ public class Administrador extends JFrame {
 		ComponentesDePagina();
 		this.setExtendedState(this.MAXIMIZED_BOTH);
 	}
+
+	/**
+	 * metodos de componentes
+	 */
 	private void ComponentesDePagina() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 100, 1000, 720);

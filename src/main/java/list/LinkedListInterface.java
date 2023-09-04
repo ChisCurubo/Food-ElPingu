@@ -1,5 +1,6 @@
 package list;
 
+
 import node.NodeInterface;
 
 import java.util.Iterator;

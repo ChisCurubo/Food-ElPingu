@@ -8,9 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-import list.LinkedList;
-
 public class UsersConnect<T> {
+    /**
+     * // estas son las instruciones para la base de datos para la tabla de usuarios
+     */
+
     private static final String SQL_SELECT = "SELECT * FROM pingu.usuarios";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.usuarios WHERE email = ?  AND pwd = ? ";
     private static final String SQL_INSERT = "INSERT INTO pingu.usuarios (email, pwd, tipo , nombre , apellido) VALUES ( ?, ?, ?, ?, ?)";
@@ -18,6 +20,15 @@ public class UsersConnect<T> {
     private static final String SQL_DELETE = "DELETE FROM pingu.usuarios WHERE ID =?";
 
     //Metodos  para dataBase
+
+    /**
+     * // Metodo de sect para comprobar el usuario y contraseña, se hace una busqueda en la base de datos.
+     * //devuelve el usuario lleno si lo encontro si no es nulo
+     *
+     * @param emailEn
+     * @param pswEN
+     * @return
+     */
 
     public Users select(String emailEn, String pswEN) {
         Connection conn = null;
@@ -45,6 +56,12 @@ public class UsersConnect<T> {
         return user;
     }
 
+    /**
+     * insertar nuevo usuario usuaruio a la base de datos
+     *
+     * @param user
+     * @return
+     */
     public int insert(Users user) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -70,6 +87,13 @@ public class UsersConnect<T> {
         }
         return registros;
     }
+
+    /**
+     * // acualizar info del usuario
+     *
+     * @param user
+     * @return
+     */
 
     public int update(Users user) {
         Connection conn = null;
@@ -98,6 +122,13 @@ public class UsersConnect<T> {
         }
         return registros;
     }
+
+    /**
+     * // borrar un usuario
+     *
+     * @param user
+     * @return
+     */
 
     public int delete(Users user) {
         Connection conn = null;

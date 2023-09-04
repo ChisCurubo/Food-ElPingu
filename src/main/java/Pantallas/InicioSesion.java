@@ -10,6 +10,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Pantalla de inicio de sesion
+ */
 public class InicioSesion extends JFrame {
     private JPanel contentPane;
     private JPasswordField pswField;
@@ -23,6 +26,10 @@ public class InicioSesion extends JFrame {
         this.setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+    /**
+     * Metodos inilizacion de la pantalla
+     */
 
     private void componets(){
         setBounds(500, 100, 1190, 766);
