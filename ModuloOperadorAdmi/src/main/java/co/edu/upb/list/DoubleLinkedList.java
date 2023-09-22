@@ -1,8 +1,6 @@
 package co.edu.upb.list;
 
 
-
-
 import co.edu.upb.node.NodeInterface;
 
 import java.util.Iterator;
@@ -606,6 +604,7 @@ public class DoubleLinkedList<T> implements LinkedListInterface<T>, Cloneable {
         }
         return arreglo;
     }
+
     /*@Override
     public T[] toArray() {
         T[] objectArr ;
@@ -644,6 +643,32 @@ public class DoubleLinkedList<T> implements LinkedListInterface<T>, Cloneable {
         }
         return false;
     }
+
+    public boolean sortObjejt() {
+        if (!isEmpty()) {
+            try {
+                T[] arryLis = toArray();
+                for (int gap = arryLis.length / 2; gap > 0; gap /= 2) {
+                    for (int i = gap; i < arryLis.length; i++) {
+                        T tempVal = arryLis[i];
+                        int j = i;
+                        while (j >= gap && Integer.parseInt(arryLis[j - gap].toString()) <= Integer.parseInt(tempVal.toString())) {
+                            arryLis[j] = arryLis[j - gap];
+                            j -= gap;
+                        }
+                        arryLis[j] = tempVal;
+                    }
+                }
+                clear();
+                add(arryLis);
+                return true;
+            } catch (Exception e) {
+                Logger.getLogger(this.getClass().getName()).log(Level.WARNING, e.getMessage(), e);
+            }
+        }
+        return false;
+    }
+
 
     @Override
     public Iterator<NodeInterface<T>> iterator() {
@@ -705,27 +730,28 @@ public class DoubleLinkedList<T> implements LinkedListInterface<T>, Cloneable {
             }
         };
     }
-/*
-    public boolean reverse() {
-        if(!isEmpty()) {
-            Stack<T> stak = new Stack<>();
-            while (!isEmpty()) {
-                stak.push(pop());
+
+    /*
+        public boolean reverse() {
+            if(!isEmpty()) {
+                Stack<T> stak = new Stack<>();
+                while (!isEmpty()) {
+                    stak.push(pop());
+                }
+                while (!stak.isEmpty()) {
+                    add(stak.pop());
+                }
+                return true;
             }
-            while (!stak.isEmpty()) {
-                add(stak.pop());
-            }
-            return true;
+            return false;
         }
-        return false;
-    }
 
 
- */
+     */
     public void imprimir() {
         Iterator<NodeInterface<T>> iterator = iterator();
         for (int i = 0; i < size(); i++) {
-            System.out.print(iterator.next().getObject() + ", ");
+            System.out.println(iterator.next().getObject());
         }
     }
 

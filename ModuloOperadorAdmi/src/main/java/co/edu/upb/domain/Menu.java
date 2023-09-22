@@ -19,6 +19,7 @@ public class Menu {
     private int tiempoPrepLen;
     private String product;
     private double precio;
+    private int numDistanciaHammil;
 
 
 
@@ -132,5 +133,21 @@ public class Menu {
 
     public String getPlate7() {
         return plate7;
+    }
+
+    public int getNumDistanciaHammil() {
+        return numDistanciaHammil;
+    }
+
+    public void setNumDistanciaHammil(int numDistanciaHammil) {
+        this.numDistanciaHammil = numDistanciaHammil;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "product='" + product + '\'' +
+                ", numDistanciaHammil=" + numDistanciaHammil +
+                '}';
     }
 }

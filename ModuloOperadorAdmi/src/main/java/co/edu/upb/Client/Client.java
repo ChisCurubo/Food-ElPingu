@@ -1,6 +1,8 @@
 package co.edu.upb.Client;
 
 import co.edu.upb.Interface.OperadorInterface;
+import co.edu.upb.domain.Menu;
+import co.edu.upb.list.DoubleLinkedList;
 
 import java.rmi.RemoteException;
 import java.net.MalformedURLException;
@@ -32,6 +34,21 @@ public class Client implements OperadorInterface {
         } catch (MalformedURLException | RemoteException | NotBoundException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    @Override
+    public String[] algortmoHammil(String platoSearch) throws RemoteException {
+        try{
+            service = (OperadorInterface) Naming.lookup(url);
+            String[] algotList = service.algortmoHammil(platoSearch);
+            DoubleLinkedList<String> listStrinProduct = new DoubleLinkedList<>();
+            listStrinProduct.add(algotList);
+            listStrinProduct.imprimir();
+            return algotList;
+        }  catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

@@ -3,27 +3,28 @@ package co.edu.upb.domain;
 public class Menu {
     /**
      * // todos los atritbutos que tienen el la base de datos, y por ende el menu
-     *     // seializa el objeto
+     * // seializa el objeto
      */
 
-    private final String plate1 = "Hamburguesa" ;
-    private final String plate2 = "Crazy Potato" ;
-    private final String plate3 = "Hot Perro" ;
-    private final String plate4 = "Hamburguesa ElPingu" ;
-    private final String plate5 = "Pepito" ;
-    private final String plate6 = "Sanwich" ;
-    private final String plate7 = "Pipipicada" ;
-    private int idProducto ;
+    private final String plate1 = "Hamburguesa";
+    private final String plate2 = "Crazy Potato";
+    private final String plate3 = "Hot Perro";
+    private final String plate4 = "Hamburguesa ElPingu";
+    private final String plate5 = "Pepito";
+    private final String plate6 = "Sanwich";
+    private final String plate7 = "Pipipicada";
+    private int idProducto;
     private int camtProd;
     private int tiempoPrepRapi;
     private int tiempoPrepLen;
     private String product;
     private double precio;
-
+    private int numDistanciaHammil;
 
 
     /**
      * // constructores para la creacion del objeto
+     *
      * @param idPr
      * @param choice
      * @param camtProd
@@ -32,7 +33,7 @@ public class Menu {
      * @param tiempLe
      */
 
-    public Menu(int idPr, String choice,int camtProd, int tiempoPrepRa, int precio, int tiempLe){
+    public Menu(int idPr, String choice, int camtProd, int tiempoPrepRa, int precio, int tiempLe) {
         this.idProducto = idPr;
         this.product = choice;
         this.camtProd = camtProd;
@@ -40,10 +41,12 @@ public class Menu {
         this.tiempoPrepLen = tiempLe;
         this.precio = precio;
     }
-    public Menu(){
+
+    public Menu() {
 
     }
-    public Menu(int camtProd, int tiempoPrep, int tiempoPrepLen, String choice, double precio){
+
+    public Menu(int camtProd, int tiempoPrep, int tiempoPrepLen, String choice, double precio) {
         this.product = choice;
         this.camtProd = camtProd;
         this.tiempoPrepRapi = tiempoPrep;
@@ -54,10 +57,14 @@ public class Menu {
 
     /**
      * // getters y setters para los atributos
+     *
      * @param id
      */
 
-    public Menu(int id){this.idProducto = id;}
+    public Menu(int id) {
+        this.idProducto = id;
+    }
+
     public double getPrecio() {
         return precio;
     }
@@ -132,5 +139,21 @@ public class Menu {
 
     public String getPlate7() {
         return plate7;
+    }
+
+    public int getNumDistanciaHammil() {
+        return numDistanciaHammil;
+    }
+
+    public void setNumDistanciaHammil(int numDistanciaHammil) {
+        this.numDistanciaHammil = numDistanciaHammil;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "product='" + product + '\'' +
+                ", numDistanciaHammil=" + numDistanciaHammil +
+                '}';
     }
 }

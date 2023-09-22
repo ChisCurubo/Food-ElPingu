@@ -723,7 +723,7 @@ public class DoubleLinkedList<T> implements LinkedListInterface<T>, Cloneable {
     public void imprimir() {
         Iterator<NodeInterface<T>> iterator = iterator();
         for (int i = 0; i < size(); i++) {
-            System.out.print(iterator.next().getObject() + ", ");
+            System.out.println(iterator.next().getObject());
         }
     }
 

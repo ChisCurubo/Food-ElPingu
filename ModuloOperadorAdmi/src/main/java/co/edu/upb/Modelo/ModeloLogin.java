@@ -3,10 +3,12 @@ package co.edu.upb.Modelo;
 import co.edu.upb.Client.Client;
 import co.edu.upb.Pantallas.InicioSesion;
 import co.edu.upb.Pantallas.Menu;
+import co.edu.upb.list.DoubleLinkedList;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 public class ModeloLogin {
     Client clienteOperador = new Client("localhost", "5000", "serviceOperador");
@@ -44,5 +46,9 @@ public class ModeloLogin {
         };
 
         return validation;
+    }
+    public void algortmHammil() throws RemoteException {
+        String platoBusqueda = "Hamb";
+        clienteOperador.algortmoHammil(platoBusqueda);
     }
 }
