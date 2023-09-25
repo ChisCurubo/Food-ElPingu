@@ -4,8 +4,11 @@ import co.edu.upb.Controlador.ControladorLogin;
 import co.edu.upb.datos.ClientesConnection;
 import co.edu.upb.datos.MenuConnect;
 import co.edu.upb.datos.PedidoConnect;
+import co.edu.upb.datos.PedidosDetalleConnet;
 import co.edu.upb.domain.Clientes;
+import co.edu.upb.domain.Menu;
 import co.edu.upb.domain.Pedido;
+import co.edu.upb.domain.PedidosDetalle;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -38,7 +41,7 @@ public class Login {
 
          */
         //ControladorLogin inicioProgram = new ControladorLogin();
-
+/*
         ClientesConnection clien = new ClientesConnection();
         Clientes clientes = clien.select("301525845");
 
@@ -48,11 +51,41 @@ public class Login {
 
         Pedido pedi = new Pedido();
         pedi.setNmpedido(11);
-        pedi.setEstatus("Cocina");
-        pedi.setFecha(sqlDate);
-        pedCon.update(pedi);
+        pedi = pedCon.select(pedi.getNmpedido());
+        System.out.println(pedi.getNmpedido());
 
+        MenuConnect menu =  new MenuConnect();
+        Menu men = new Menu();
+        men = menu.select("Hamburguesa ElPingu");
+        System.out.println(men.getProduct());
 
+        PedidosDetalleConnet pedidosDetalleConnet = new PedidosDetalleConnet();
+        PedidosDetalle ped = new PedidosDetalle();
+        ped.setEstatuPedido("Cola");
+        ped.setCantidad(2);
+        ped.setIdProducto(men.getIdProducto());
+        men.setCamtProd(men.getCamtProd() - ped.getCantidad());
+        menu.update(men);
+        ped.setIdPedidos(pedi.getNmpedido());
+        pedidosDetalleConnet.insert(ped);
+
+ */
+        PedidoConnect pedCon = new PedidoConnect();
+        Pedido pedi;
+        ClientesConnection clien = new ClientesConnection();
+        Clientes clientes = clien.select("301525845");
+
+        pedi = pedCon.selectCient(clientes.getIdClientes());
+        System.out.println(pedi.getNmpedido());
+        PedidosDetalleConnet pedidosDetalleConnet = new PedidosDetalleConnet();
+        PedidosDetalle ped = new PedidosDetalle();
+        ped.setCantidad(1);
+        MenuConnect menu = new MenuConnect();
+        Menu men = new Menu();
+        ped.setIdProducto(menu.select("Hot Perro").getIdProducto());
+        ped.setEstatuPedido("Domi");
+        ped.setIdPedidos(pedi.getNmpedido());
+        pedidosDetalleConnet.update(ped);
     }
 
         /*
@@ -71,4 +104,4 @@ public class Login {
         }
 
          */
-    }
+}

@@ -126,6 +126,7 @@ public class MenuConnect {
                 menu.setTiempoPrepLen(rs.getInt("tiempoprep"));
                 menu.setTiempoPrepRapi(rs.getInt("tiemporapi"));
                 menu.setPrecio(rs.getDouble("precio"));
+                menu.setIdProducto(rs.getInt("idproducto"));
             }
             rs.close();
             stmt.close();

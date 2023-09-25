@@ -7,6 +7,7 @@ import java.sql.*;
 public class PedidoConnect {
     private static final String SQL_SELECT = "SELECT * FROM pingu.pedidos";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.pedidos WHERE nmpedido = ? ";
+    private static final String SQL_SELECT_WHERE_Client = "SELECT * FROM pingu.pedidos WHERE idclientes = ? ";
     private static final String SQL_INSERT = "INSERT INTO pingu.pedidos (fechas, estatus, idclientes ) VALUES ( ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE pingu.pedidos SET estatus = ?, fechas =? WHERE nmpedido =?";
     private static final String SQL_DELETE = "DELETE FROM pingu.pedidos WHERE nmpedido =?";
@@ -24,6 +25,35 @@ public class PedidoConnect {
                 client.setFecha(rs.getTimestamp("fechas"));
                 client.setEstatus(rs.getString("estatus"));
                 client.setIdClientes(rs.getInt("idclientes"));
+                client.setNmpedido(rs.getInt("nmpedido"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            // Handle the foreign key constraint violation
+            System.err.println("Foreign key constraint violation: " + e.getMessage());
+            e.printStackTrace();
+        } catch (SQLException ex) {
+            // Handle other SQL exceptions
+            ex.printStackTrace();
+        }
+        return client;
+    }
+    public Pedido selectCient(int numped) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        Pedido client = new Pedido();
+        try {
+            conn = Conexion.getConection();
+            stmt = conn.prepareStatement(SQL_SELECT_WHERE_Client);
+            stmt.setInt(1, numped);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                client.setFecha(rs.getTimestamp("fechas"));
+                client.setEstatus(rs.getString("estatus"));
+                client.setIdClientes(rs.getInt("idclientes"));
+                client.setNmpedido(rs.getInt("nmpedido"));
             }
             rs.close();
             stmt.close();
@@ -128,5 +158,3 @@ public class PedidoConnect {
         return registros;
     }
 }
-
-
