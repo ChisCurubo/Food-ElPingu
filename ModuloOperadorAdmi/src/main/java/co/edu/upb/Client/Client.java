@@ -24,6 +24,16 @@ public class Client implements OperadorInterface {
         this.url = "rmi://" + ip + ":" + port + "/" + serviceName;
     }
 
+    public boolean isConnected() throws RemoteException {
+        try {
+            Naming.lookup(url);
+            return true;
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     @Override
     public boolean login(String user, String password) throws RemoteException {
         try {
@@ -39,14 +49,14 @@ public class Client implements OperadorInterface {
 
     @Override
     public String[] algortmoHammil(String platoSearch) throws RemoteException {
-        try{
+        try {
             service = (OperadorInterface) Naming.lookup(url);
             String[] algotList = service.algortmoHammil(platoSearch);
             DoubleLinkedList<String> listStrinProduct = new DoubleLinkedList<>();
             listStrinProduct.add(algotList);
             listStrinProduct.imprimir();
             return algotList;
-        }  catch (MalformedURLException | RemoteException | NotBoundException e) {
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
             e.printStackTrace();
             return null;
         }

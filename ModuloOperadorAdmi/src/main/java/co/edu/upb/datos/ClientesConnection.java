@@ -40,6 +40,7 @@ public class ClientesConnection {
                 client.setMunicipio(rs.getString("municipio"));
                 client.setTelefono(rs.getString("telefono"));
                 client.setCorreo(rs.getString("correo"));
+                client.setIdClientes(rs.getInt("idclientes"));
             }
             rs.close();
             stmt.close();

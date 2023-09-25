@@ -1,7 +1,17 @@
 package co.edu.upb.operadorMain;
 
 import co.edu.upb.Controlador.ControladorLogin;
+import co.edu.upb.datos.ClientesConnection;
 import co.edu.upb.datos.MenuConnect;
+import co.edu.upb.datos.PedidoConnect;
+import co.edu.upb.domain.Clientes;
+import co.edu.upb.domain.Pedido;
+
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.TemporalField;
 
 public class Login {
     public static void main(String[] args) {
@@ -27,7 +37,21 @@ public class Login {
         }
 
          */
-        ControladorLogin inicioProgram = new ControladorLogin();
+        //ControladorLogin inicioProgram = new ControladorLogin();
+
+        ClientesConnection clien = new ClientesConnection();
+        Clientes clientes = clien.select("301525845");
+
+        PedidoConnect pedCon = new PedidoConnect();
+        LocalDateTime locDa = LocalDateTime.now();
+        Timestamp sqlDate = Timestamp.valueOf(locDa);
+
+        Pedido pedi = new Pedido();
+        pedi.setNmpedido(11);
+        pedi.setEstatus("Cocina");
+        pedi.setFecha(sqlDate);
+        pedCon.update(pedi);
+
 
     }
 

@@ -1,22 +1,28 @@
 package co.edu.upb.domain;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class Pedido {
 private  int nmpedido;
 private int idClientes;
-private String fecha;
+private Timestamp fecha;
 private String estatus;
 
-    public Pedido(int nmpedido, int idClientes, String fecha, String estatus) {
+    public Pedido(int nmpedido, int idClientes, Timestamp fecha, String estatus) {
         this.nmpedido = nmpedido;
         this.idClientes = idClientes;
         this.fecha = fecha;
         this.estatus = estatus;
     }
 
-    public Pedido(int idClientes, String fecha, String estatus) {
+    public Pedido(int idClientes, Timestamp  fecha, String estatus) {
         this.idClientes = idClientes;
         this.fecha = fecha;
         this.estatus = estatus;
+    }
+    public Pedido (){
+
     }
 
 
@@ -37,11 +43,11 @@ private String estatus;
         this.idClientes = idClientes;
     }
 
-    public String getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 

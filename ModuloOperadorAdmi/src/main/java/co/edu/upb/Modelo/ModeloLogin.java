@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 public class ModeloLogin {
-    Client clienteOperador = new Client("localhost", "5000", "serviceOperador");
+    public static Client clienteOperador = new Client("localhost", "5000", "serviceOperador");
 
     public ModeloLogin() {
 
