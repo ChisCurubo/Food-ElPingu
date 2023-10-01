@@ -1,5 +1,6 @@
 package co.edu.upb.operadorMain;
 
+import co.edu.upb.Clasificacion.CocinaCola;
 import co.edu.upb.Controlador.ControladorLogin;
 import co.edu.upb.datos.ClientesConnection;
 import co.edu.upb.datos.MenuConnect;
@@ -70,7 +71,7 @@ public class Login {
         pedidosDetalleConnet.insert(ped);
 
  */
-
+/*
         PedidoConnect pedCon = new PedidoConnect();
         Pedido pedi;
         ClientesConnection clien = new ClientesConnection();
@@ -88,6 +89,15 @@ public class Login {
         ped.setIdPedidos(pedi.getNmpedido());
         pedidosDetalleConnet.update(ped);
 
+
+ */
+        PedidosDetalleConnet pdC = new PedidosDetalleConnet();
+        int idPe = 5;
+        for (int i = 0; i < 2; i++) {
+            PedidosDetalle pdDe = pdC.selectIdDet(idPe);
+            idPe++;
+        }
+        CocinaCola newCola = new CocinaCola();
 
     }
 
