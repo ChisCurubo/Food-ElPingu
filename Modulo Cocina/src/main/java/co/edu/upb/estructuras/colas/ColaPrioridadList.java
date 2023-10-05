@@ -88,8 +88,8 @@ public class ColaPrioridadList<T> implements StackInterface<T> {
         return false;
     }
 
-    public void print() {
-        listDouble.imprimir();
+    public String print() {
+        return listDouble.imprimir();
     }
 
     @Override

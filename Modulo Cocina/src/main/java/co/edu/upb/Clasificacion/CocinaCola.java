@@ -36,11 +36,10 @@ public class CocinaCola {
         }
         return null;
     }
-    public void imprimirCola(){
-        System.out.println("Lenta");
-        colaPrioriLento.imprimir();
-        System.out.println("---------------------------------");
-        System.out.println("Rapidash");
-        colaPriorRap.imprimir();
+    public String imprimirColaLen(){
+        return colaPrioriLento.imprimir();
+    }
+    public String imprimirColaRap(){
+        return colaPriorRap.imprimir();
     }
 }

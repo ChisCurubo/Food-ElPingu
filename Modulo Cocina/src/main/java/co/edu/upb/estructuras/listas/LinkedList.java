@@ -634,11 +634,13 @@ public class LinkedList<T> implements LinkedListInterface<T>, Cloneable {
         };
     }
 
-    public void imprimir() {
+    public String imprimir() {
         Iterator<NodeInterface<T>> iterator = iterator();
+        String str = "";
         for (int i = 0; i < size(); i++) {
-            System.out.println(iterator.next().getObject());
+            str += iterator.next().getObject() + ", ";
         }
+        return str;
     }
 
     public boolean invertir(int k) {

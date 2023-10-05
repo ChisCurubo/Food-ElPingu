@@ -37,9 +37,11 @@ public class CilaPriiory<T> {
         }
         return null;
     }
-    public void imprimir(){
+    public String imprimir(){
+        String str = "";
         for (int i = 0; i < arrayClasi.length; i++) {
-            arrayClasi[i].print();
+            str += arrayClasi[i].print();
         }
+        return str;
     }
 }

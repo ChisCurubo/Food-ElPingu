@@ -4,7 +4,7 @@ public class PedidosDetalle {
     private int idDetalle;
     private  int idPedidos;
     private int idProducto;
-    private int cantidad ;
+    private int cantidad;
     private String estatuPedido;
 
     public PedidosDetalle(int idDetalle, int idPedidos, int idProducto, int cantidad, String estatuPedido) {
