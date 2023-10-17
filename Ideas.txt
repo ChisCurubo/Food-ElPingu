@@ -1,1 +1,0 @@
-Delimitar funcionalidades de cada usuario, y hacer metodos que llamen a las conmexiones a las bases de datsos necesarias. como esta hecho en el main, pero un metodo exacto.

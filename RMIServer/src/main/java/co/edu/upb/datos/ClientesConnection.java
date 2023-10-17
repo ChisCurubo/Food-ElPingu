@@ -2,16 +2,16 @@ package co.edu.upb.datos;
 
 import co.edu.upb.domain.Clientes;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.Serializable;
+import java.sql.*;
 
-public class ClientesConnection {
+public class ClientesConnection implements Serializable {
     private static final String SQL_SELECT = "SELECT * FROM pingu.clientes";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.clientes WHERE telefono = ? ";
-    private static final String SQL_INSERT = "INSERT INTO pingu.clientes (nombre, apellido, calle , carrera, barrio, municipio, telefono, correo ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE pingu.clientes SET nombre = ?, apellido = ?, calle = ? , carrera = ?, barrio = ?, municipio = ?, telefono = ? , correo = ? WHERE idclientes =?";
+    private static final String SQL_SELECT_WHERE_ID = "SELECT * FROM pingu.clientes WHERE idclientes = ? ";
+    private static final String SQL_INSERT = "INSERT INTO pingu.clientes (nombre, apellido, calle , carrera, barrio, municipio, telefono, correo, tipocliente ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE pingu.clientes SET nombre = ?, apellido = ?, calle = ? , carrera = ?, barrio = ?, municipio = ?, telefono = ? , correo = ?, tipocliente =? WHERE idclientes =?";
+
     private static final String SQL_DELETE = "DELETE FROM pingu.clientes WHERE idclientes =?";
 
 
@@ -40,7 +40,38 @@ public class ClientesConnection {
                 client.setMunicipio(rs.getString("municipio"));
                 client.setTelefono(rs.getString("telefono"));
                 client.setCorreo(rs.getString("correo"));
+                client.setTipoCliente(rs.getInt("tipocliente"));
                 client.setIdClientes(rs.getInt("idclientes"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+        return client;
+    }
+
+    public Clientes selectIdCliente(int telefono) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        Clientes client = new Clientes();
+        try {
+            conn = Conexion.getConection();
+            stmt = conn.prepareStatement(SQL_SELECT_WHERE_ID);
+            stmt.setInt(1, telefono);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                client.setNombre(rs.getString("nombre"));
+                client.setApellido(rs.getString("apellido"));
+                client.setCalle(rs.getString("calle"));
+                client.setCarrera(rs.getString("carrera"));
+                client.setBarrio(rs.getString("barrio"));
+                client.setMunicipio(rs.getString("municipio"));
+                client.setTelefono(rs.getString("telefono"));
+                client.setCorreo(rs.getString("correo"));
+                client.setIdClientes(rs.getInt("idclientes"));
+                client.setTipoCliente(rs.getInt("tipocliente"));
             }
             rs.close();
             stmt.close();
@@ -72,6 +103,7 @@ public class ClientesConnection {
             stmt.setString(6, client.getMunicipio());
             stmt.setString(7, client.getTelefono());
             stmt.setString(8, client.getCorreo());
+            stmt.setInt(9, client.getTipoCliente());
             registros = stmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -96,9 +128,12 @@ public class ClientesConnection {
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0;
+
         try {
             conn = Conexion.getConection();
             stmt = conn.prepareStatement(SQL_UPDATE);
+
+            // Set parameters for the PreparedStatement
             stmt.setString(1, client.getNombre());
             stmt.setString(2, client.getApellido());
             stmt.setString(3, client.getCalle());
@@ -107,21 +142,25 @@ public class ClientesConnection {
             stmt.setString(6, client.getMunicipio());
             stmt.setString(7, client.getTelefono());
             stmt.setString(8, client.getCorreo());
-            stmt.setInt(9, client.getIdClientes());
+            stmt.setInt(9, client.getTipoCliente());
+            stmt.setInt(10, client.getIdClientes());
+
+            // Execute the SQL update statement
             registros = stmt.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
+            ex.printStackTrace();
         } finally {
             try {
                 Conexion.close(stmt);
                 Conexion.close(conn);
-
             } catch (SQLException ex) {
-                ex.printStackTrace(System.out);
+                ex.printStackTrace();
             }
         }
         return registros;
     }
+
+
 
     /**
      * // borrar un producto del menu

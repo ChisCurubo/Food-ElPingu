@@ -1,9 +1,11 @@
 package co.edu.upb.datos;
 
 import co.edu.upb.domain.Menu;
-import co.edu.upb.list.DoubleLinkedList;
-import co.edu.upb.list.DoubleListNode;
+import co.edu.upb.estructuras.listas.DoubleLinkedList;
+import co.edu.upb.estructuras.listas.DoubleListNode;
 
+
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +14,7 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MenuConnect {
+public class MenuConnect implements Serializable {
     /**
      * // estas son las instruciones para la base de datos para la tabla de productos
      */
@@ -24,7 +26,7 @@ public class MenuConnect {
     private static final String SQL_UPDATE = "UPDATE pingu.productos SET producto = ?, cantidad = ?, tiempoprep = ? , precio = ?, tiemporapi = ? WHERE idproducto =?";
     private static final String SQL_DELETE = "DELETE FROM pingu.productos WHERE idproducto =?";
 
-    public DoubleLinkedList<Menu> algrDistanciaHamming(String busqueda) {
+   public DoubleLinkedList<Menu> algrDistanciaHamming(String busqueda) {
         String platoSearch = busqueda;
         String plato = "";
         Menu menn;
@@ -76,7 +78,7 @@ public class MenuConnect {
         Menu[] arryMen = new Menu[menu.size()];
         Iterator iter = menu.iterator();
         int cont = 0;
-        while (iter.hasNext()){
+        while (iter.hasNext()) {
             DoubleListNode<Menu> menuNode = (DoubleListNode<Menu>) iter.next();
             arryMen[cont] = menuNode.getObject();
             cont++;

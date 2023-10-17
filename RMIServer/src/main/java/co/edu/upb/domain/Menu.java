@@ -1,6 +1,8 @@
 package co.edu.upb.domain;
 
-public class Menu {
+import java.io.Serializable;
+
+public class Menu implements Serializable {
     /**
      * // todos los atritbutos que tienen el la base de datos, y por ende el menu
      * // seializa el objeto
@@ -46,11 +48,10 @@ public class Menu {
 
     }
 
-    public Menu(int camtProd, int tiempoPrep, int tiempoPrepLen, String choice, double precio) {
+    public Menu( String choice, int camtProd, int tiempoPrep, double precio) {
         this.product = choice;
         this.camtProd = camtProd;
         this.tiempoPrepRapi = tiempoPrep;
-        this.tiempoPrepLen = tiempoPrepLen;
         this.precio = precio;
     }
 

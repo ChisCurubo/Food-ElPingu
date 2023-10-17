@@ -4,10 +4,11 @@ import co.edu.upb.estructuras.interfaces.StackInterface;
 import co.edu.upb.estructuras.pilas.Stack;
 import co.edu.upb.estructuras.pilas.StackArray;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ColaDoble<T> implements StackInterface<T> {
+public class ColaDoble<T extends Serializable> implements StackInterface<T>, Serializable {
 
     private T[] arryCola;
     private int size;
@@ -59,6 +60,25 @@ public class ColaDoble<T> implements StackInterface<T> {
         }
         return null;
     }
+
+    /**
+     * @param object
+     * @return
+     */
+    @Override
+    public boolean push(T object) {
+        if (size <= arryCola.length) {
+            arryCola[tail] = (T) object;
+            tail++;
+            if (tail >= arryCola.length) {
+                tail = 0;
+            }
+            size++;
+            return true;
+        }
+        return false;
+    }
+
     public T popIzq() {
         if (!isEmpty()) {
             T pop = arryCola[tail];
@@ -73,28 +93,18 @@ public class ColaDoble<T> implements StackInterface<T> {
         return null;
     }
 
-    @Override
-    public boolean push(Object object) {
-        if (size <= arryCola.length) {
-            arryCola[tail] = (T) object;
-            tail++;
-            if (tail >= arryCola.length) {
-                tail = 0;
-            }
-            size++;
-            return true;
-        }
-        return false;
-    }
-
 
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * @param object
+     * @return
+     */
     @Override
-    public boolean search(Object object) {
+    public boolean search(T object) {
         if (!isEmpty()) {
             for (int i = 0; i < size; i++) {
                 if (arryCola[i].equals(object)) {
@@ -104,6 +114,7 @@ public class ColaDoble<T> implements StackInterface<T> {
         }
         return false;
     }
+
 
     @Override
     public boolean sort() {

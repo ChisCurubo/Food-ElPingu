@@ -1,9 +1,10 @@
 package co.edu.upb.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class Pedido {
+public class Pedido implements Serializable {
     private  int nmpedido;
     private int idClientes;
     private Timestamp fecha;

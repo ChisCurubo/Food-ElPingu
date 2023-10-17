@@ -1,6 +1,8 @@
 package co.edu.upb.domain;
 
-public class Clientes {
+import java.io.Serializable;
+
+public class Clientes implements Serializable {
     int idClientes;
     String nombre;
     String apellido;
@@ -8,11 +10,11 @@ public class Clientes {
     String carrera;
     String barrio;
     String municipio;
-    String numeroCalle;
     String telefono;
     String correo;
+    int tipoCliente;
 
-    public Clientes(int idClientes, String nombre, String apellido, String calle, String carrera, String barrio, String municipio, String numeroCalle, String telefono, String correo) {
+    public Clientes(int idClientes, String nombre, String apellido, String calle, String carrera, String barrio, String municipio, String telefono, String correo, int tipoClien) {
         this.idClientes = idClientes;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -20,19 +22,33 @@ public class Clientes {
         this.carrera = carrera;
         this.barrio = barrio;
         this.municipio = municipio;
-        this.numeroCalle = numeroCalle;
         this.telefono = telefono;
         this.correo = correo;
+        this.tipoCliente = tipoClien;
     }
-    public Clientes (){
+
+    public Clientes() {
 
     }
 
-    public Clientes(String nombre, String apellido, String telefono, String correo) {
+    public Clientes(String nombre, String apellido, String calle, String carrera, String barrio, String municipio, String telefono, String correo, int tipoCliente) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.calle = calle;
+        this.carrera = carrera;
+        this.barrio = barrio;
+        this.municipio = municipio;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.tipoCliente = tipoCliente;
+    }
+
+    public Clientes(String nombre, String apellido, String telefono, String correo, int tipoCliente) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.correo = correo;
+        this.tipoCliente = tipoCliente;
     }
 
     public int getIdClientes() {
@@ -91,13 +107,6 @@ public class Clientes {
         this.municipio = municipio;
     }
 
-    public String getNumeroCalle() {
-        return numeroCalle;
-    }
-
-    public void setNumeroCalle(String numeroCalle) {
-        this.numeroCalle = numeroCalle;
-    }
 
     public String getTelefono() {
         return telefono;
@@ -114,4 +123,13 @@ public class Clientes {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    public int getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(int tipoCliente) {
+        this.tipoCliente = tipoCliente;
+    }
 }
+

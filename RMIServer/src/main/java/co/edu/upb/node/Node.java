@@ -1,5 +1,6 @@
 package co.edu.upb.node;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -8,7 +9,7 @@ import java.util.logging.Logger;
  * @param <T>
  */
 
-public class Node<T> implements NodeInterface<T> {
+public class Node<T extends Serializable> implements NodeInterface<T>, Serializable {
     private T object;
     public Node(){
         this.object = null;

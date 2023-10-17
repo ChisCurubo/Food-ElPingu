@@ -1,15 +1,15 @@
 package co.edu.upb.estructuras.colas;
 
 
-
 import co.edu.upb.estructuras.interfaces.StackInterface;
 import co.edu.upb.estructuras.pilas.Stack;
 import co.edu.upb.estructuras.pilas.StackArray;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ColaArry<T> implements StackInterface<T> {
+public class ColaArry<T extends Serializable> implements StackInterface<T>, Serializable {
 
     private T[] arryCola;
     private int size;
@@ -62,8 +62,12 @@ public class ColaArry<T> implements StackInterface<T> {
         return null;
     }
 
+    /**
+     * @param object
+     * @return
+     */
     @Override
-    public boolean push(Object object) {
+    public boolean push(T object) {
         if (size <= arryCola.length) {
             arryCola[tail] = (T) object;
             tail++;
@@ -82,8 +86,12 @@ public class ColaArry<T> implements StackInterface<T> {
         return size;
     }
 
+    /**
+     * @param object
+     * @return
+     */
     @Override
-    public boolean search(Object object) {
+    public boolean search(T object) {
         if (!isEmpty()) {
             for (int i = 0; i < size; i++) {
                 if (arryCola[i].equals(object)) {

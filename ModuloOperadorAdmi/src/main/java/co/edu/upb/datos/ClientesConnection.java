@@ -2,12 +2,13 @@ package co.edu.upb.datos;
 
 import co.edu.upb.domain.Clientes;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ClientesConnection {
+public class ClientesConnection implements Serializable {
     private static final String SQL_SELECT = "SELECT * FROM pingu.clientes";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.clientes WHERE telefono = ? ";
     private static final String SQL_INSERT = "INSERT INTO pingu.clientes (nombre, apellido, calle , carrera, barrio, municipio, telefono, correo, tipocliente ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";

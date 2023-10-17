@@ -1,6 +1,8 @@
 package co.edu.upb.domain;
 
-public class PedidosDetalle {
+import java.io.Serializable;
+
+public class PedidosDetalle implements Serializable {
     private int idDetalle;
     private  int idPedidos;
     private int idProducto;
@@ -64,5 +66,15 @@ public class PedidosDetalle {
 
     public void setEstatuPedido(String estatuPedido) {
         this.estatuPedido = estatuPedido;
+    }
+    @Override
+    public String toString() {
+        return "PedidosDetalle{" +
+                "idDetalle=" + idDetalle +
+                ", idPedidos=" + idPedidos +
+                ", idProducto=" + idProducto +
+                ", cantidad=" + cantidad +
+                ", estatuPedido='" + estatuPedido + '\'' +
+                '}';
     }
 }

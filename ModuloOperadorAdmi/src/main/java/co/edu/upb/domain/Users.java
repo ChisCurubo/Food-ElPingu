@@ -1,6 +1,8 @@
 package co.edu.upb.domain;
 
-public class Users {
+import java.io.Serializable;
+
+public class Users implements Serializable {
     /**
      * // atributos de la clase users, tambien son atributos de la tabla de la bases de datos de user
      */

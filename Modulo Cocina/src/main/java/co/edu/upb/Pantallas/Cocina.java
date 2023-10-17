@@ -1,22 +1,30 @@
 package co.edu.upb.Pantallas;
 
 import co.edu.upb.Clasificacion.CocinaCola;
+import co.edu.upb.Modelo.ModeloLogin;
 import co.edu.upb.datos.PedidosDetalleConnet;
 import co.edu.upb.domain.PedidosDetalle;
+import co.edu.upb.estructuras.colas.ColaPrioridadList;
+import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 public class Cocina extends JFrame {
+
+    ColaPrioridadList<PedidosDetalle> colaDomicilio = new ColaPrioridadList<>();
 
     private JPanel panel;
     PedidosDetalle[] fogRapido = new PedidosDetalle[12];
     PedidosDetalle[] fogLento = new PedidosDetalle[4];
     private JLabel labelColaRap = new JLabel();
-    JLabel labelCola = new JLabel();
+    private JLabel labelCola = new JLabel();
+    JTextArea textAreaPedi = new JTextArea();
+    DoubleLinkedList<PedidosDetalle> list  = new DoubleLinkedList<>();
 
     public static void main(String[] args) {
         Cocina co = new Cocina();
@@ -26,6 +34,7 @@ public class Cocina extends JFrame {
         initCocina();
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setIconImage(new ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\logo (Pequeño).jpg").getImage());
     }
 
     public void initCocina() {
@@ -36,12 +45,13 @@ public class Cocina extends JFrame {
         setResizable(false);
 
         panel = new JPanel();
-        panel.setBackground(Color.CYAN);
+        panel.setBackground(new Color(64, 93, 128));
         setContentPane(panel);
         setLayout(null);
 
         JLabel jlabel = new JLabel("Bienvenido al modulo de cocina");
         jlabel.setHorizontalAlignment(SwingConstants.CENTER);
+        jlabel.setForeground(Color.WHITE);
         jlabel.setFont(new Font("Harlow Solid Italic", Font.PLAIN, 40));
         jlabel.setBounds(370, 50, 500, 50);
         panel.add(jlabel);
@@ -161,51 +171,44 @@ public class Cocina extends JFrame {
         //recordar que cambie de color si esta en uso o no
         panel.add(botonComp4);
 
-        JPanel panelet = new JPanel();
-        PedidosDetalleConnet pdC = new PedidosDetalleConnet();
-        int idPe = 5;
-        for (int i = 0; i < 2; i++) {
-            PedidosDetalle pdDe = pdC.selectIdDet(idPe);
-            idPe++;
-        }
 
-        labelCola.setText("Cola de comida complejas : " + cos.imprimirColaLen());
+        botonRap1.addActionListener(actionListenerBotonRap(botonRap1, 0));
+        botonRap2.addActionListener(actionListenerBotonRap(botonRap2, 1));
+        botonRap3.addActionListener(actionListenerBotonRap(botonRap3, 2));
+        botonRap4.addActionListener(actionListenerBotonRap(botonRap4, 3));
+        botonRap5.addActionListener(actionListenerBotonRap(botonRap5, 4));
+        botonRap6.addActionListener(actionListenerBotonRap(botonRap6, 5));
+        botonRap7.addActionListener(actionListenerBotonRap(botonRap7, 6));
+        botonRap8.addActionListener(actionListenerBotonRap(botonRap8, 7));
+        botonRap9.addActionListener(actionListenerBotonRap(botonRap9, 8));
+        botonRap10.addActionListener(actionListenerBotonRap(botonRap10, 9));
+        botonRap11.addActionListener(actionListenerBotonRap(botonRap11, 10));
+        botonRap12.addActionListener(actionListenerBotonRap(botonRap12, 11));
 
+        botonComp1.addActionListener(actionListenerBotonLen(botonComp1, 0));
+        botonComp2.addActionListener(actionListenerBotonLen(botonComp2, 1));
+        botonComp3.addActionListener(actionListenerBotonLen(botonComp3, 2));
+        botonComp4.addActionListener(actionListenerBotonLen(botonComp4, 3));
 
-        JPanel paneletRa = new JPanel();
-        labelColaRap.setText("Cola de comida rapida : " + cos.imprimirColaRap());
+        JPanel panelFogones = new JPanel();
+        panelFogones.setBackground(new Color(1, 113, 143));
+        panelFogones.setBounds(1150, 100, 325, 600);
+        panel.add(panelFogones);
+        panelFogones.setLayout(null);
+        JLabel infoPedidos = new JLabel("Info Pedidos");
+        infoPedidos.setForeground(Color.WHITE);
+        infoPedidos.setFont(new Font("Times New Roman", 1, 20));
+        infoPedidos.setBounds(120, 10, 200, 50);
+        panelFogones.add(infoPedidos);
 
-        botonRap1.addActionListener(actionListenerBotonRap(botonRap1, cos, 0));
-        botonRap2.addActionListener(actionListenerBotonRap(botonRap2, cos, 1));
-        botonRap3.addActionListener(actionListenerBotonRap(botonRap3, cos, 2));
-        botonRap4.addActionListener(actionListenerBotonRap(botonRap4, cos, 3));
-        botonRap5.addActionListener(actionListenerBotonRap(botonRap5, cos, 4));
-        botonRap6.addActionListener(actionListenerBotonRap(botonRap6, cos, 5));
-        botonRap7.addActionListener(actionListenerBotonRap(botonRap7, cos, 6));
-        botonRap8.addActionListener(actionListenerBotonRap(botonRap8, cos, 7));
-        botonRap9.addActionListener(actionListenerBotonRap(botonRap9, cos, 8));
-        botonRap10.addActionListener(actionListenerBotonRap(botonRap10, cos, 9));
-        botonRap11.addActionListener(actionListenerBotonRap(botonRap11, cos, 10));
-        botonRap12.addActionListener(actionListenerBotonRap(botonRap12, cos, 11));
+        textAreaPedi.setBackground(new Color(0, 176, 222));
+        textAreaPedi.setBounds(10, 100, 300, 450);
+        panelFogones.add(textAreaPedi);
 
-        botonComp1.addActionListener(actionListenerBotonLen(botonComp1, cos, 0));
-        botonComp2.addActionListener(actionListenerBotonLen(botonComp2, cos, 1));
-        botonComp3.addActionListener(actionListenerBotonLen(botonComp3, cos, 2));
-        botonComp4.addActionListener(actionListenerBotonLen(botonComp4, cos, 3));
-
-        paneletRa.add(labelColaRap);
-        panelet.add(labelCola);
-        paneletRa.setBackground(Color.BLUE);
-        paneletRa.setBounds(1140, 400, 350, 400);
-        panel.add(paneletRa);
-        //se imprime la lista
-        panelet.setBackground(Color.gray);
-        panelet.setBounds(1140, 0, 350, 400);
-        panel.add(panelet);
 
     }
 
-    public ActionListener actionListenerBotonRap(JButton botonRap, CocinaCola newCola, int numFog) {
+    public ActionListener actionListenerBotonRap(JButton botonRap, int numFog) {
         ActionListener validation = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -218,7 +221,14 @@ public class Cocina extends JFrame {
                     botonRap.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            fogRapido[numFog] = newCola.popOfColaCocina(1);
+                            try {
+                                String str = ModeloLogin.CocinaInterface.popColaRapida();
+                                String[] arrystr = str.split(",");
+                                PedidosDetalle pediDet = new PedidosDetalle(Integer.parseInt(arrystr[0]), Integer.parseInt(arrystr[1]), Integer.parseInt(arrystr[2]), Integer.parseInt(arrystr[3]), arrystr[4]);
+                                fogRapido[numFog] = pediDet;
+                            } catch (RemoteException ex) {
+                                throw new RuntimeException(ex);
+                            }
                             botonRap.setBackground(Color.orange);
                         }
                     });
@@ -227,19 +237,20 @@ public class Cocina extends JFrame {
                     botonRap.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            list.add(fogRapido[numFog]);
                             fogRapido[numFog] = null;
                             botonRap.setBackground(Color.PINK);
                         }
                     });
                 }
-                labelColaRap.setText("Cola de comida rapida : " + newCola.imprimirColaRap());
 
+                textAreaPedi.setText("Fogon Rapido " + (numFog + 1) + ": " + fogRapido[numFog].getIdDetalle() + ", " + fogRapido[numFog].getIdProducto() + ", " + fogRapido[numFog].getCantidad());
             }
         };
         return validation;
     }
 
-    public ActionListener actionListenerBotonLen(JButton botonRap, CocinaCola newCola, int numFog) {
+    public ActionListener actionListenerBotonLen(JButton botonRap, int numFog) {
         ActionListener validation = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -248,7 +259,14 @@ public class Cocina extends JFrame {
                     botonRap.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            fogLento[numFog] = newCola.popOfColaCocina(0);
+                            try {
+                                String str = ModeloLogin.CocinaInterface.popColaRapida();
+                                String[] arrystr = str.split(",");
+                                PedidosDetalle pediDet = new PedidosDetalle(Integer.parseInt(arrystr[0]), Integer.parseInt(arrystr[1]), Integer.parseInt(arrystr[2]), Integer.parseInt(arrystr[3]), arrystr[4]);
+                                fogLento[numFog] = pediDet;
+                            } catch (RemoteException ex) {
+                                throw new RuntimeException(ex);
+                            }
                             botonRap.setBackground(Color.GREEN);
                         }
                     });
@@ -257,13 +275,13 @@ public class Cocina extends JFrame {
                     botonRap.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            list.add(fogLento[numFog]);
                             fogLento[numFog] = null;
                             botonRap.setBackground(Color.gray);
                         }
                     });
                 }
-                labelCola.setText("Cola de Lenta rapida : " + newCola.imprimirColaLen());
-
+                textAreaPedi.setText("Fogon Lento " + (numFog + 1) + ": " + fogRapido[numFog].getIdDetalle() + ", " + fogRapido[numFog].getIdProducto() + ", " + fogRapido[numFog].getCantidad());
             }
         };
         return validation;

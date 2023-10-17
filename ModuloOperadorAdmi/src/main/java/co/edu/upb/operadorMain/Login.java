@@ -1,15 +1,15 @@
 package co.edu.upb.operadorMain;
 
+import co.edu.upb.Client.Client;
 import co.edu.upb.Controlador.ControladorLogin;
+import co.edu.upb.Modelo.ModeloLogin;
 import co.edu.upb.datos.ClientesConnection;
 import co.edu.upb.datos.MenuConnect;
 import co.edu.upb.datos.PedidoConnect;
 import co.edu.upb.datos.PedidosDetalleConnet;
-import co.edu.upb.domain.Clientes;
-import co.edu.upb.domain.Menu;
-import co.edu.upb.domain.Pedido;
-import co.edu.upb.domain.PedidosDetalle;
+import co.edu.upb.domain.*;
 
+import java.rmi.RemoteException;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -71,7 +71,7 @@ public class Login {
 
  */
 
-        PedidoConnect pedCon = new PedidoConnect();
+        /*PedidoConnect pedCon = new PedidoConnect();
         Pedido pedi;
         ClientesConnection clien = new ClientesConnection();
         Clientes clientes = clien.select("301525845");
@@ -86,8 +86,33 @@ public class Login {
         ped.setIdProducto(menu.select("Hot Perro").getIdProducto());
         ped.setEstatuPedido("Domi");
         ped.setIdPedidos(pedi.getNmpedido());
-        pedidosDetalleConnet.update(ped);
+        pedidosDetalleConnet.update(ped);*/
 
+        ModeloLogin model = new ModeloLogin();
+        Client cli = new Client("localhost", "5000", "serviceOperador");
+        ControladorLogin conTrol = new ControladorLogin();
+        //Clientes clientes = new Clientes("Juan", "Carvajal", "35", "48", "Piedecuesta", "Piedecuesta", "30258792","jpjCarvajal@gmail", 1);
+        //cli.bringCliente("30258792");
+        //LocalDateTime locDa = LocalDateTime.now();
+        //Timestamp sqlDate = Timestamp.valueOf(locDa);
+        //Pedido pedi = new Pedido(Integer.parseInt(cli.bringCliente("30258792")), sqlDate, "Pedido");
+
+           /* PedidosDetalle ped = new PedidosDetalle(Integer.parseInt(cli.selectPedido(Integer.parseInt(cli.bringCliente("30258792")))), Integer.parseInt(cli.selectProducto("Crazy Potato")),3,"Cola") ;
+            cli.addPedidoDetalle(ped);*/
+        //Users use = new Users(5, "IkerDomicilio@elPingu.com","Rappi12", 4,  "iker", "Casilla");
+        //cli.editUser(use);
+            /*Menu men = new Menu(5, "Pepito", 100, 1,18000,0);
+            if(cli.editProducto(men)){
+                System.out.println("si");
+            }*/
+            /*System.out.println(cli.verDblen());
+            System.out.println("------------------");
+            System.out.println(cli.verDbRap());
+
+            System.out.println();*/
+            /*if(cli.editClient(clientes)) {
+                System.out.println("si");
+            }*/
 
     }
 

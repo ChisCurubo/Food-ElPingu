@@ -1,6 +1,8 @@
 package co.edu.upb.domain;
 
-public class Clientes {
+import java.io.Serializable;
+
+public class Clientes  implements Serializable {
     int idClientes;
     String nombre;
     String apellido;

@@ -2,9 +2,10 @@ package co.edu.upb.datos;
 
 import co.edu.upb.domain.Pedido;
 
+import java.io.Serializable;
 import java.sql.*;
 
-public class PedidoConnect {
+public class PedidoConnect implements Serializable {
     private static final String SQL_SELECT = "SELECT * FROM pingu.pedidos";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.pedidos WHERE nmpedido = ? ";
     private static final String SQL_SELECT_WHERE_Client = "SELECT * FROM pingu.pedidos WHERE idclientes = ? ";
