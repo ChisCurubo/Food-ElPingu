@@ -1,14 +1,16 @@
 package co.edu.upb.domain;
 
+import co.edu.upb.estructuras.listas.DoubleLinkedList;
+
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Pedido implements Serializable {
-private  int nmpedido;
-private int idClientes;
-private Timestamp fecha;
-private String estatus;
+    private int nmpedido;
+    private int idClientes;
+    private Timestamp fecha;
+    private String estatus;
 
     public Pedido(int nmpedido, int idClientes, Timestamp fecha, String estatus) {
         this.nmpedido = nmpedido;
@@ -17,15 +19,15 @@ private String estatus;
         this.estatus = estatus;
     }
 
-    public Pedido(int idClientes, Timestamp  fecha, String estatus) {
+    public Pedido(int idClientes, Timestamp fecha, String estatus) {
         this.idClientes = idClientes;
         this.fecha = fecha;
         this.estatus = estatus;
     }
-    public Pedido (){
+
+    public Pedido() {
 
     }
-
 
 
     public int getNmpedido() {

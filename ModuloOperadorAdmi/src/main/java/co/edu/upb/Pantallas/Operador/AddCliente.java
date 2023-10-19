@@ -1,6 +1,7 @@
 package co.edu.upb.Pantallas.Operador;
 
 import co.edu.upb.Modelo.ModeloLogin;
+import co.edu.upb.Pantallas.Administrador.MenuAdmin;
 import co.edu.upb.domain.Clientes;
 
 import javax.swing.*;
@@ -156,8 +157,14 @@ public class AddCliente extends JFrame {
                     if(ModeloLogin.clienteOperador.addCliente(cliente)){
                         JOptionPane.showMessageDialog(null,  "Se ingreso el nuevo cliente");
                         setVisible(false);
-                        MenuOperador men = new MenuOperador();
-                        men.setVisible(true);
+                        if(ModeloLogin.clienteOperador.login(ModeloLogin.email,ModeloLogin.contra)== 0){
+                            MenuOperador men = new MenuOperador();
+                            men.setVisible(true);
+                        }else {
+                            MenuAdmin menAd = new MenuAdmin();
+                            menAd.setVisible(true);
+                        }
+
                     }
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
@@ -175,8 +182,18 @@ public class AddCliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                MenuOperador men = new MenuOperador();
-                men.setVisible(true);
+                try {
+                    if(ModeloLogin.clienteOperador.login(ModeloLogin.email,ModeloLogin.contra) == 0 ){
+                        MenuOperador men = new MenuOperador();
+                        men.setVisible(true);
+                    }else{
+                        MenuAdmin men = new MenuAdmin();
+                        men.setVisible(true);
+                    }
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
+
             }
         });
         panelFondo.add(botRegresar);

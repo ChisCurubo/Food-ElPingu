@@ -2,6 +2,7 @@ package co.edu.upb.list;
 
 import co.edu.upb.node.NodeInterface;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Iterator;
  * @author Lenin Javier Serrano Gil
  * @param <T> generic objects
  */
-public interface LinkedListInterface<T> {
+public interface LinkedListInterface<T extends Serializable> {
 
     /***
      * Adds an object at the end of the list.

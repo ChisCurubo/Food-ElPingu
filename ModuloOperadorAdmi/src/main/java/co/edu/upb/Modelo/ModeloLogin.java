@@ -19,6 +19,9 @@ public class ModeloLogin {
 
     }
 
+    public static String contra = "";
+    public static String email = "";
+
     public ActionListener checkBoton(InicioSesion ini) {
         ActionListener validation = new ActionListener() {
             @Override
@@ -26,7 +29,9 @@ public class ModeloLogin {
                 try {
                     if (ini.getTextCorreo().getText().length() > 0 && ini.getPswField().getText().length() > 0) {
                         String em = ini.getTextCorreo().getText();
+                        email = em;
                         String ps = ini.getPswField().getText();
+                        contra = ps;
                         int can = clienteOperador.login(em, ps);
                         if (can == 0) {
                             ini.setVisible(false);

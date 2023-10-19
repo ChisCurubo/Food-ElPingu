@@ -141,6 +141,42 @@ public class MethotsOperador extends UnicastRemoteObject implements OperadorInte
         return "";
     }
 
+    /**
+     * @param pedi
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public Pedido selectIdPedido(int pedi) throws RemoteException {
+        try {
+            PedidoConnect pediCon = new PedidoConnect();
+            Pedido pedilo = pediCon.select(pedi);
+            return pedilo;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * @param id
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public Clientes selctCliennte(int id) throws RemoteException {
+        try {
+            ClientesConnection cliCon = new ClientesConnection();
+            Clientes cli = cliCon.selectIdCliente(id);
+            if (cli != null) {
+                return cli;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     public String selectPedidoCliente(int idCliente) throws RemoteException {
         try {
@@ -244,38 +280,72 @@ public class MethotsOperador extends UnicastRemoteObject implements OperadorInte
         return "";
     }
 
+    /**
+     * @param id
+     * @return
+     * @throws RemoteException
+     */
     @Override
-    public CilaPriiory<PedidosDetalle> verDblen() throws RemoteException {
+    public Menu selectProuctId(int id) throws RemoteException {
+        try {
+            MenuConnect menCon = new MenuConnect();
+            Menu men = menCon.selectId(id);
+            return men;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public String verDblen() throws RemoteException {
         try {
             CocinaCola menCon = new CocinaCola();
             MenuConnect men = new MenuConnect();
             PedidosDetalleConnet pedidosDetalle = new PedidosDetalleConnet();
             ClientesConnection cliCon = new ClientesConnection();
-            menCon.addToColaCocina(men.selectId(8).getTiempoPrepRapi(), pedidosDetalle.selectIdDet(6), cliCon.selectIdCliente(2));
+            //menCon.addToColaCocina(men.selectId(8).getTiempoPrepRapi(), pedidosDetalle.selectIdDet(6), cliCon.selectIdCliente(2));
 
-            return menCon.colaPrioriLento;
+
+            return CocinaCola.imprimirColaLen();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public CilaPriiory<PedidosDetalle> verDbRap() throws RemoteException {
+
+    @Override
+    public String verDbRap() throws RemoteException {
         try {
             CocinaCola menCon = new CocinaCola();
             MenuConnect men = new MenuConnect();
             PedidosDetalleConnet pedidosDetalle = new PedidosDetalleConnet();
             ClientesConnection cliCon = new ClientesConnection();
-            menCon.addToColaCocina(men.selectId(3).getTiempoPrepRapi(), pedidosDetalle.selectIdDet(5), cliCon.selectIdCliente(1));
-            menCon.addToColaCocina(men.selectId(3).getTiempoPrepRapi(), pedidosDetalle.selectIdDet(5), cliCon.selectIdCliente(2));
-
-            return menCon.colaPriorRap;
+            //menCon.addToColaCocina(1, new PedidosDetalle(11,2,3,"Cola"), cliCon.selectIdCliente(1));
+            return CocinaCola.imprimirColaRap();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
+    /**
+     * @param pedi
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean listPedido(DoubleLinkedList<PedidosDetalle> pedi) throws RemoteException {
+        try {
+            CocinaCola.clonelist(pedi);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 }
 
 

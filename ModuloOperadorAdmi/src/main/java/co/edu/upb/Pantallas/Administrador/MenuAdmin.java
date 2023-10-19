@@ -3,6 +3,7 @@ package co.edu.upb.Pantallas.Administrador;
 import co.edu.upb.Pantallas.Operador.AddCliente;
 import co.edu.upb.Pantallas.Operador.AddPedido;
 import co.edu.upb.Pantallas.Operador.EditClient;
+import co.edu.upb.Pantallas.Operador.EditPedido;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,10 +33,10 @@ public class MenuAdmin extends JFrame {
         setContentPane(panelFondo);
         setLayout(null);
 
-        JLabel label = new JLabel("Bienvenido Operador");
+        JLabel label = new JLabel("Bienvenido Admin");
         label.setFont(new Font("Times News Roman", 1, 50));
         label.setForeground(Color.WHITE);
-        label.setBounds(400, 50, 600, 100);
+        label.setBounds(500, 50, 600, 100);
         panelFondo.add(label);
 
         JButton botonRap1 = new JButton("Add Clientes");
@@ -91,6 +92,14 @@ public class MenuAdmin extends JFrame {
         botonRap4.setBounds(750, 400, 300, 150);
         botonRap4.setForeground(Color.WHITE);
         botonRap4.setBackground((new Color(110,149,0)));
+        botonRap4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                EditPedido edit = new EditPedido();
+                edit.setVisible(true);
+            }
+        });
         //recordar que cambie de color si esta en uso o no
         panelFondo.add(botonRap4);
 
@@ -99,6 +108,14 @@ public class MenuAdmin extends JFrame {
         butonAddUser.setForeground(Color.WHITE);
         butonAddUser.setBounds(50, 200, 300, 150);
         butonAddUser.setBackground((new Color(110,149,0)));
+        butonAddUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                AñadirUsuario adUser = new AñadirUsuario();
+                adUser.setVisible(true);
+            }
+        });;
         //recordar que cambie de color si esta en uso o no
         panelFondo.add(butonAddUser);
 
@@ -107,6 +124,14 @@ public class MenuAdmin extends JFrame {
         butonEditUser.setForeground(Color.WHITE);
         butonEditUser.setBounds(50, 400, 300, 150);
         butonEditUser.setBackground((new Color(110,149,0)));
+        butonEditUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                EditarUsuario editarUsuario = new EditarUsuario();
+                editarUsuario.setVisible(true);
+            }
+        });
         //recordar que cambie de color si esta en uso o no
         panelFondo.add(butonEditUser);
 
@@ -115,6 +140,14 @@ public class MenuAdmin extends JFrame {
         butonAddProduct.setForeground(Color.WHITE);
         butonAddProduct.setBounds(1100, 200, 300, 150);
         butonAddProduct.setBackground((new Color(110,149,0)));
+        butonAddProduct.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                AddProduct adPring = new AddProduct();
+                adPring.setVisible(true);
+            }
+        });
         //recordar que cambie de color si esta en uso o no
         panelFondo.add(butonAddProduct);
 
@@ -123,6 +156,14 @@ public class MenuAdmin extends JFrame {
         butonEditProduct.setForeground(Color.WHITE);
         butonEditProduct.setBounds(1100, 400, 300, 150);
         butonEditProduct.setBackground((new Color(110,149,0)));
+        butonEditProduct.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                EditProduct pro = new EditProduct();
+                pro.setVisible(true);
+            }
+        });
         //recordar que cambie de color si esta en uso o no
         panelFondo.add(butonEditProduct);
 
@@ -131,6 +172,14 @@ public class MenuAdmin extends JFrame {
         butonAdminDB.setForeground(Color.WHITE);
         butonAdminDB.setBounds(575, 600, 300, 150);
         butonAdminDB.setBackground((new Color(110,149,0)));
+        butonAdminDB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                AdminDb admiDb = new AdminDb();
+                admiDb.setVisible(true);
+            }
+        });
         //recordar que cambie de color si esta en uso o no
         panelFondo.add(butonAdminDB);
     }

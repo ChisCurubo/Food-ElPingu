@@ -111,7 +111,7 @@ public class MenuConnect implements Serializable {
                     }
                     iterador++;
                 }
-                /* --- Determinar si la busqueda se parece al producto y agregarlo a los resultados ---
+                /*
                 Similitud = Dividir la cantidad de caracteres en las iguales para tener una proporción
                 Sí la similitud es menor o igual a 1.5, si son similares.
                 */
@@ -120,13 +120,10 @@ public class MenuConnect implements Serializable {
                     int distancia = stringBusqueda.length() / igualdades;
                     menn.setNumDistanciaHammil(distancia);
                     listMen.add(menn);
-                    //Romper el ciclo en caso de encontrar una similitud con cualquiera de los strings de cada producto
                     break;
                 }
             }
         }
-        System.out.println("Resultado para: " + stringBusqueda);
-        listMen.imprimir();
        return listMen;
     }
 

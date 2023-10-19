@@ -3,12 +3,13 @@ package co.edu.upb.list;
 
 import co.edu.upb.node.NodeInterface;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DoubleLinkedList<T> implements LinkedListInterface<T>, Cloneable {
+public class DoubleLinkedList<T extends Serializable> implements LinkedListInterface<T>, Cloneable, Serializable {
     private DoubleListNode<T> head;
     private DoubleListNode<T> tail;
     private DoubleListNode<T> inode;

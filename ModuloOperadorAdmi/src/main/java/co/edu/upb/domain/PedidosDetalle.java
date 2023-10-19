@@ -1,5 +1,7 @@
 package co.edu.upb.domain;
 
+import co.edu.upb.estructuras.listas.DoubleLinkedList;
+
 import java.io.Serializable;
 
 public class PedidosDetalle implements Serializable {
@@ -8,6 +10,7 @@ public class PedidosDetalle implements Serializable {
     private int idProducto;
     private int cantidad ;
     private String estatuPedido;
+
 
     public PedidosDetalle(int idDetalle, int idPedidos, int idProducto, int cantidad, String estatuPedido) {
         this.idDetalle = idDetalle;

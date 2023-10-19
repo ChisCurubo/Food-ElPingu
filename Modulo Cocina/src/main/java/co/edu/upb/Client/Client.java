@@ -40,7 +40,7 @@ public class Client implements CocinaInterface {
      * @throws RemoteException
      */
     @Override
-    public String popColaLenta() throws RemoteException {
+    public PedidosDetalle popColaLenta() throws RemoteException {
         try{
             service = (CocinaInterface) Naming.lookup(url);
             return service.popColaLenta();
@@ -56,8 +56,15 @@ public class Client implements CocinaInterface {
      * @throws RemoteException
      */
     @Override
-    public String popColaRapida() throws RemoteException {
-        return null;
+    public PedidosDetalle popColaRapida() throws RemoteException {
+        try{
+            service = (CocinaInterface) Naming.lookup(url);
+            return service.popColaRapida();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (NotBoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**

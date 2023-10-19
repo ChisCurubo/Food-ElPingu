@@ -3,6 +3,7 @@ package co.edu.upb.operadorMain;
 import co.edu.upb.Client.Client;
 import co.edu.upb.Controlador.ControladorLogin;
 import co.edu.upb.Modelo.ModeloLogin;
+import co.edu.upb.Pantallas.Operador.InicioSesion;
 import co.edu.upb.datos.ClientesConnection;
 import co.edu.upb.datos.MenuConnect;
 import co.edu.upb.datos.PedidoConnect;
@@ -88,9 +89,10 @@ public class Login {
         ped.setIdPedidos(pedi.getNmpedido());
         pedidosDetalleConnet.update(ped);*/
 
-        ModeloLogin model = new ModeloLogin();
+        /*ModeloLogin model = new ModeloLogin();
         Client cli = new Client("localhost", "5000", "serviceOperador");
-        ControladorLogin conTrol = new ControladorLogin();
+        ControladorLogin conTrol = new ControladorLogin();*/
+        ControladorLogin cont = new ControladorLogin();
         //Clientes clientes = new Clientes("Juan", "Carvajal", "35", "48", "Piedecuesta", "Piedecuesta", "30258792","jpjCarvajal@gmail", 1);
         //cli.bringCliente("30258792");
         //LocalDateTime locDa = LocalDateTime.now();

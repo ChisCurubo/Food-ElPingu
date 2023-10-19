@@ -1,6 +1,7 @@
 package co.edu.upb.Pantallas.Operador;
 
 import co.edu.upb.Modelo.ModeloLogin;
+import co.edu.upb.Pantallas.Administrador.MenuAdmin;
 import co.edu.upb.domain.Menu;
 import co.edu.upb.domain.Pedido;
 import co.edu.upb.domain.PedidosDetalle;
@@ -18,7 +19,7 @@ public class AddPedido extends JFrame {
     String nombreChange = "";
     String apellidoChange = "";
     String preViewPedidoStr = "";
-    DoubleLinkedList<PedidosDetalle> listPed;
+    DoubleLinkedList<PedidosDetalle> listPed ;
 
     JLabel muestraPreView = new JLabel();
 
@@ -27,6 +28,7 @@ public class AddPedido extends JFrame {
     }
 
     public AddPedido() {
+        listPed = new DoubleLinkedList<>();
         initOperatorAddPedido();
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -35,10 +37,9 @@ public class AddPedido extends JFrame {
 
     Pedido pedido;
     Menu menu = new Menu();
-    PedidosDetalle pedidosDetalle = new PedidosDetalle();
+    PedidosDetalle pedidosDetalle;
 
     public void initOperatorAddPedido() {
-        listPed = new DoubleLinkedList<>();
         setTitle("Add Pedido");
         setBounds(0, 0, 1500, 1000);
         setLocationRelativeTo(null);
@@ -111,18 +112,10 @@ public class AddPedido extends JFrame {
         botonEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                while (!listPed.isEmpty()) {
-                    try {
-                        ModeloLogin.clienteOperador.addPedidoDetalle(listPed.pop());
-                    } catch (RemoteException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
                 JOptionPane.showMessageDialog(null, "se ingreso el pedido a la cola");
                 setVisible(false);
-
-                MenuOperador men = new MenuOperador();
-                men.setVisible(true);
+                Factura fact = new Factura(listPed);
+                fact.setVisible(true);
             }
         });
         panelFondo.add(botonEnviar);
@@ -149,9 +142,10 @@ public class AddPedido extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String text = busquedaProduct.getText();
                 try {
-                    String idCli = ModeloLogin.clienteOperador.selectProducto(text);
+                    DoubleLinkedList<Menu> lisdistancia = ModeloLogin.clienteOperador.algortmoHammil(text);
+                    busquedaProduct.setText(lisdistancia.get().getProduct());
                     pedidosDetalle = new PedidosDetalle();
-                    pedidosDetalle.setIdProducto(Integer.parseInt(idCli));
+                    pedidosDetalle.setIdProducto(lisdistancia.get().getIdProducto());
                     JOptionPane.showMessageDialog(null, pedidosDetalle.getIdProducto());
 
                 } catch (RemoteException ex) {
@@ -202,6 +196,7 @@ public class AddPedido extends JFrame {
         muestraPreView.setBackground(new Color(149, 143, 0));
         muestraPreView.setFont(new Font("Arial", Font.PLAIN, 15));
         muestraPreView.setBounds(10, 60, 400, 200);
+        muestraPreView.setEditable(false);
         panPre.add(muestraPreView);
 
         JButton anadirPedido = new JButton("AddPedido:)");
@@ -232,8 +227,18 @@ public class AddPedido extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                MenuOperador men = new MenuOperador();
-                men.setVisible(true);
+                try {
+                    if(ModeloLogin.clienteOperador.login(ModeloLogin.email,ModeloLogin.contra) == 0 ){
+                        MenuOperador men = new MenuOperador();
+                        men.setVisible(true);
+                    }else{
+                        MenuAdmin men = new MenuAdmin();
+                        men.setVisible(true);
+                    }
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
+
             }
         });
         panelFondo.add(botRegresar);

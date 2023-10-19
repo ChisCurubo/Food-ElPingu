@@ -28,7 +28,7 @@ public class PedidosDetalleConnet implements Serializable {
      *
      */
     public DoubleLinkedList<PedidosDetalle> listPedDet = new DoubleLinkedList<>();
-    public CocinaCola colaPrioridadCocina = new CocinaCola();
+
 
     /**
      * metodo select para uso de la cola de prioridad  como busqueda id-detalle
@@ -71,8 +71,11 @@ public class PedidosDetalleConnet implements Serializable {
 
             ClientesConnection cliCon = new ClientesConnection();
             Clientes cli = cliCon.selectIdCliente(pedi.getIdClientes());
-
-            colaPrioridadCocina.addToColaCocina(menu.getTiempoPrepRapi(),pedidosDetalle, cli);
+            if(menu.getTiempoPrepRapi() == 1) {
+                CocinaCola.colaPriorRap.addToCola(cli.getTipoCliente(), pedidosDetalle);
+            }else{
+                CocinaCola.colaPrioriLento.addToCola(cli.getTipoCliente(), pedidosDetalle);
+            }
 
         }catch (Exception ex) {
             ex.printStackTrace();
@@ -147,11 +150,7 @@ public class PedidosDetalleConnet implements Serializable {
         Pedido pedi =pediConn.selectCient(pedidosDetalle.getIdPedidos());
         ClientesConnection cliCon = new ClientesConnection();
         Clientes cli = cliCon.selectIdCliente(pedi.getIdClientes());
-        if(menu.getTiempoPrepRapi() == 1){
-            CocinaCola.colaPriorRap.addToCola(cli.getTipoCliente(), pedidosDetalle);
-        } else {
-            CocinaCola.colaPrioriLento.addToCola(cli.getTipoCliente(),pedidosDetalle);
-        }
+        CocinaCola.addToColaCocina(menu.getTiempoPrepRapi(),pedidosDetalle, cli);
         return registros;
     }
 

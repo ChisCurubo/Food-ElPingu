@@ -1,6 +1,7 @@
 package co.edu.upb.Pantallas.Operador;
 
 import co.edu.upb.Modelo.ModeloLogin;
+import co.edu.upb.Pantallas.Administrador.MenuAdmin;
 import co.edu.upb.domain.Clientes;
 
 import javax.swing.*;
@@ -200,7 +201,7 @@ public class EditClient extends JFrame {
                 try {
                     String str = ModeloLogin.clienteOperador.bringClienteCompleate(busqueda);
                     String[] arrstrstr = str.split(",");
-                    Clientes cli = new Clientes(Integer.parseInt(arrstrstr[0]),arrstrstr[1],arrstrstr[2], arrstrstr[3], arrstrstr[4], arrstrstr[5], arrstrstr[6], arrstrstr[7], arrstrstr[8],Integer.parseInt(arrstrstr[9]));
+                    Clientes cli = new Clientes(Integer.parseInt(arrstrstr[0]), arrstrstr[1], arrstrstr[2], arrstrstr[3], arrstrstr[4], arrstrstr[5], arrstrstr[6], arrstrstr[7], arrstrstr[8], Integer.parseInt(arrstrstr[9]));
                     nombreFieldInfo.setText(cli.getNombre());
                     apellidoFieldINfo.setText(cli.getApellido());
                     calleFieldInfo.setText(cli.getCalle());
@@ -219,7 +220,6 @@ public class EditClient extends JFrame {
             }
         });
         panelFondo.add(busquedaField);
-
 
 
         JPanel panelDatosUpdate = new JPanel();
@@ -360,7 +360,7 @@ public class EditClient extends JFrame {
                 String municipio = MunicipioField.getText();
                 String tipoStr = tipoField.getText();
                 String id = idClientInfo.getText();
-                Clientes cliente = new Clientes(Integer.parseInt(id),nombre, apellido, calle, carrera,barrio,municipio,telefono,correo, Integer.parseInt(tipoStr));
+                Clientes cliente = new Clientes(Integer.parseInt(id), nombre, apellido, calle, carrera, barrio, municipio, telefono, correo, Integer.parseInt(tipoStr));
                 nombreFieldInfo.setText(nombre);
                 apellidoFieldINfo.setText(apellido);
                 calleFieldInfo.setText(calle);
@@ -399,14 +399,23 @@ public class EditClient extends JFrame {
                 String municipio = MunicipioFieldInfo.getText();
                 String tipoStr = tiposFieldInfo.getText();
                 String id = idClientInfo.getText();
-                Clientes cliente = new Clientes(Integer.parseInt(id),nombre, apellido, calle, carrera,barrio,municipio,telefono,correo, Integer.parseInt(tipoStr));
+                Clientes cliente = new Clientes(Integer.parseInt(id), nombre, apellido, calle, carrera, barrio, municipio, telefono, correo, Integer.parseInt(tipoStr));
                 try {
-                    if(ModeloLogin.clienteOperador.editClient(cliente)){
+                    if (ModeloLogin.clienteOperador.editClient(cliente)) {
                         setVisible(false);
-                        JOptionPane.showMessageDialog(null,  "se edito el cliente"+ cliente.getCorreo());
-                        MenuOperador men = new MenuOperador();
-                        men.setVisible(true);
-
+                        JOptionPane.showMessageDialog(null, "se edito el cliente" + cliente.getCorreo());
+                        setVisible(false);
+                        try {
+                            if (ModeloLogin.clienteOperador.login(ModeloLogin.email, ModeloLogin.contra) == 0) {
+                                MenuOperador men = new MenuOperador();
+                                men.setVisible(true);
+                            } else {
+                                MenuAdmin men = new MenuAdmin();
+                                men.setVisible(true);
+                            }
+                        } catch (RemoteException ex) {
+                            throw new RuntimeException(ex);
+                        }
                     }
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
@@ -424,8 +433,18 @@ public class EditClient extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                MenuOperador men = new MenuOperador();
-                men.setVisible(true);
+                try {
+                    if (ModeloLogin.clienteOperador.login(ModeloLogin.email, ModeloLogin.contra) == 0) {
+                        MenuOperador men = new MenuOperador();
+                        men.setVisible(true);
+                    } else {
+                        MenuAdmin men = new MenuAdmin();
+                        men.setVisible(true);
+                    }
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
+
             }
         });
         panelFondo.add(botRegresar);

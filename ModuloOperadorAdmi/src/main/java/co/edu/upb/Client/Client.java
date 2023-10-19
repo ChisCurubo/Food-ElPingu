@@ -172,6 +172,40 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * @param id
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public Clientes selctCliennte(int id) throws RemoteException {
+        try {
+            service = (OperadorInterface) Naming.lookup(url);
+            return service.selctCliennte(id);
+        } catch (NotBoundException e) {
+            throw new RuntimeException(e);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * @param pedi
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public Pedido selectIdPedido(int pedi) throws RemoteException {
+        try {
+            service = (OperadorInterface) Naming.lookup(url);
+            return service.selectIdPedido(pedi);
+        } catch (NotBoundException e) {
+            throw new RuntimeException(e);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * @param idCliente
      * @return
      * @throws RemoteException
@@ -254,6 +288,24 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * @param id
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public Menu selectProuctId(int id) throws RemoteException {
+        try {
+            service = (OperadorInterface) Naming.lookup(url);
+            return service.selectProuctId(id);
+        } catch (NotBoundException e) {
+            throw new RuntimeException(e);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    /**
      * @param men
      * @return
      * @throws RemoteException
@@ -271,7 +323,7 @@ public class Client implements OperadorInterface {
     }
 
 
-    public CilaPriiory<PedidosDetalle> verDblen() throws RemoteException{
+    public String verDblen() throws RemoteException {
         try {
             service = (OperadorInterface) Naming.lookup(url);
             return service.verDblen();
@@ -281,10 +333,28 @@ public class Client implements OperadorInterface {
             throw new RuntimeException(e);
         }
     }
-    public CilaPriiory<PedidosDetalle> verDbRap() throws RemoteException{
+
+    public String verDbRap() throws RemoteException {
         try {
             service = (OperadorInterface) Naming.lookup(url);
             return service.verDbRap();
+        } catch (NotBoundException e) {
+            throw new RuntimeException(e);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * @param pedi
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean listPedido(DoubleLinkedList<PedidosDetalle> pedi) throws RemoteException {
+        try {
+            service = (OperadorInterface) Naming.lookup(url);
+            return service.listPedido(pedi);
         } catch (NotBoundException e) {
             throw new RuntimeException(e);
         } catch (MalformedURLException e) {

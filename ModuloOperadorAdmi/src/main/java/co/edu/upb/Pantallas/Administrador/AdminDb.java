@@ -114,7 +114,7 @@ public class AdminDb extends JFrame {
     public  String updatePanelLen (){
         String str = "";
         try {
-            str = ModeloLogin.clienteOperador.verDblen().toString();
+            str = ModeloLogin.clienteOperador.verDblen();
             return str;
         } catch (RemoteException e) {
             throw new RuntimeException(e);

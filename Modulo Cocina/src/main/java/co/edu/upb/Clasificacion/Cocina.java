@@ -3,7 +3,9 @@ package co.edu.upb.Clasificacion;
 import co.edu.upb.domain.Barrio;
 import co.edu.upb.list.DoubleLinkedList;
 
-public class Cocina {
+import java.io.Serializable;
+
+public class Cocina implements Serializable {
     DoubleLinkedList<DoubleLinkedList> ciudad = new DoubleLinkedList<>();
     DoubleLinkedList barrio = new DoubleLinkedList<>();
 

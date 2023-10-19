@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 public class ModeloLogin {
-    public static Client CocinaInterface = new Client("localhost", "5000", "serviceOperador");
+    public static Client CocinaInterface = new Client("localhost", "5002", "serviceCocina");
 
     public ModeloLogin() {
 

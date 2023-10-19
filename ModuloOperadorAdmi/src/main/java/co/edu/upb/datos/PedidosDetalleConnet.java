@@ -2,11 +2,13 @@ package co.edu.upb.datos;
 
 import co.edu.upb.domain.Pedido;
 import co.edu.upb.domain.PedidosDetalle;
+import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
 import java.io.Serializable;
 import java.sql.*;
 
 public class PedidosDetalleConnet implements Serializable {
+
     private static final String SQL_SELECT = "SELECT * FROM pingu.`pedidos-detalle`";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.`pedidos-detalle` WHERE `id-pedidos` = ? ";
     private static final String SQL_INSERT = "INSERT INTO pingu.`pedidos-detalle` (`id-pedidos`, `id-producto`, `cantidad`, `estatus-pedido` ) VALUES ( ?, ?, ?, ?)";

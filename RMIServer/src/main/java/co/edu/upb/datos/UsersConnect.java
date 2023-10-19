@@ -18,7 +18,8 @@ public class UsersConnect<T>  implements Serializable {
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.usuarios WHERE email = ?  AND pwd = ? ";
     private static final String SQL_SELECT_WHERE_Clien = "SELECT * FROM pingu.usuarios WHERE email = ? ";
     private static final String SQL_INSERT = "INSERT INTO pingu.usuarios (email, pwd, tipo , nombre , apellido) VALUES ( ?, ?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE pingu.usuarios SET email = ?, pwd = ?, tipo = ? , nombre = ?, apellido = ? WHERE ID =?";
+    private static final String SQL_UPDATE = "UPDATE pingu.usuarios SET email = ?, pwd = ?, tipo = ?, nombre = ?, apellido = ? WHERE ID = ?";
+
     private static final String SQL_DELETE = "DELETE FROM pingu.usuarios WHERE ID =?";
 
     //Metodos  para dataBase
@@ -71,6 +72,7 @@ public class UsersConnect<T>  implements Serializable {
                 user.setApellido(rs.getString("apellido"));
                 user.setEmail(rs.getString("email"));
                 user.setPwd(rs.getString("pwd"));
+                user.setID(rs.getInt("ID"));
                 user.setTipo(rs.getInt("tipo"));
             }
             rs.close();
@@ -128,6 +130,40 @@ public class UsersConnect<T>  implements Serializable {
 
         try {
             conn = Conexion.getConection();
+            stmt = conn.prepareStatement(SQL_UPDATE);
+            stmt.setString(1, user.getEmail());
+            stmt.setString(2, user.getPwd());
+            stmt.setInt(3, user.getTipo());
+            stmt.setString(4, user.getNombre());
+            stmt.setString(5, user.getApellido());
+            stmt.setInt(6, user.getID());
+
+            // Log the SQL statement before executing it
+            System.out.println("Executing SQL statement: " + stmt.toString());
+
+            registros = stmt.executeUpdate();
+            System.out.println("Records updated: " + registros);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                Conexion.close(stmt);
+                Conexion.close(conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+
+        return registros;
+    }
+    public int updateCh(Users user) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+
+        try {
+            conn = Conexion.getConection();
+            String SQL_UPDATE = "UPDATE tu_tabla SET email = ?, pwd = ?, tipo = ?, nombre = ?, apellido = ? WHERE ID = ?";
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setString(1, user.getEmail());
             stmt.setString(2, user.getPwd());

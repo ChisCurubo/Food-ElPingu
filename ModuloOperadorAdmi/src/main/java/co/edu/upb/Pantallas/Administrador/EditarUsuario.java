@@ -34,6 +34,7 @@ public class EditarUsuario extends JFrame {
 	private String tipo = "";
 	private String nombre = "";
 	private String apellido = "";
+	private int id = 0;
 
 
 	/**
@@ -145,12 +146,6 @@ public class EditarUsuario extends JFrame {
 		fieldApellido.setBounds(200, 350, 300, 40);
 		panel.add(fieldApellido);
 
-		JButton actualizar = new JButton("Actualizar");
-		actualizar.setBackground(new Color(110, 149, 0));
-		actualizar.setForeground(Color.WHITE);
-		actualizar.setFont(new Font("Times New Roman", 1, 30));
-		actualizar.setBounds(525, 200, 200, 100);
-		panel.add(actualizar);
 		
 		lblNewLabel_7 = new JLabel("Editar usuario");
 		lblNewLabel_7.setForeground(new Color(255, 255, 255));
@@ -247,6 +242,8 @@ public class EditarUsuario extends JFrame {
 						correoFieldInfo.setText(user.getEmail());
 						TelefonoFieldINfo.setText(user.getPwd());
 						MunicipioFieldInfo.setText(String.valueOf(user.getTipo()));
+						id = user.getID();
+						System.out.println(id);
 					}
 				} catch (RemoteException ex) {
 					throw new RuntimeException(ex);
@@ -263,7 +260,7 @@ public class EditarUsuario extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Users user = new Users(correoFieldInfo.getText(),TelefonoFieldINfo.getText(), Integer.parseInt(MunicipioFieldInfo.getText()), nombreFieldInfo.getText(),apellidoFieldINfo.getText());
+				Users user = new Users(id,correoFieldInfo.getText(),TelefonoFieldINfo.getText(), Integer.parseInt(MunicipioFieldInfo.getText()), nombreFieldInfo.getText(),apellidoFieldINfo.getText());
 				try {
 					if(ModeloLogin.clienteOperador.editUser(user)){
 						JOptionPane.showMessageDialog(null,  "Se edito usuario");
@@ -278,5 +275,21 @@ public class EditarUsuario extends JFrame {
 		});
 		contentPane.add(btnNewButton_1);
 
+		JButton actualizar = new JButton("Actualizar");
+		actualizar.setBackground(new Color(110, 149, 0));
+		actualizar.setForeground(Color.WHITE);
+		actualizar.setFont(new Font("Times New Roman", 1, 30));
+		actualizar.setBounds(525, 200, 200, 100);
+		actualizar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				nombreFieldInfo.setText(fieldNombree.getText());
+				apellidoFieldINfo.setText(fieldApellido.getText());
+				correoFieldInfo.setText(correoField.getText());
+				TelefonoFieldINfo.setText(correoField.getText());
+				MunicipioFieldInfo.setText(tipoAcceso.getText());
+			}
+		});
+		panel.add(actualizar);
 	}
 }

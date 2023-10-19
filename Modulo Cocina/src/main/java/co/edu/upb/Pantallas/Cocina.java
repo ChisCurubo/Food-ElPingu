@@ -24,7 +24,8 @@ public class Cocina extends JFrame {
     private JLabel labelColaRap = new JLabel();
     private JLabel labelCola = new JLabel();
     JTextArea textAreaPedi = new JTextArea();
-    DoubleLinkedList<PedidosDetalle> list  = new DoubleLinkedList<>();
+    JTextArea textareaLen = new JTextArea();
+    DoubleLinkedList<PedidosDetalle> list = new DoubleLinkedList<>();
 
     public static void main(String[] args) {
         Cocina co = new Cocina();
@@ -192,18 +193,37 @@ public class Cocina extends JFrame {
 
         JPanel panelFogones = new JPanel();
         panelFogones.setBackground(new Color(1, 113, 143));
-        panelFogones.setBounds(1150, 100, 325, 600);
+        panelFogones.setBounds(1150, 50, 325, 900);
         panel.add(panelFogones);
         panelFogones.setLayout(null);
+
         JLabel infoPedidos = new JLabel("Info Pedidos");
         infoPedidos.setForeground(Color.WHITE);
         infoPedidos.setFont(new Font("Times New Roman", 1, 20));
         infoPedidos.setBounds(120, 10, 200, 50);
         panelFogones.add(infoPedidos);
+        JLabel infoPedidosRap = new JLabel("Info Pedidos Rap");
+        infoPedidosRap.setForeground(Color.WHITE);
+        infoPedidosRap.setFont(new Font("Times New Roman", 0, 20));
+        infoPedidosRap.setBounds(100, 50, 200, 50);
+        panelFogones.add(infoPedidosRap);
 
         textAreaPedi.setBackground(new Color(0, 176, 222));
-        textAreaPedi.setBounds(10, 100, 300, 450);
+        textAreaPedi.setBounds(10, 100, 300, 300);
+        textAreaPedi.setEditable(false);
         panelFogones.add(textAreaPedi);
+
+        JLabel infoPedidosLen = new JLabel("Info Pedidos Len");
+        infoPedidosLen.setForeground(Color.WHITE);
+        infoPedidosLen.setFont(new Font("Times New Roman", 0, 20));
+        infoPedidosLen.setBounds(100, 400, 200, 50);
+        panelFogones.add(infoPedidosLen);
+
+
+        textareaLen.setBackground(new Color(0, 176, 222));
+        textareaLen.setBounds(10, 440, 300, 250);
+        textareaLen.setEditable(false);
+        panelFogones.add(textareaLen);
 
 
     }
@@ -213,38 +233,32 @@ public class Cocina extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (fogRapido[numFog] == null) {
-                    if (botonRap.getBackground().equals(Color.PINK)) {
-
-                    } else {
-                        botonRap.setBackground(Color.PINK);
-                    }
-                    botonRap.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            try {
-                                String str = ModeloLogin.CocinaInterface.popColaRapida();
-                                String[] arrystr = str.split(",");
-                                PedidosDetalle pediDet = new PedidosDetalle(Integer.parseInt(arrystr[0]), Integer.parseInt(arrystr[1]), Integer.parseInt(arrystr[2]), Integer.parseInt(arrystr[3]), arrystr[4]);
-                                fogRapido[numFog] = pediDet;
-                            } catch (RemoteException ex) {
-                                throw new RuntimeException(ex);
+                    try {
+                        PedidosDetalle str = ModeloLogin.CocinaInterface.popColaRapida();
+                        fogRapido[numFog] = str;
+                        String strin = "";
+                        for (int i = 0; i < fogRapido.length; i++) {
+                            if (fogRapido[i] != null) {
+                                strin += "Fogon Rapido " + (numFog + 1) + ": IdDet" + fogRapido[numFog].getIdDetalle() + ", IdProduct" + fogRapido[numFog].getIdProducto() + ", Cant" + fogRapido[numFog].getCantidad() + "\n";
                             }
-                            botonRap.setBackground(Color.orange);
                         }
-                    });
+                        textAreaPedi.setText(strin);
+                        botonRap.setBackground(Color.orange);
+                    } catch (RemoteException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else if (fogRapido[numFog] != null) {
-                    botonRap.setBackground(Color.orange);
-                    botonRap.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            list.add(fogRapido[numFog]);
-                            fogRapido[numFog] = null;
-                            botonRap.setBackground(Color.PINK);
+                    list.add(fogRapido[numFog]);
+                    fogRapido[numFog] = null;
+                    String strin = "";
+                    for (int i = 0; i < fogRapido.length; i++) {
+                        if (fogRapido[i] != null) {
+                            strin += "Fogon Rapido " + (numFog + 1) + ": IdDet: " + fogRapido[numFog].getIdDetalle() + ", IdProduct: " + fogRapido[numFog].getIdProducto() + ", Cant:" + fogRapido[numFog].getCantidad() + "\n";
                         }
-                    });
+                    }
+                    textAreaPedi.setText(strin);
+                    botonRap.setBackground(Color.PINK);
                 }
-
-                textAreaPedi.setText("Fogon Rapido " + (numFog + 1) + ": " + fogRapido[numFog].getIdDetalle() + ", " + fogRapido[numFog].getIdProducto() + ", " + fogRapido[numFog].getCantidad());
             }
         };
         return validation;
@@ -255,33 +269,37 @@ public class Cocina extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (fogLento[numFog] == null) {
-                    botonRap.setBackground(Color.gray);
-                    botonRap.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            try {
-                                String str = ModeloLogin.CocinaInterface.popColaRapida();
-                                String[] arrystr = str.split(",");
-                                PedidosDetalle pediDet = new PedidosDetalle(Integer.parseInt(arrystr[0]), Integer.parseInt(arrystr[1]), Integer.parseInt(arrystr[2]), Integer.parseInt(arrystr[3]), arrystr[4]);
-                                fogLento[numFog] = pediDet;
-                            } catch (RemoteException ex) {
-                                throw new RuntimeException(ex);
+                    try {
+                        PedidosDetalle str = ModeloLogin.CocinaInterface.popColaLenta();
+                        fogLento[numFog] = str;
+                        String strin = "";
+                        for (int i = 0; i < fogLento.length; i++) {
+                            if (fogLento[i] != null) {
+                                strin += "Fogon Lento " + (numFog + 1) + ": IdDet: " + fogLento[numFog].getIdDetalle() + ", IdProduct:  " + fogLento[numFog].getIdProducto() + ", Cant: " + fogLento[numFog].getCantidad() + "\n";
                             }
+                        }
+                        textareaLen.setText(strin);
+                        if(str != null){
                             botonRap.setBackground(Color.GREEN);
                         }
-                    });
+                    } catch (RemoteException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+
                 } else if (fogLento[numFog] != null) {
                     botonRap.setBackground(Color.GREEN);
-                    botonRap.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            list.add(fogLento[numFog]);
-                            fogLento[numFog] = null;
-                            botonRap.setBackground(Color.gray);
+                    list.add(fogLento[numFog]);
+                    fogLento[numFog] = null;
+                    String strin = "";
+                    for (int i = 0; i < fogLento.length; i++) {
+                        if (fogLento[i] != null) {
+                            strin += "Fogon Lento " + (numFog + 1) + ": " + fogLento[numFog].getIdDetalle() + ", " + fogLento[numFog].getIdProducto() + ", " + fogLento[numFog].getCantidad() + "\n";
                         }
-                    });
+                    }
+                    textareaLen.setText(strin);
+                    botonRap.setBackground(Color.gray);
                 }
-                textAreaPedi.setText("Fogon Lento " + (numFog + 1) + ": " + fogRapido[numFog].getIdDetalle() + ", " + fogRapido[numFog].getIdProducto() + ", " + fogRapido[numFog].getCantidad());
             }
         };
         return validation;

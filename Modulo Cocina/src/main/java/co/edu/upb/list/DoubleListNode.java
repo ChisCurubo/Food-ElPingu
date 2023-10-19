@@ -2,7 +2,9 @@ package co.edu.upb.list;
 
 import co.edu.upb.node.Node;
 
-public class DoubleListNode<T> extends Node<T> {
+import java.io.Serializable;
+
+public class DoubleListNode<T extends Serializable> extends Node<T> {
 
     DoubleListNode<T> next;
     DoubleListNode<T> prev;

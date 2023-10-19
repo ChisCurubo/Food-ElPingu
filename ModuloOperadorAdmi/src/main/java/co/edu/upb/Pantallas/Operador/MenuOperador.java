@@ -83,6 +83,15 @@ public class MenuOperador extends JFrame {
         botonRap4.setFont(new Font("Harlow Solid Italic", Font.PLAIN, 20));
         botonRap4.setBounds(725, 500, 300, 150);
         botonRap4.setBackground((new Color(110,149,0)));
+        botonRap4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                EditPedido pedi = new EditPedido();
+                
+                pedi.setVisible(true);
+            }
+        });
         //recordar que cambie de color si esta en uso o no
         panelFondo.add(botonRap4);
     }
