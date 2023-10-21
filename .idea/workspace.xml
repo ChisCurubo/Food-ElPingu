@@ -63,13 +63,13 @@
       <recent name="co.edu.upb.Interface" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Domicilio">
-    <configuration name="Domicilio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Domicilio.Domicilio" />
-      <module name="ModuloDomicilio" />
+  <component name="RunManager" selected="Application.AddPedido">
+    <configuration name="AddPedido" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Operador.AddPedido" />
+      <module name="ElPinguProject (2)" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.upb.Pantallas.Domicilio.*" />
+          <option name="PATTERN" value="co.edu.upb.Pantallas.Operador.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -77,12 +77,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IniServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Server.IniServer" />
-      <module name="Server" />
+    <configuration name="Domicilio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Domicilio.Domicilio" />
+      <module name="ModuloDomicilio" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.upb.Server.*" />
+          <option name="PATTERN" value="co.edu.upb.Pantallas.Domicilio.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,11 +131,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AddPedido" />
         <item itemvalue="Application.Domicilio" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Login" />
-        <item itemvalue="Application.IniServer" />
       </list>
     </recent_temporary>
   </component>

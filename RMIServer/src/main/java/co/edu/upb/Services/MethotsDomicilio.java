@@ -1,5 +1,6 @@
 package co.edu.upb.Services;
 
+import co.edu.upb.Domi.DomiCola;
 import co.edu.upb.Domi.Grafo;
 import co.edu.upb.Interface.DomicilioInterface;
 import co.edu.upb.datos.ClientesConnection;
@@ -102,5 +103,41 @@ public class MethotsDomicilio implements DomicilioInterface {
         ClientesConnection cliCon = new ClientesConnection();
         Clientes cli = cliCon.selectIdCliente(pedi.getIdClientes());
         return cli;
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public PedidosDetalle popsColaDespacho() throws RemoteException {
+        return DomiCola.popDespachoDomi();
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public int sizeCola() throws RemoteException {
+        return DomiCola.size();
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean isEmptyCola() throws RemoteException {
+        return DomiCola.isEmptyCola();
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public String imprimirCola() throws RemoteException {
+        return DomiCola.imprimirCola();
     }
 }

@@ -75,4 +75,21 @@ public class Client implements CocinaInterface {
     public String[] retainPedido() throws RemoteException {
         return new String[0];
     }
+
+    /**
+     * @param listPedidos
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean sendToDomi(DoubleLinkedList<PedidosDetalle> listPedidos) throws RemoteException {
+        try{
+            service = (CocinaInterface) Naming.lookup(url);
+            return service.sendToDomi(listPedidos);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (NotBoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

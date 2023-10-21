@@ -9,9 +9,10 @@ import co.edu.upb.estructuras.listas.DoubleLinkedList;
 import java.io.Serializable;
 import java.util.Iterator;
 
-public class CocinaCola implements Serializable {
+public  class CocinaCola implements Serializable {
     public static CilaPriiory<PedidosDetalle> colaPriorRap = new CilaPriiory<>(2);
     public static  CilaPriiory<PedidosDetalle> colaPrioriLento = new CilaPriiory<>(2);
+
 
     public static DoubleLinkedList<PedidosDetalle> pediDet = new DoubleLinkedList<>();
 

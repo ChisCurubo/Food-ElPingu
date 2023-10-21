@@ -1,6 +1,7 @@
 package co.edu.upb.Services;
 
 import co.edu.upb.Clasificacion.CocinaCola;
+import co.edu.upb.Domi.DomiCola;
 import co.edu.upb.Interface.CocinaInterface;
 import co.edu.upb.datos.PedidosDetalleConnet;
 import co.edu.upb.domain.Clientes;
@@ -65,6 +66,16 @@ public class MethotsCocina extends UnicastRemoteObject implements CocinaInterfac
     @Override
     public String[] retainPedido() throws RemoteException {
         return new String[0];
+    }
+
+    /**
+     * @param listPedidos
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean sendToDomi(DoubleLinkedList<PedidosDetalle> listPedidos) throws RemoteException {
+        return DomiCola.adDomiCOla(listPedidos) ;
     }
 
    /* private boolean pruebaCocina() {

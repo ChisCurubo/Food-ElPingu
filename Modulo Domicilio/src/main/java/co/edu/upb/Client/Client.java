@@ -128,4 +128,64 @@ public class Client implements DomicilioInterface {
             return null;
         }
     }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public PedidosDetalle popsColaDespacho() throws RemoteException {
+        try {
+            service = (DomicilioInterface) Naming.lookup(url);
+            return service.popsColaDespacho();
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public int sizeCola() throws RemoteException {
+        try {
+            service = (DomicilioInterface) Naming.lookup(url);
+            return service.sizeCola();
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return 10000;
+        }
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean isEmptyCola() throws RemoteException {
+        try {
+            service = (DomicilioInterface) Naming.lookup(url);
+            return service.isEmptyCola();
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public String imprimirCola() throws RemoteException {
+        try {
+            service = (DomicilioInterface) Naming.lookup(url);
+            return service.imprimirCola();
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

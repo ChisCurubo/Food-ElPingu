@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
+import java.util.Iterator;
 
 public class Cocina extends JFrame {
 
@@ -25,7 +26,8 @@ public class Cocina extends JFrame {
     private JLabel labelCola = new JLabel();
     JTextArea textAreaPedi = new JTextArea();
     JTextArea textareaLen = new JTextArea();
-    DoubleLinkedList<PedidosDetalle> list = new DoubleLinkedList<>();
+    DoubleLinkedList<DoubleLinkedList<PedidosDetalle>> list = new DoubleLinkedList<>();
+    DoubleLinkedList<PedidosDetalle> listLIst = new DoubleLinkedList<>();
 
     public static void main(String[] args) {
         Cocina co = new Cocina();
@@ -248,7 +250,7 @@ public class Cocina extends JFrame {
                         throw new RuntimeException(ex);
                     }
                 } else if (fogRapido[numFog] != null) {
-                    list.add(fogRapido[numFog]);
+                    listLIst.add(fogRapido[numFog]);
                     fogRapido[numFog] = null;
                     String strin = "";
                     for (int i = 0; i < fogRapido.length; i++) {
@@ -263,7 +265,6 @@ public class Cocina extends JFrame {
         };
         return validation;
     }
-
     // buscar en los fogones si hay un pedido pedido con el mismo id y si es asi todavia no mandar el pedido completo
 
     public ActionListener actionListenerBotonLen(JButton botonRap, int numFog) {
@@ -281,7 +282,7 @@ public class Cocina extends JFrame {
                             }
                         }
                         textareaLen.setText(strin);
-                        if(str != null){
+                        if (str != null) {
                             botonRap.setBackground(Color.GREEN);
                         }
                     } catch (RemoteException ex) {
@@ -291,7 +292,7 @@ public class Cocina extends JFrame {
 
                 } else if (fogLento[numFog] != null) {
                     botonRap.setBackground(Color.GREEN);
-                    list.add(fogLento[numFog]);
+                    veriPedido(fogLento[numFog]);
                     fogLento[numFog] = null;
                     String strin = "";
                     for (int i = 0; i < fogLento.length; i++) {
@@ -305,5 +306,61 @@ public class Cocina extends JFrame {
             }
         };
         return validation;
+    }
+
+    public boolean veriPedido(PedidosDetalle pedidDet) {
+        int cont = 0;
+        for (int i = 0; i < fogRapido.length; i++) {
+            if (pedidDet.getIdPedidos() == fogRapido[i].getIdPedidos()) {
+                cont++;
+                Iterator iter = list.iteratorObj();
+                while (iter.hasNext()) {
+                    DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
+                    if (istTemp.get().getIdPedidos() == pedidDet.getIdPedidos()) {
+                        istTemp.add(pedidDet);
+                        return true;
+                    }
+                }
+                DoubleLinkedList<PedidosDetalle> listaNohay = new DoubleLinkedList<>();
+                listaNohay.add(pedidDet);
+                list.add(listaNohay);
+                return true;
+            }
+        }
+        for (int i = 0; i < fogLento.length; i++) {
+            if (pedidDet.getIdPedidos() == fogLento[i].getIdPedidos()) {
+                cont++;
+                Iterator iter = list.iteratorObj();
+                while (iter.hasNext()){
+                    DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
+                    if(istTemp.get().getIdPedidos() == pedidDet.getIdPedidos()){
+                        istTemp.add(pedidDet);
+                        return true;
+                    }
+                }
+                DoubleLinkedList<PedidosDetalle> listaNohay = new DoubleLinkedList<>();
+                listaNohay.add(pedidDet);
+                list.add(listaNohay);
+                return true;
+            }
+        }
+        if (cont == 0) {
+            //Mandar a domicilio
+            Iterator iter = list.iteratorObj();
+            while (iter.hasNext()) {
+                DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
+                if (istTemp.get().getIdPedidos() == pedidDet.getIdPedidos()) {
+                    istTemp.add(pedidDet);
+
+                    return true;
+                }
+            }
+            // mandar  a domicilio
+        }
+        return false;
+    }
+
+    public boolean sendToDomi(DoubleLinkedList<PedidosDetalle> listaDomi){
+
     }
 }
