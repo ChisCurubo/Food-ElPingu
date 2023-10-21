@@ -1,9 +1,8 @@
 package co.edu.upb.datos;
 
-import java.io.Serializable;
 import java.sql.*;
 
-public class Conexion implements Serializable {
+public class Conexion {
     /**
      * //conexiones a base de datos url para conexion
      */

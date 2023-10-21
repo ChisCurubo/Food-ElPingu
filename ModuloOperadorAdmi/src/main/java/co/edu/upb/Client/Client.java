@@ -361,4 +361,20 @@ public class Client implements OperadorInterface {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public double getrValorDomiOp(String punto) throws RemoteException {
+       try {
+           service = (OperadorInterface) Naming.lookup(url);
+           return service.getrValorDomiOp(punto);
+       }catch (NotBoundException e) {
+           throw new RuntimeException(e);
+       } catch (MalformedURLException e) {
+           throw new RuntimeException(e);
+       }
+    }
 }

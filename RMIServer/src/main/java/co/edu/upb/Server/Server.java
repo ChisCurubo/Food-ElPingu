@@ -2,16 +2,24 @@ package co.edu.upb.Server;
 
 
 import co.edu.upb.Interface.CocinaInterface;
+import co.edu.upb.Interface.DomicilioInterface;
 import co.edu.upb.Interface.OperadorInterface;
 import co.edu.upb.Services.MethotsCocina;
+import co.edu.upb.Services.MethotsDomicilio;
 import co.edu.upb.Services.MethotsOperador;
 
-import java.io.Serializable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.rmi.RemoteException;
+import java.util.Properties;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,15 +41,34 @@ public class Server{
 
     }
     public boolean deployServices() {
+        Properties properties = new Properties();
         try {
-            deployServiceOperador("Operador", "5000", "serviceOperador");
-           //deployServiceAdministrador("Administrador", "5001", "serviceAdmin");
-            deployServiceCocina("Cocina", "5002", "serviceCocina");
-            //deployServiceDomicilio("Domicilio", "5003", "serviceDomicilio");
+            properties.load(new FileInputStream(new File("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\RMIServer\\config.properties")));
+            deployServiceOperador(
+                    "Operador",
+                    (String) properties.get("PORT"),
+                    (String) properties.get("SERVICENAME"));
+
+           /* deployServiceAdministrador(
+                    "Admin",
+                    (String) properties.get("PORT1"),
+                    (String) properties.get("SERVICENAME1"));*/
+
+            deployServiceCocina(
+                    "Cocina",
+                    (String) properties.get("PORT2"),
+                    (String) properties.get("SERVICENAME2"));
+
+            deployServiceDomicilio(
+                    "Domicilio",
+                    (String) properties.get("PORT3"),
+                    (String) properties.get("SERVICENAME3"));
+
             return true;
-        } catch (Exception e) {
-            Logger.getLogger(this.getClass().getName()).log(Level.WARNING, e.getMessage(), e);
-            return false;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     public boolean deployServiceOperador(String serviceType, String port, String serviceName) {
@@ -70,6 +97,24 @@ public class Server{
             String url = "//" + ip + ":" + port + "/" + serviceName;
             LocateRegistry.createRegistry(Integer.parseInt(port));  //port
             CocinaInterface service = new MethotsCocina();
+            Naming.rebind(url, service);
+            System.out.println("Service:" +serviceType +": on");
+            ack = true;
+        } catch (RemoteException | MalformedURLException e) {
+            e.printStackTrace();
+        } finally {
+            return ack;
+        }
+    }
+
+    public boolean deployServiceDomicilio(String serviceType, String port, String serviceName) {
+        boolean ack = false;
+        if (ip == null | port == null | serviceName == null) return ack;
+        try {
+            System.setProperty( "java.rmi.server.hostname", ip);
+            String url = "//" + ip + ":" + port + "/" + serviceName;
+            LocateRegistry.createRegistry(Integer.parseInt(port));  //port
+            DomicilioInterface service = new MethotsDomicilio();
             Naming.rebind(url, service);
             System.out.println("Service:" +serviceType +": on");
             ack = true;

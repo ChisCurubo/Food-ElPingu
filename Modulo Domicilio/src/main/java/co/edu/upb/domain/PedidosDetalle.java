@@ -6,8 +6,9 @@ public class PedidosDetalle implements Serializable {
     private int idDetalle;
     private  int idPedidos;
     private int idProducto;
-    private int cantidad;
+    private int cantidad ;
     private String estatuPedido;
+
 
     public PedidosDetalle(int idDetalle, int idPedidos, int idProducto, int cantidad, String estatuPedido) {
         this.idDetalle = idDetalle;
@@ -67,7 +68,6 @@ public class PedidosDetalle implements Serializable {
     public void setEstatuPedido(String estatuPedido) {
         this.estatuPedido = estatuPedido;
     }
-
     @Override
     public String toString() {
         return "PedidosDetalle{" +

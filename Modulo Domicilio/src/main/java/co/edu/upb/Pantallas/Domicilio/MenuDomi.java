@@ -1,7 +1,12 @@
 package co.edu.upb.Pantallas.Domicilio;
 
+import co.edu.upb.Modelo.ModeloLogin;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 public class MenuDomi extends JFrame {
     public static void main(String[] args) {
@@ -35,6 +40,20 @@ public class MenuDomi extends JFrame {
         botonRap1.setFont(new Font("Harlow Solid Italic", Font.PLAIN, 20));
         botonRap1.setBounds(300, 300, 300, 150);
         botonRap1.setBackground(new Color(110,149,0));
+        botonRap1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if(ModeloLogin.DomicilioInterface.createGrafo()){
+                        setVisible(false);
+                        Domicilio domi = new Domicilio();
+                        domi.setVisible(true);
+                    }
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
         //recordar que cambie de color si esta en uso o no
         panelFondo.add(botonRap1);
 

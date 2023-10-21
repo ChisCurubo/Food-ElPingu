@@ -2,7 +2,7 @@ package co.edu.upb.domain;
 
 import java.io.Serializable;
 
-public class Clientes implements Serializable {
+public class Clientes  implements Serializable {
     int idClientes;
     String nombre;
     String apellido;

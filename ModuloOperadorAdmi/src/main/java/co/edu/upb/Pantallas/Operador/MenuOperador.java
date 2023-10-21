@@ -88,7 +88,7 @@ public class MenuOperador extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 EditPedido pedi = new EditPedido();
-                
+
                 pedi.setVisible(true);
             }
         });

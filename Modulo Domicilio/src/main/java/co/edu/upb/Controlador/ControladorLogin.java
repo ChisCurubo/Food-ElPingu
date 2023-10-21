@@ -7,10 +7,11 @@ import java.rmi.RemoteException;
 
 public class ControladorLogin {
     public ControladorLogin() {
+        ModeloLogin modeloLogin = new ModeloLogin();
         try {
-            if (!ModeloLogin.DomicilioInterface.isConnected()) {
+            if (ModeloLogin.DomicilioInterface.isConnected()) {
                 InicioSesion ini = new InicioSesion();
-                ModeloLogin modeloLogin = new ModeloLogin();
+
 
             }else{
                 System.out.println("NoseConeta");

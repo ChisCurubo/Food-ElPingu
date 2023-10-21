@@ -5,7 +5,12 @@ import co.edu.upb.Client.Client;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
+import java.util.Properties;
 
 import co.edu.upb.Pantallas.Administrador.MenuAdmin;
 import co.edu.upb.Pantallas.Operador.AddPedido;
@@ -13,10 +18,19 @@ import co.edu.upb.Pantallas.Operador.InicioSesion;
 import co.edu.upb.Pantallas.Operador.MenuOperador;
 
 public class ModeloLogin {
-    public static Client clienteOperador = new Client("localhost", "5000", "serviceOperador");
+    public  static Client clienteOperador;
 
     public ModeloLogin() {
-
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileInputStream(new File("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\ModuloOperadorAdmi\\config.properties")));
+            clienteOperador = new Client((String) properties.get("IP"), (String) properties.get("PORT"),
+                    (String) properties.get("SERVICENAME"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static String contra = "";
@@ -64,24 +78,20 @@ public class ModeloLogin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if(true){
+                    if (true) {
 
-                } else{
-                    JOptionPane.showMessageDialog(null, "Esta vacio");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Esta vacio");
+                    }
+                } catch (
+                        Exception ex) {
+                    ex.printStackTrace();
                 }
-            } catch(
-            Exception ex)
-
-            {
-                ex.printStackTrace();
             }
-        }
-    }
-
-    ;
+        };
 
         return validation;
-}
+    }
 
     public void algortmHammil() throws RemoteException {
         String platoBusqueda = "Perro";

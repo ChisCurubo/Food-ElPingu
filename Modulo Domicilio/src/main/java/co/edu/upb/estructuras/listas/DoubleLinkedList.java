@@ -723,11 +723,13 @@ public class DoubleLinkedList<T extends Serializable> implements LinkedListInter
         return false;
     }
 
-    public void imprimir() {
+    public String imprimir() {
         Iterator<NodeInterface<T>> iterator = iterator();
+        String str = "";
         for (int i = 0; i < size(); i++) {
-            System.out.print(iterator.next().getObject() + ", ");
+            str += iterator.next() + "\n";
         }
+        return str;
     }
 
     public boolean invertir(int k) {

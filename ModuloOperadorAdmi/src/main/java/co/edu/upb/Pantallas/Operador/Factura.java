@@ -25,7 +25,7 @@ public class Factura extends JFrame {
         Factura ped = new Factura();
     }
 
-    public  static DoubleLinkedList<PedidosDetalle> listPed = new DoubleLinkedList<>();
+    public static DoubleLinkedList<PedidosDetalle> listPed = new DoubleLinkedList<>();
     JTextArea textArea;
 
     public Factura() {
@@ -134,10 +134,10 @@ public class Factura extends JFrame {
                     }
                 }
                 try {
-                    if(ModeloLogin.clienteOperador.login(ModeloLogin.email,ModeloLogin.contra) == 0) {
+                    if (ModeloLogin.clienteOperador.login(ModeloLogin.email, ModeloLogin.contra) == 0) {
                         MenuOperador men = new MenuOperador();
                         men.setVisible(true);
-                    }else{
+                    } else {
                         MenuAdmin admin = new MenuAdmin();
                         admin.setVisible(true);
                     }
@@ -167,7 +167,27 @@ public class Factura extends JFrame {
         }
         double impt = total * 0.08;
         double totalImp = total + impt;
+        double valorDomi = 0;
+        double totalMasDomi = totalImp + valorDomi;
+        Clientes clien = getCliente(listD.get());
+        try {
+            valorDomi = ModeloLogin.clienteOperador.getrValorDomiOp(clien.getBarrio());
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
         str += "\n" + "El total fue = " + total + "\n" + "Total con iva(8%) = " + totalImp;
+        str += "\n" + "El valor del domicilio fue: " + valorDomi + "\n" + "Valor de la compra más domicilio:  " + totalMasDomi;
+        str += "\n" + "Gracias por confiar en El Pingü";
         return str;
+    }
+
+    public Clientes getCliente(PedidosDetalle pedi) {
+        try {
+            Pedido pedido = ModeloLogin.clienteOperador.selectIdPedido(pedi.getIdPedidos());
+            Clientes cli = ModeloLogin.clienteOperador.selctCliennte(pedido.getIdClientes());
+            return cli;
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

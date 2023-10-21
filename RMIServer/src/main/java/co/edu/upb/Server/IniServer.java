@@ -23,7 +23,6 @@ public class IniServer {
             servidor = new ClienteRMI((String) config.get("IP"), (String) config.get("PORT"), (String) config.get("SERVICENAME"));
         } catch (Exception e) {
         }*/
-        Properties config = new Properties();
 
         PatallaServer pant = new PatallaServer();
         pant.setVisible(true);

@@ -1,20 +1,10 @@
 package co.edu.upb.Clasificacion;
 
-import co.edu.upb.datos.Conexion;
 import co.edu.upb.domain.Clientes;
-import co.edu.upb.domain.Menu;
-import co.edu.upb.domain.Pedido;
 import co.edu.upb.domain.PedidosDetalle;
 import co.edu.upb.estructuras.colas.CilaPriiory;
-import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
-import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-public class CocinaCola implements Serializable {
+public class CocinaCola {
     public static CilaPriiory<PedidosDetalle> colaPriorRap = new CilaPriiory<>(2);
     public static CilaPriiory<PedidosDetalle> colaPrioriLento = new CilaPriiory<>(2);
 

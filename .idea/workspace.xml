@@ -39,7 +39,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-20&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/CursoJava/Programacion/Estructuras/ProyectRes/ProyectoElPinguEdit&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CursoJava/Programacion/Estructuras/ProyectRes/ProyectoElPinguEdit/RMIServer/src/main/java/co/edu/upb&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -48,11 +48,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CursoJava\Programacion\Estructuras\ProyectRes\ProyectoElPinguEdit\RMIServer\src\main\java\co\edu\upb" />
+      <recent name="D:\CursoJava\Programacion\Estructuras\ProyectRes\ProyectoElPinguEdit\Modulo Domicilio\src\main\java\co\edu\upb" />
       <recent name="D:\CursoJava\Programacion\Estructuras\ProyectRes\ProyectoElPinguEdit\ModuloOperadorAdmi\src\main\java\co\edu\upb\Pantallas\Administrador" />
       <recent name="D:\CursoJava\Programacion\Estructuras\ProyectRes\ProyectoElPinguEdit\Modulo Domicilio\src\main\java\co\edu\upb\node" />
       <recent name="D:\CursoJava\Programacion\Estructuras\ProyectRes\ProyectoElPinguEdit\ModuloOperadorAdmi\src\main\java\co\edu\upb\node" />
-      <recent name="D:\CursoJava\Programacion\Estructuras\ProyectRes\ProyectoElPinguEdit\RMIServer\src\main\java\co\edu\upb\node" />
-      <recent name="D:\CursoJava\Programacion\Estructuras\ProyectRes\ProyectoElPinguEdit\RMIServer\src\main\java\co\edu\upb\estructuras" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\CursoJava\Programacion\Estructuras\ProyectRes\ProyectoElPinguEdit\ModuloOperadorAdmi\src\main\java\co\edu\upb\Pantallas\Pablo" />
@@ -63,13 +63,13 @@
       <recent name="co.edu.upb.Interface" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.EditarUsuario">
-    <configuration name="AddProduct (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Administrador.AddProduct" />
-      <module name="ElPinguProject (2)" />
+  <component name="RunManager" selected="Application.Domicilio">
+    <configuration name="Domicilio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Domicilio.Domicilio" />
+      <module name="ModuloDomicilio" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.upb.Pantallas.Administrador.*" />
+          <option name="PATTERN" value="co.edu.upb.Pantallas.Domicilio.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -77,12 +77,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AddProduct" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Administrador.AddProduct" />
-      <module name="ElPinguProject (2)" />
+    <configuration name="IniServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Server.IniServer" />
+      <module name="Server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.upb.Pantallas.Administrador.*" />
+          <option name="PATTERN" value="co.edu.upb.Server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -90,12 +90,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminDb" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Administrador.AdminDb" />
-      <module name="ElPinguProject (2)" />
+    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.operadorMain.Login" />
+      <module name="ModuloOperadorPingu" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.upb.Pantallas.Administrador.*" />
+          <option name="PATTERN" value="co.edu.upb.operadorMain.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,12 +103,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EditarUsuario" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Administrador.EditarUsuario" />
-      <module name="ElPinguProject (2)" />
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Domi.Main" />
+      <module name="ElPinguProject (3)" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.upb.Pantallas.Administrador.*" />
+          <option name="PATTERN" value="co.edu.upb.Domi.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,12 +116,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MenuAdmin (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Administrador.MenuAdmin" />
-      <module name="ElPinguProject (2)" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Domi.Main" />
+      <module name="ModuloDomicilio" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.upb.Pantallas.Administrador.*" />
+          <option name="PATTERN" value="co.edu.upb.Domi.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,11 +131,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.EditarUsuario" />
-        <item itemvalue="Application.AddProduct" />
-        <item itemvalue="Application.AddProduct (1)" />
-        <item itemvalue="Application.MenuAdmin (1)" />
-        <item itemvalue="Application.AdminDb" />
+        <item itemvalue="Application.Domicilio" />
+        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Login" />
+        <item itemvalue="Application.IniServer" />
       </list>
     </recent_temporary>
   </component>

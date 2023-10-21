@@ -31,4 +31,5 @@ public interface OperadorInterface extends Remote {
     public String verDblen() throws RemoteException;
     public  String verDbRap() throws RemoteException;
     public boolean listPedido(DoubleLinkedList<PedidosDetalle> pedi) throws RemoteException;
+    public double getrValorDomiOp(String punto) throws RemoteException;
 }

@@ -6,14 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ElPinguProject (3)" />
         <module name="ModuloDomicilio" />
+        <module name="ElPinguProject (3)" />
         <module name="ElPinguProject (2)" />
         <module name="ElPinguProject (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ElPinguProject" target="19" />
+      <module name="ModuloCocina" target="19" />
+      <module name="ModuloCocinaPingu" target="19" />
+      <module name="ModuloConinaPingu" target="19" />
+      <module name="ModuloOperadorPingu" target="19" />
+      <module name="Server" target="19" />
     </bytecodeTargetLevel>
   </component>
 </project>

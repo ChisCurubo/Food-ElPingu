@@ -7,10 +7,11 @@ import java.rmi.RemoteException;
 
 public class ControladorLogin {
     public ControladorLogin() {
+        ModeloLogin modeloLogin = new ModeloLogin();
         try {
             if (ModeloLogin.clienteOperador.isConnected()) {
                 InicioSesion ini = new InicioSesion();
-                ModeloLogin modeloLogin = new ModeloLogin();
+
                 ini.getBoton().addActionListener(modeloLogin.checkBoton(ini));
 
 

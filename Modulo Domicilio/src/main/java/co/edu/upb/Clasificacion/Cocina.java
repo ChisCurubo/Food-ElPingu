@@ -1,11 +1,9 @@
 package co.edu.upb.Clasificacion;
 
-import co.edu.upb.domain.Barrio;
-import co.edu.upb.list.DoubleLinkedList;
 
-import java.io.Serializable;
+import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
-public class Cocina implements Serializable {
+public class Cocina {
     DoubleLinkedList<DoubleLinkedList> ciudad = new DoubleLinkedList<>();
     DoubleLinkedList barrio = new DoubleLinkedList<>();
 
@@ -21,7 +19,7 @@ Los Robles, Granjas de Julio Rincón, Jardines de Coaviconsa, El Candado, Malpas
      */
     private void CrearBarrios(){
         // Comuna 1
-        Barrio losAngeles = new Barrio("Los Angeles", 1);
+        /*Barrio losAngeles = new Barrio("Los Angeles", 1);
         Barrio villaHelenaI = new Barrio("Villa Helena I", 1);
         Barrio villaHelenaII = new Barrio("Villa Helena II", 1);
         Barrio joseMariaCordoba = new Barrio("José María Córdoba", 1);
@@ -247,7 +245,7 @@ Los Robles, Granjas de Julio Rincón, Jardines de Coaviconsa, El Candado, Malpas
         Barrio alamosParque = new Barrio("Álamos Parque", 1);
         Barrio hoyoEnUno = new Barrio("Hoyo en Uno", 1);
         Barrio montellanoCampestre = new Barrio("Montellano Campestre", 1);
-        Barrio laLomita = new Barrio("La Lomita", 1);
+        Barrio laLomita = new Barrio("La Lomita", 1);*/
 
 
     }

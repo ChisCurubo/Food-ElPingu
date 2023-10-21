@@ -264,6 +264,8 @@ public class Cocina extends JFrame {
         return validation;
     }
 
+    // buscar en los fogones si hay un pedido pedido con el mismo id y si es asi todavia no mandar el pedido completo
+
     public ActionListener actionListenerBotonLen(JButton botonRap, int numFog) {
         ActionListener validation = new ActionListener() {
             @Override

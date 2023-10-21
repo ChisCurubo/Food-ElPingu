@@ -1,5 +1,10 @@
 package co.edu.upb.Pantallas.Domicilio;
 
+import co.edu.upb.domain.PedidosDetalle;
+import co.edu.upb.estructuras.colas.CilaPriiory;
+import co.edu.upb.estructuras.colas.ColaArry;
+import co.edu.upb.estructuras.listas.DoubleLinkedList;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,6 +14,10 @@ public class Domicilio extends JFrame {
     public static void main(String[] args) {
         Domicilio men = new Domicilio();
     }
+
+    DoubleLinkedList<PedidosDetalle> listDomi = new DoubleLinkedList<>();
+
+    ColaArry<PedidosDetalle> colaDomicilio = new ColaArry<>(8);
     public Domicilio() {
         initDomicilio();
         setVisible(true);
@@ -56,6 +65,13 @@ public class Domicilio extends JFrame {
         verCola.setBounds(325, 10, 200, 30);
         panelInfo.add(verCola);
 
+        JTextArea textArea = new JTextArea();
+        textArea.setFont(new Font("Arial", 1, 20));
+        textArea.setBackground(new Color(64, 77,128));
+        textArea.setBounds(30,50,690,250);
+        textArea.setEditable(false);
+        panelInfo.add(textArea);
+
         JButton botonRegre = new JButton("Regresame");
         botonRegre.setForeground(Color.WHITE);
         botonRegre.setFont(new Font("Arial", 1, 20));
@@ -79,7 +95,9 @@ public class Domicilio extends JFrame {
         botonRap1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 JOptionPane.showMessageDialog(null,  "Se ingreso el nuevo cliente");
+                textArea.setText(listDomi.imprimir());
             }
         });
         panelFondo.add(botonRap1);

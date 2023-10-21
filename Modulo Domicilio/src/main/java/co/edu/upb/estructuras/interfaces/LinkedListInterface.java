@@ -10,7 +10,7 @@ import java.util.Iterator;
  * @author Lenin Javier Serrano Gil
  * @param <T> generic objects
  */
-public interface LinkedListInterface<T extends Serializable>{
+public interface LinkedListInterface<T extends Serializable> {
 
     /***
      * Adds an object at the end of the list.

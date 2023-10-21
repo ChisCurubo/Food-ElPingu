@@ -1,6 +1,9 @@
 package co.edu.upb.Client;
 
 import co.edu.upb.Interface.DomicilioInterface;
+import co.edu.upb.domain.Clientes;
+import co.edu.upb.domain.PedidosDetalle;
+import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
 import java.rmi.RemoteException;
 import java.net.MalformedURLException;
@@ -32,5 +35,97 @@ public class Client implements DomicilioInterface {
         }
     }
 
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean createGrafo() throws RemoteException {
+        try {
+            service = (DomicilioInterface) Naming.lookup(url);
+            return service.createGrafo();
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
+    /**
+     * @param punto
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public int rutaAPuntos(DoubleLinkedList<String> punto) throws RemoteException {
+        try {
+            service = (DomicilioInterface) Naming.lookup(url);
+            return service.rutaAPuntos(punto);
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public String getrVerticeDistanciaMayor() throws RemoteException {
+        try {
+            service = (DomicilioInterface) Naming.lookup(url);
+            return service.getrVerticeDistanciaMayor();
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+    /**
+     * @param puntoFin
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public double calculateValDom(String puntoFin) throws RemoteException {
+        try {
+            service = (DomicilioInterface) Naming.lookup(url);
+            return service.calculateValDom(puntoFin);
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    /**
+     * @param puntoIni
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public DoubleLinkedList<String> rutaTotal(DoubleLinkedList<String> puntoIni) throws RemoteException {
+        try {
+            service = (DomicilioInterface) Naming.lookup(url);
+            return service.rutaTotal(puntoIni);
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * @param pediDet
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public Clientes busqCliente(PedidosDetalle pediDet) throws RemoteException {
+        try {
+            service = (DomicilioInterface) Naming.lookup(url);
+            return service.busqCliente(pediDet);
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

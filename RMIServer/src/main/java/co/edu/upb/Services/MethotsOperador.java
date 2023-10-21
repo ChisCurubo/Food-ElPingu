@@ -1,6 +1,7 @@
 package co.edu.upb.Services;
 
 import co.edu.upb.Clasificacion.CocinaCola;
+import co.edu.upb.Domi.Grafo;
 import co.edu.upb.Interface.OperadorInterface;
 import co.edu.upb.datos.*;
 import co.edu.upb.domain.*;
@@ -345,6 +346,17 @@ public class MethotsOperador extends UnicastRemoteObject implements OperadorInte
             return false;
         }
 
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public double getrValorDomiOp(String punto) throws RemoteException {
+       MethotsDomicilio met = new MethotsDomicilio();
+       double valDom = met.calculateValDom(punto);
+       return valDom;
     }
 }
 

@@ -19,12 +19,11 @@ public class MenuConnect implements Serializable {
     private static final String SQL_SELECT = "SELECT * FROM pingu.productos";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.productos WHERE producto = ? ";
     private static final String SQL_SELECT_WHERE_ID = "SELECT producto FROM pingu.productos WHERE idproducto = ? ";
-    private static final String SQL_SELECT_WHERE_ID_Tipo = "SELECT * FROM pingu.productos WHERE idproducto = ? ";
     private static final String SQL_INSERT = "INSERT INTO pingu.productos (producto, cantidad, tiempoprep , precio, tiemporapi ) VALUES ( ?, ?, ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE pingu.productos SET producto = ?, cantidad = ?, tiempoprep = ? , precio = ?, tiemporapi = ? WHERE idproducto =?";
     private static final String SQL_DELETE = "DELETE FROM pingu.productos WHERE idproducto =?";
 
-    public DoubleLinkedList<Menu> algrDistanciaHamming(String busqueda) {
+   public DoubleLinkedList<Menu> algrDistanciaHamming(String busqueda) {
         String platoSearch = busqueda;
         String plato = "";
         Menu menn;
@@ -76,7 +75,7 @@ public class MenuConnect implements Serializable {
         Menu[] arryMen = new Menu[menu.size()];
         Iterator iter = menu.iterator();
         int cont = 0;
-        while (iter.hasNext()){
+        while (iter.hasNext()) {
             DoubleListNode<Menu> menuNode = (DoubleListNode<Menu>) iter.next();
             arryMen[cont] = menuNode.getObject();
             cont++;
@@ -157,33 +156,6 @@ public class MenuConnect implements Serializable {
             ex.printStackTrace(System.out);
         }
         return menu.getProduct();
-    }
-
-    public Menu selectId(int idproduct) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        String product = "";
-        Menu menu = new Menu();
-        try {
-            conn = Conexion.getConection();
-            stmt = conn.prepareStatement(SQL_SELECT_WHERE_ID_Tipo);
-            stmt.setInt(1, idproduct);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                menu.setIdProducto(rs.getInt("idproducto"));
-                menu.setProduct(rs.getString("producto"));
-                menu.setCamtProd(rs.getInt("cantidad"));
-                menu.setTiempoPrepLen(rs.getInt("tiempoprep"));
-                menu.setTiempoPrepRapi(rs.getInt("tiemporapi"));
-                menu.setPrecio(rs.getDouble("precio"));
-            }
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        }
-        return menu;
     }
 
     /**
