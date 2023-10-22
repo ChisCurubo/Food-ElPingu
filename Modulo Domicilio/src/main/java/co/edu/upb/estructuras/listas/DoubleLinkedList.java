@@ -12,7 +12,9 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class DoubleLinkedList<T extends Serializable> implements LinkedListInterface<T>, Cloneable , Serializable {
     private DoubleListNode<T> head;
     private DoubleListNode<T> tail;
@@ -728,6 +730,14 @@ public class DoubleLinkedList<T extends Serializable> implements LinkedListInter
         String str = "";
         for (int i = 0; i < size(); i++) {
             str += iterator.next() + "\n";
+        }
+        return str;
+    }
+    public String print() {
+        Iterator<NodeInterface<T>> iterator = iterator();
+        String str = "";
+        for (int i = 0; i < size(); i++) {
+            str += iterator.next() + " ---> ";
         }
         return str;
     }

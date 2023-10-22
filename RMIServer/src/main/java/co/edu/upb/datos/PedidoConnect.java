@@ -12,7 +12,6 @@ public class PedidoConnect implements Serializable {
     private static final String SQL_INSERT = "INSERT INTO pingu.pedidos (fechas, estatus, idclientes ) VALUES ( ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE pingu.pedidos SET estatus = ?, fechas =? WHERE nmpedido =?";
     private static final String SQL_DELETE = "DELETE FROM pingu.pedidos WHERE nmpedido =?";
-    private  static final String SQL_COUNT = "";
 
     public Pedido select(int numped) {
         Connection conn = null;

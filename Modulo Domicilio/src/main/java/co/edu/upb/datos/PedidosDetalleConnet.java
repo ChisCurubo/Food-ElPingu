@@ -5,8 +5,15 @@ import co.edu.upb.domain.PedidosDetalle;
 import java.io.Serializable;
 import java.sql.*;
 
-public class PedidosDetalleConnet implements Serializable {
+/**
+ * @author ChristianRodriguez
+ * Clase de conexion a la tabla de pedido-detalle en la base de datos, comunica al servidor con la base de datos
+ */
 
+public class PedidosDetalleConnet implements Serializable {
+    /**
+     * Sentencias para las conexiones a la tabla de pedido-detalle
+     */
     private static final String SQL_SELECT = "SELECT * FROM pingu.`pedidos-detalle`";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.`pedidos-detalle` WHERE `id-pedidos` = ? ";
     private static final String SQL_INSERT = "INSERT INTO pingu.`pedidos-detalle` (`id-pedidos`, `id-producto`, `cantidad`, `estatus-pedido` ) VALUES ( ?, ?, ?, ?)";
@@ -15,6 +22,12 @@ public class PedidosDetalleConnet implements Serializable {
     private static final String SQL_UPDATE_Estatus = "UPDATE pingu.`pedidos-detalle` SET `estatus-pedido` = ? WHERE `id-pedidos` =?";
     private static final String SQL_UPDATE_Product = "UPDATE pingu.`pedidos-detalle` SET `estatus-pedido` = ?, `cantidad` = ? , id-producto` = ? WHERE `id-pedidos` =?";
     private static final String SQL_DELETE = "DELETE FROM pingu.`pedidos-detalle` WHERE `id-pedidos` =?";
+
+    /**
+     * Metodo de select
+     * @param idPedido
+     * @return
+     */
 
     public PedidosDetalle select(int idPedido) {
         Connection conn = null;

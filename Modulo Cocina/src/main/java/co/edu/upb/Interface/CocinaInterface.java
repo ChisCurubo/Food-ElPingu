@@ -5,7 +5,10 @@ import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-
+/**
+ *@author ChristianRodriguez
+ * Esta es la interfaz del modulo cocina, en las cuales se encontraran los metodos que se utilizan en el modulo cocina
+ */
 public interface CocinaInterface extends Remote {
 
     public PedidosDetalle popColaLenta() throws RemoteException;

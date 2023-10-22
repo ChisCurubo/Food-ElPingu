@@ -4,11 +4,26 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+/**
+ * Clase pedido  la cual sera un conector entre le cliente y pedidos detalle. Esta corresponde a la tabla pedidos en la base de datos
+ *
+ * @author ChristianRodriguez
+ */
 public class Pedido implements Serializable {
-private  int nmpedido;
-private int idClientes;
-private Timestamp fecha;
-private String estatus;
+    /**
+     * Atributos de la clase pedidos
+     */
+    private int nmpedido;
+    private int idClientes;
+    private Timestamp fecha;
+    private String estatus;
+    /**
+     * Constructores de la clase
+     * @param nmpedido
+     * @param idClientes
+     * @param fecha
+     * @param estatus
+     */
 
     public Pedido(int nmpedido, int idClientes, Timestamp fecha, String estatus) {
         this.nmpedido = nmpedido;
@@ -17,16 +32,19 @@ private String estatus;
         this.estatus = estatus;
     }
 
-    public Pedido(int idClientes, Timestamp  fecha, String estatus) {
+    public Pedido(int idClientes, Timestamp fecha, String estatus) {
         this.idClientes = idClientes;
         this.fecha = fecha;
         this.estatus = estatus;
     }
-    public Pedido (){
+
+    public Pedido() {
 
     }
-
-
+    /**
+     * Getters y setters de la clase, y de sus atributos
+     * @return
+     */
 
     public int getNmpedido() {
         return nmpedido;

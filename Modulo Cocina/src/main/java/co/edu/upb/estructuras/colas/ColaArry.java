@@ -8,7 +8,9 @@ import co.edu.upb.estructuras.pilas.StackArray;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class ColaArry<T extends Serializable> implements StackInterface<T>, Serializable {
 
     private T[] arryCola;

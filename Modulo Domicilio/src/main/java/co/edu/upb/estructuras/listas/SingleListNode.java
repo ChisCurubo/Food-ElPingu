@@ -3,7 +3,9 @@ package co.edu.upb.estructuras.listas;
 import co.edu.upb.estructuras.node.Node;
 
 import java.io.Serializable;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class SingleListNode<T extends Serializable>extends Node<T>  implements Serializable {
 
     SingleListNode<T> next;

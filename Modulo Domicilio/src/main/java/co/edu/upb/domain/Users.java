@@ -2,6 +2,11 @@ package co.edu.upb.domain;
 
 import java.io.Serializable;
 
+/**
+ * @author ChristianRodriguez
+ * Clase de usuarios , estos permitiran manejar acceso y entrada al moduilo operador. Corresponde a  la tabla de Users
+ */
+
 public class Users implements Serializable {
     /**
      * // atributos de la clase users, tambien son atributos de la tabla de la bases de datos de user
@@ -15,14 +20,13 @@ public class Users implements Serializable {
     private String apellido;
 
     /**
-     * //constructores para la creacion del usuario dependiendo de la necesidad se usa uno u otro
+     * Construstructores de la clase
+     * @param emailEn
+     * @param pswd
+     * @param tipoEn
+     * @param nombreEn
+     * @param apellidoEn
      */
-
-    public Users(){
-        //this is the empty constructor
-    }
-    public Users(int id){this.ID = id;}
-
     public Users (String emailEn, String pswd , int tipoEn , String nombreEn, String apellidoEn ){
         this.email = emailEn;
         this.pwd = pswd;
@@ -30,6 +34,11 @@ public class Users implements Serializable {
         this.nombre = nombreEn;
         this.apellido = apellidoEn;
     }
+    public Users(){
+        //this is the empty constructor
+    }
+    public Users(int id){this.ID = id;}
+
     public Users (int id,String emailEn, String pswd , int tipoEn , String nombreEn, String apellidoEn ){
         this.ID = id;
         this.email = emailEn;
@@ -43,8 +52,6 @@ public class Users implements Serializable {
      * // getters y setters para los atributos.
      * @return
      */
-
-
     public int getID() {
         return ID;
     }

@@ -8,7 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+/**
+ * @author ChristianRodriguez
+ * Clase de conexion a la tabla de users en la base de datos, estas permitiran comunicar el servidor con la base de datos
+ * @param <T>
+ */
 public class UsersConnect<T> implements Serializable {
     /**
      * // estas son las instruciones para la base de datos para la tabla de usuarios
@@ -30,7 +34,6 @@ public class UsersConnect<T> implements Serializable {
      * @param pswEN
      * @return
      */
-
     public Users select(String emailEn, String pswEN) {
         Connection conn = null;
         PreparedStatement stmt = null;

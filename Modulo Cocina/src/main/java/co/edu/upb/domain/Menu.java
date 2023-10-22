@@ -1,7 +1,10 @@
 package co.edu.upb.domain;
 
 import java.io.Serializable;
-
+/**
+ *@author ChristianRodriguez
+ * Clase de Menu, en esta clase estaran los productos del restaurante, precio, su coccion. Mismos que en la tabla productos en la base de datos
+ */
 public class Menu implements Serializable {
     /**
      * // todos los atritbutos que tienen el la base de datos, y por ende el menu

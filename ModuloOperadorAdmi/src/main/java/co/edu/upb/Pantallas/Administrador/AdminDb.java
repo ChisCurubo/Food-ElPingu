@@ -49,6 +49,7 @@ public class AdminDb extends JFrame {
         areaColaRap.setFont(new Font("Arial", 1, 15));
         areaColaRap.setForeground(Color.BLACK);
         areaColaRap.setText(updatePanelRap());
+        areaColaRap.setBackground(new Color(77, 101,0));
         panelFondoColaR.add(areaColaRap);
 
         JLabel labelNombreProduct = new JLabel("Cola Rapida Cocina ");
@@ -72,19 +73,29 @@ public class AdminDb extends JFrame {
         areaColaLe.setBounds(10,50,380,420);
         areaColaLe.setFont(new Font("Arial", 1, 15));
         areaColaLe.setForeground(Color.BLACK);
+        areaColaLe.setBackground(new Color(77, 101,0));
         areaColaLe.setText(updatePanelLen());
         panelFondoColaL.add(areaColaLe);
 
         JPanel panelFondoColaDomi = new JPanel();
         panelFondoColaDomi.setBounds(1000, 200, 400, 500);
         panelFondoColaDomi.setBackground(new Color(110,149,0));
-        setLayout(null);
+        panelFondoColaDomi.setLayout(null);
         panelFondo.add(panelFondoColaDomi);
+
         JLabel ColaDomicilio = new JLabel("Cola Domicilio ");
         ColaDomicilio.setBounds(150,10,300,50);
         ColaDomicilio.setFont(new Font("Arial", 1, 20));
         ColaDomicilio.setForeground(Color.WHITE);
         panelFondoColaDomi.add(ColaDomicilio);
+
+        JTextArea areaCola = new JTextArea();
+        areaCola.setBounds(10,50,380,420);
+        areaCola.setFont(new Font("Arial", 1, 15));
+        areaCola.setForeground(Color.BLACK);
+        areaCola.setBackground(new Color(77, 101,0));
+        areaCola.setText(updatePanelCocina());
+        panelFondoColaDomi.add(areaCola);
 
         JButton botRegresar = new JButton("Regresate:)");
         botRegresar.setBackground(new Color(153, 2, 68));
@@ -115,6 +126,15 @@ public class AdminDb extends JFrame {
         String str = "";
         try {
             str = ModeloLogin.clienteOperador.verDblen();
+            return str;
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public String  updatePanelCocina(){
+        String str = "";
+        try {
+            str = ModeloLogin.clienteOperador.verColaDomi();
             return str;
         } catch (RemoteException e) {
             throw new RuntimeException(e);

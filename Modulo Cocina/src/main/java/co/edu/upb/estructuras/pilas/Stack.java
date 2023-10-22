@@ -4,7 +4,9 @@ import co.edu.upb.estructuras.interfaces.StackInterface;
 import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
 import java.io.Serializable;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class Stack<T extends Serializable> implements StackInterface<T>, Serializable {
     DoubleLinkedList<T> listDouble = new DoubleLinkedList<>();
 

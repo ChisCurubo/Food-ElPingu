@@ -5,7 +5,9 @@ import co.edu.upb.estructuras.pilas.Stack;
 import co.edu.upb.estructuras.pilas.StackArray;
 
 import java.io.Serializable;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class ColaDoble<T extends Serializable> implements StackInterface<T>, Serializable {
 
     private T[] arryCola;

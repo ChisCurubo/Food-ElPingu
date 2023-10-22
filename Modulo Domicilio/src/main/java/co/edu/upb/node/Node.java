@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 /**
  * // tipo nodo para la lista
  * @param <T>
+ *  @author ChristianRodriguez
  */
 
 public class Node<T extends Serializable> implements NodeInterface<T>, Serializable {

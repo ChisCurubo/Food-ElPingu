@@ -3,7 +3,9 @@ package co.edu.upb.estructuras.arbolBinario;
 import co.edu.upb.estructuras.node.Node;
 
 import java.io.Serializable;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class NodoArbolBinario<T extends Serializable>  extends Node implements Serializable {
     private NodoArbolBinario<T> hijoDer;
     private NodoArbolBinario<T> hijoIzq;

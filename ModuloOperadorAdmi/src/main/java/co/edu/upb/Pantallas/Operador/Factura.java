@@ -73,7 +73,7 @@ public class Factura extends JFrame {
         panelFondo.add(panelnumPed);
         textArea = new JTextArea();
         textArea.setEditable(false);
-        textArea.setBounds(5, 5, 240, 390);
+        textArea.setBounds(5, 5, 400, 390);
         textArea.setBackground(new Color(164, 178, 131));
         textArea.setFont(new Font("Times New Roman", 0, 15));
         textArea.setText("Total de productos: " + listD.size() + "\n" + "\nLista de productos y cantidad : " + "\n" + listPrintArea(listD));
@@ -128,6 +128,7 @@ public class Factura extends JFrame {
                     try {
                         PedidosDetalle pediTemp = iter.next();
                         if (ModeloLogin.clienteOperador.addPedidoDetalle(pediTemp)) {
+                            System.out.println("se agrego ");
                         }
                     } catch (RemoteException ex) {
                         throw new RuntimeException(ex);
@@ -168,13 +169,13 @@ public class Factura extends JFrame {
         double impt = total * 0.08;
         double totalImp = total + impt;
         double valorDomi = 0;
-        double totalMasDomi = totalImp + valorDomi;
         Clientes clien = getCliente(listD.get());
         try {
             valorDomi = ModeloLogin.clienteOperador.getrValorDomiOp(clien.getBarrio());
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
+        double totalMasDomi = totalImp + valorDomi;
         str += "\n" + "El total fue = " + total + "\n" + "Total con iva(8%) = " + totalImp;
         str += "\n" + "El valor del domicilio fue: " + valorDomi + "\n" + "Valor de la compra más domicilio:  " + totalMasDomi;
         str += "\n" + "Gracias por confiar en El Pingü";

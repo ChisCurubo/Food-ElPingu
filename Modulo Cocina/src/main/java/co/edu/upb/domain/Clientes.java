@@ -1,8 +1,13 @@
 package co.edu.upb.domain;
 
 import java.io.Serializable;
+/**
+ * Clase de de clientes, la cual permitira serializar objetos.
+ *@author ChristianRodriguez
+ */
 
 public class Clientes implements Serializable {
+
     int idClientes;
     String nombre;
     String apellido;
@@ -13,6 +18,19 @@ public class Clientes implements Serializable {
     String telefono;
     String correo;
     int tipoCliente;
+    /**
+     *  Atributos de la clase clientes, estos son la misma informacion que hay en la base de datos en SQL
+     * @param idClientes
+     * @param nombre
+     * @param apellido
+     * @param calle
+     * @param carrera
+     * @param barrio
+     * @param municipio
+     * @param telefono
+     * @param correo
+     * @param tipoClien
+     */
 
     public Clientes(int idClientes, String nombre, String apellido, String calle, String carrera, String barrio, String municipio, String telefono, String correo, int tipoClien) {
         this.idClientes = idClientes;
@@ -50,6 +68,11 @@ public class Clientes implements Serializable {
         this.correo = correo;
         this.tipoCliente = tipoCliente;
     }
+
+    /**
+     * Getters y setters de los atributos de la clase Clientes
+     * @return
+     */
 
     public int getIdClientes() {
         return idClientes;

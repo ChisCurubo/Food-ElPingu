@@ -8,12 +8,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * @author ChristianRodriguez
+ * Clase de conexion a la tabla de users en la base de datos, estas permitiran comunicar el servidor con la base de datos
+ * @param <T>
+ */
+
 
 public class UsersConnect<T>  implements Serializable {
+
     /**
      * // estas son las instruciones para la base de datos para la tabla de usuarios
      */
-
     private static final String SQL_SELECT = "SELECT * FROM pingu.usuarios";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.usuarios WHERE email = ?  AND pwd = ? ";
     private static final String SQL_SELECT_WHERE_Clien = "SELECT * FROM pingu.usuarios WHERE email = ? ";
@@ -83,7 +89,7 @@ public class UsersConnect<T>  implements Serializable {
     }
 
     /**
-     * insertar nuevo usuario usuaruio a la base de datos
+     * insertar nuevo usuario  a la base de datos
      *
      * @param user
      * @return

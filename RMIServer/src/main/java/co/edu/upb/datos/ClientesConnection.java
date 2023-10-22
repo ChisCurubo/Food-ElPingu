@@ -15,6 +15,7 @@ public class ClientesConnection implements Serializable {
     private static final String SQL_DELETE = "DELETE FROM pingu.clientes WHERE idclientes =?";
 
 
+
     /**
      * // Metodo de sect para comprobar el producto, se hace una busqueda en la base de datos.
      *

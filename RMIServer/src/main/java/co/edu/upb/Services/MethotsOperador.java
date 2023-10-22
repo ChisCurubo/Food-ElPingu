@@ -1,6 +1,7 @@
 package co.edu.upb.Services;
 
 import co.edu.upb.Clasificacion.CocinaCola;
+import co.edu.upb.Domi.DomiCola;
 import co.edu.upb.Domi.Grafo;
 import co.edu.upb.Interface.OperadorInterface;
 import co.edu.upb.datos.*;
@@ -10,6 +11,9 @@ import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MethotsOperador extends UnicastRemoteObject implements OperadorInterface {
     private static final long serialVersionUID = 3621271727859909664L;
@@ -332,6 +336,15 @@ public class MethotsOperador extends UnicastRemoteObject implements OperadorInte
     }
 
     /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public String verColaDomi() throws RemoteException {
+        return DomiCola.imprimirCola();
+    }
+
+    /**
      * @param pedi
      * @return
      * @throws RemoteException
@@ -354,9 +367,76 @@ public class MethotsOperador extends UnicastRemoteObject implements OperadorInte
      */
     @Override
     public double getrValorDomiOp(String punto) throws RemoteException {
-       MethotsDomicilio met = new MethotsDomicilio();
-       double valDom = met.calculateValDom(punto);
-       return valDom;
+        MethotsDomicilio met = new MethotsDomicilio();
+        double valDom = met.calculateValDom(punto);
+        return valDom;
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean createGrafo() throws RemoteException {
+        try {
+            MethotsDomicilio met = new MethotsDomicilio();
+            return met.createGrafo();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public Menu getMostPedidoClient(int id) throws RemoteException {
+        PedidosDetalleConnet pedCon = new PedidosDetalleConnet();
+        System.out.println(id);
+        DoubleLinkedList<PedidosDetalle> lista = pedCon.searchPedidoMasClient(id);
+        lista.imprimir();
+        PedidosDetalle pedi = findMostFrequentElement(lista);
+        System.out.println(pedi.getIdProducto()+ "----------");
+        MenuConnect menCon = new MenuConnect();
+        Menu menu = menCon.selectId(pedi.getIdProducto());
+        return menu;
+
+
+    }
+    public  PedidosDetalle findMostFrequentElement(DoubleLinkedList<PedidosDetalle> list) {
+        PedidosDetalle mostFrequentElement = new PedidosDetalle();
+        int maxCount = 0;
+        PedidosDetalle[] array = pedidosArr(list);
+
+        for (int i = 0; i < array.length; i++) {
+            int count = 0;
+
+            for (int j = 0; j < array.length; j++) {
+                if (array[i].equals(array[j])) {
+                    count++;
+                }
+            }
+
+            if (count > maxCount) {
+                mostFrequentElement = array[i];
+                maxCount = count;
+            }
+        }
+
+        return mostFrequentElement ;
+    }
+
+    public PedidosDetalle[] pedidosArr (DoubleLinkedList<PedidosDetalle> lis ){
+        Iterator iter = lis.iteratorObj();
+        int cont = 0;
+        PedidosDetalle[] arPed = new PedidosDetalle[lis.size()];
+        while (iter.hasNext()){
+            PedidosDetalle obTemp = (PedidosDetalle) iter.next();
+            arPed[cont] = obTemp;
+            cont++;
+        }
+        return arPed;
     }
 }
 

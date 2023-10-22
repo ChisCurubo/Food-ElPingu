@@ -9,11 +9,15 @@ import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
 import java.io.Serializable;
 import java.sql.*;
+/**
+ * @author ChristianRodriguez
+ * Clase de conexion a la tabla de pedido-detalle en la base de datos, comunica al servidor con la base de datos
+ */
+
 
 public class PedidosDetalleConnet implements Serializable {
     /**
-     * // Setentencias para la base de datos
-     *
+     * Sentencias para las conexiones a la tabla de pedido-detalle
      */
     private static final String SQL_SELECT = "SELECT * FROM pingu.`pedidos-detalle`";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.`pedidos-detalle` WHERE `id-pedidos` = ? ";
@@ -25,6 +29,7 @@ public class PedidosDetalleConnet implements Serializable {
     private static final String SQL_DELETE = "DELETE FROM pingu.`pedidos-detalle` WHERE `id-pedidos` =?";
     /**
      * // Atributos de la clase
+     * Cola de prioridad que es la cola de la cocina
      *
      */
     public DoubleLinkedList<PedidosDetalle> listPedDet = new DoubleLinkedList<>();

@@ -7,15 +7,12 @@ import java.rmi.RemoteException;
 
 public class ControladorLogin {
     public ControladorLogin() {
-        ModeloLogin modeloLogin = new ModeloLogin();
         try {
-            if (ModeloLogin.clienteOperador.isConnected()) {
+            if (!ModeloLogin.clienteOperador.isConnected()) {
                 InicioSesion ini = new InicioSesion();
+                ModeloLogin modeloLogin = new ModeloLogin();
 
-                ini.getBoton().addActionListener(modeloLogin.checkBoton(ini));
-
-
-            }else{
+            } else {
                 System.out.println("NoseConeta");
             }
         } catch (RemoteException e) {
@@ -23,3 +20,4 @@ public class ControladorLogin {
         }
     }
 }
+

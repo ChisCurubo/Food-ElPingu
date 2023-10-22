@@ -14,9 +14,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.util.Iterator;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class Cocina extends JFrame {
-
+    /**
+     * Atributos de la clase
+     */
     ColaPrioridadList<PedidosDetalle> colaDomicilio = new ColaPrioridadList<>();
 
     private JPanel panel;
@@ -26,13 +30,21 @@ public class Cocina extends JFrame {
     private JLabel labelCola = new JLabel();
     JTextArea textAreaPedi = new JTextArea();
     JTextArea textareaLen = new JTextArea();
+
+    /**
+     * Doubles linked list
+     */
     DoubleLinkedList<DoubleLinkedList<PedidosDetalle>> list = new DoubleLinkedList<>();
     DoubleLinkedList<PedidosDetalle> listLIst = new DoubleLinkedList<>();
 
     public static void main(String[] args) {
+
         Cocina co = new Cocina();
     }
 
+    /**
+     * Constructores de la cocina
+     */
     public Cocina() {
         initCocina();
         setVisible(true);
@@ -40,6 +52,9 @@ public class Cocina extends JFrame {
         setIconImage(new ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\logo (Pequeño).jpg").getImage());
     }
 
+    /**
+     * Metodo que inicia todo el frame
+     */
     public void initCocina() {
         CocinaCola cos = new CocinaCola();
         setTitle("Modulo Cocina");
@@ -230,6 +245,12 @@ public class Cocina extends JFrame {
 
     }
 
+    /**
+     * Metodo que asigna a cada fogon , lo que se va extrayendo del al cola de prioridad rapida
+     * @param botonRap
+     * @param numFog
+     * @return
+     */
     public ActionListener actionListenerBotonRap(JButton botonRap, int numFog) {
         ActionListener validation = new ActionListener() {
             @Override
@@ -245,7 +266,9 @@ public class Cocina extends JFrame {
                             }
                         }
                         textAreaPedi.setText(strin);
-                        botonRap.setBackground(Color.orange);
+                        if (str != null) {
+                            botonRap.setBackground(Color.orange);
+                        }
                     } catch (RemoteException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -267,6 +290,12 @@ public class Cocina extends JFrame {
     }
     // buscar en los fogones si hay un pedido pedido con el mismo id y si es asi todavia no mandar el pedido completo
 
+    /**
+     * Metodo que asigna a cada fogon , lo que se va extrayendo del al cola de prioridad lenta
+     * @param botonRap
+     * @param numFog
+     * @return
+     */
     public ActionListener actionListenerBotonLen(JButton botonRap, int numFog) {
         ActionListener validation = new ActionListener() {
             @Override
@@ -308,6 +337,14 @@ public class Cocina extends JFrame {
         return validation;
     }
 
+    /**
+     * Metodo que agrupa pedidos, verifica si hay algun pedido con el mismo id en la cocina, ya sea en fogon rapido o lento.
+     * si existe alguna similitud, se agrega a una lista de listas de pedidosDetalles, y se repite el proceso hasta que se encuentren 0 similitudes.
+     * Cuando no se encuentre 0 similitudes, se agrega este ultimo  elemento a lista de listas, y se hace remove a la lista donde se agrego este ultimo elemento
+     * , y se envia al modulo de despacho/ domicilio, se la manda  atravez del metodo de sendToDomi,
+     * @param pedidDet
+     * @return
+     */
     public boolean veriPedido(PedidosDetalle pedidDet) {
         int cont = 0;
         for (int i = 0; i < fogRapido.length; i++) {
@@ -331,9 +368,9 @@ public class Cocina extends JFrame {
             if (pedidDet.getIdPedidos() == fogLento[i].getIdPedidos()) {
                 cont++;
                 Iterator iter = list.iteratorObj();
-                while (iter.hasNext()){
+                while (iter.hasNext()) {
                     DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
-                    if(istTemp.get().getIdPedidos() == pedidDet.getIdPedidos()){
+                    if (istTemp.get().getIdPedidos() == pedidDet.getIdPedidos()) {
                         istTemp.add(pedidDet);
                         return true;
                     }
@@ -351,7 +388,8 @@ public class Cocina extends JFrame {
                 DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
                 if (istTemp.get().getIdPedidos() == pedidDet.getIdPedidos()) {
                     istTemp.add(pedidDet);
-
+                    sendToDomi(istTemp);
+                    list.remove(istTemp);
                     return true;
                 }
             }
@@ -360,7 +398,16 @@ public class Cocina extends JFrame {
         return false;
     }
 
-    public boolean sendToDomi(DoubleLinkedList<PedidosDetalle> listaDomi){
-
+    /**
+     * This is the implementation of the methont to send pedidos detalles to the delivery module
+     * @param listaDomi
+     * @return
+     */
+    public boolean sendToDomi(DoubleLinkedList<PedidosDetalle> listaDomi) {
+        try {
+           return ModeloLogin.CocinaInterface.sendToDomi(listaDomi);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

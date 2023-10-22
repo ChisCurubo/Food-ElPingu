@@ -3,7 +3,9 @@ package co.edu.upb.estructuras.colas;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class CilaPriiory<T extends Serializable> implements Serializable {
     ColaPrioridadList[] arrayClasi ;
 

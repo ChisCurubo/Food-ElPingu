@@ -9,7 +9,15 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 
+/**
+ * @author ChristianRodriguez
+ * Clase que implementa la interfaz de CocinaInterface, esta clase permite la comunicacion entre modulo y servidor
+ */
+
 public class Client implements CocinaInterface {
+    /**
+     * Atributos de la clase , el atributo service permite acceder a la interfaz y comununicarse con el servidor
+     */
     private CocinaInterface service;
     private String ip;
     private String port;
@@ -17,6 +25,12 @@ public class Client implements CocinaInterface {
     private String url;
     DoubleLinkedList<PedidosDetalle> pedi = new DoubleLinkedList<>();
 
+    /**
+     *  Contructor para inicializar el servicio
+     * @param ip
+     * @param port
+     * @param serviceName
+     */
     public Client(String ip, String port, String serviceName) {
         this.service = null;
         this.ip = ip;
@@ -24,7 +38,11 @@ public class Client implements CocinaInterface {
         this.serviceName = serviceName;
         this.url = "rmi://" + ip + ":" + port + "/" + serviceName;
     }
-
+    /**
+     * Metodo para saber si esta activo el servidor
+     * @return
+     * @throws RemoteException
+     */
     public boolean isConnected() throws RemoteException {
         try {
             Naming.lookup(url);
@@ -36,6 +54,7 @@ public class Client implements CocinaInterface {
     }
 
     /**
+     * Metodo para extraer de la cola de prioridad del fogon lento, devuelve un Pedido detalle
      * @return
      * @throws RemoteException
      */
@@ -52,6 +71,7 @@ public class Client implements CocinaInterface {
     }
 
     /**
+     * Metodo para extraer de la cola de prioridad del fogon rapido, devuelve Pedidos Detalle
      * @return
      * @throws RemoteException
      */
@@ -68,6 +88,7 @@ public class Client implements CocinaInterface {
     }
 
     /**
+     * Metodo para retain pedido // no usado
      * @return
      * @throws RemoteException
      */
@@ -77,6 +98,7 @@ public class Client implements CocinaInterface {
     }
 
     /**
+     * metodo para mandar el de la cola de prioridad al modulo del domicilio
      * @param listPedidos
      * @return
      * @throws RemoteException

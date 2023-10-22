@@ -1,5 +1,7 @@
 package co.edu.upb.Pantallas.Domicilio;
 
+import co.edu.upb.Modelo.ModeloLogin;
+import co.edu.upb.domain.Clientes;
 import co.edu.upb.domain.PedidosDetalle;
 import co.edu.upb.estructuras.colas.CilaPriiory;
 import co.edu.upb.estructuras.colas.ColaArry;
@@ -9,20 +11,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.rmi.RemoteException;
+import java.util.Iterator;
+/**
+ *@author ChristianRodriguez
+ */
 public class Domicilio extends JFrame {
     public static void main(String[] args) {
         Domicilio men = new Domicilio();
     }
 
-    DoubleLinkedList<PedidosDetalle> listDomi = new DoubleLinkedList<>();
-
-    ColaArry<PedidosDetalle> colaDomicilio = new ColaArry<>(8);
+    /**
+     * CLase de interfaz grafica apara  el domicilio
+     */
     public Domicilio() {
         initDomicilio();
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
+
+    /**
+     * Metodo inicaiar componentes
+     */
 
     public void initDomicilio(){
         setTitle("Domicilio");
@@ -49,12 +59,12 @@ public class Domicilio extends JFrame {
         panelFondo.add(panelMapa);
         JLabel panelImage = new JLabel();
         panelImage.setBounds(5,5,500,440);
-        ImageIcon image = new ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Modulo Domicilio\\src\\main\\java\\co\\edu\\upb\\Images\\Mapa (Personalizado).png");
+        ImageIcon image = new ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\mapa (Personalizado).png");
         panelImage.setIcon(image);
         panelMapa.add(panelImage);
 
         JPanel panelInfo = new JPanel();
-        panelInfo.setBounds(700,150,750,550);
+        panelInfo.setBounds(700,150,750,570);
         panelInfo.setBackground(new Color(110,149,0));
         panelInfo.setLayout(null);
         panelFondo.add(panelInfo);
@@ -68,9 +78,21 @@ public class Domicilio extends JFrame {
         JTextArea textArea = new JTextArea();
         textArea.setFont(new Font("Arial", 1, 20));
         textArea.setBackground(new Color(64, 77,128));
-        textArea.setBounds(30,50,690,250);
+        textArea.setBounds(30,50,690,225);
         textArea.setEditable(false);
         panelInfo.add(textArea);
+        JLabel ruta = new JLabel("Ruta ");
+        ruta.setFont(new Font("Arial", 1, 20));
+        ruta.setForeground(Color.WHITE);
+        ruta.setBounds(350, 290, 200, 30);
+        panelInfo.add(ruta);
+
+        JTextArea textRuta = new JTextArea();
+        textRuta.setFont(new Font("Arial", 1, 20));
+        textRuta.setBackground(new Color(64, 77,128));
+        textRuta.setBounds(30,320,690,225);
+        textRuta.setEditable(false);
+        panelInfo.add(textRuta);
 
         JButton botonRegre = new JButton("Regresame");
         botonRegre.setForeground(Color.WHITE);
@@ -95,9 +117,41 @@ public class Domicilio extends JFrame {
         botonRap1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    DoubleLinkedList<PedidosDetalle> listDomi = new DoubleLinkedList<>();
+                    for (int i = 0; i < 8; i++) {
+                        if(!ModeloLogin.DomicilioInterface.isEmptyCola()) {
+                            listDomi.add(ModeloLogin.DomicilioInterface.popsColaDespacho());
+                        }
+                    }
+                    DoubleLinkedList<String> listStr = new DoubleLinkedList<>();
+                    Iterator iter = listDomi.iteratorObj();
+                    while (iter.hasNext()){
+                        PedidosDetalle temp = (PedidosDetalle) iter.next();
+                        Clientes cle = ModeloLogin.DomicilioInterface.busqCliente(temp);
+                        listStr.add(cle.getBarrio());
+                    }
+                    DoubleLinkedList<String> listFin = new DoubleLinkedList<>();
+                    Iterator iterar = listStr.iterator();
+                    while (iterar.hasNext()){
+                        String str = (String) iterar.next();
+                        if(listFin.contains(str)){
 
-                JOptionPane.showMessageDialog(null,  "Se ingreso el nuevo cliente");
-                textArea.setText(listDomi.imprimir());
+                        }else{
+                            listFin.add(str);
+                        }
+                    }
+                    textArea.setText(ModeloLogin.DomicilioInterface.imprimirCola());
+                    int valMax = ModeloLogin.DomicilioInterface.rutaAPuntos(listStr);
+                    String verticeLejano = ModeloLogin.DomicilioInterface.getrVerticeDistanciaMayor();
+                    if(listStr.contains(verticeLejano)){
+                        listStr.remove(verticeLejano);
+                        listStr.addOnHead(verticeLejano);
+                    }
+                    textRuta.setText(ModeloLogin.DomicilioInterface.rutaTotal(listStr).print());
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         panelFondo.add(botonRap1);

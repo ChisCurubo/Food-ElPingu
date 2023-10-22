@@ -3,6 +3,7 @@ package co.edu.upb.estructuras.listas;
 
 
 
+import co.edu.upb.domain.PedidosDetalle;
 import co.edu.upb.estructuras.interfaces.LinkedListInterface;
 import co.edu.upb.estructuras.interfaces.NodeInterface;
 import co.edu.upb.estructuras.pilas.Stack;
@@ -648,6 +649,8 @@ public class DoubleLinkedList<T extends Serializable> implements LinkedListInter
         }
         return false;
     }
+
+
 
     @Override
     public Iterator<NodeInterface<T>> iterator() {

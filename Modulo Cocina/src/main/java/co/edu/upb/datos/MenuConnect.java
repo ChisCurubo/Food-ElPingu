@@ -10,6 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Iterator;
+/**
+ * @author ChristianRodriguez
+ * Clase de conexion a la tabla de productos en la base de datos, comunica al servidor con la base de datos
+ */
 
 public class MenuConnect implements Serializable {
     /**
@@ -23,6 +27,12 @@ public class MenuConnect implements Serializable {
     private static final String SQL_INSERT = "INSERT INTO pingu.productos (producto, cantidad, tiempoprep , precio, tiemporapi ) VALUES ( ?, ?, ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE pingu.productos SET producto = ?, cantidad = ?, tiempoprep = ? , precio = ?, tiemporapi = ? WHERE idproducto =?";
     private static final String SQL_DELETE = "DELETE FROM pingu.productos WHERE idproducto =?";
+
+    /**
+     * Prototipo del algortmo de distancia de hammil
+     * @param busqueda
+     * @return
+     */
 
     public DoubleLinkedList<Menu> algrDistanciaHamming(String busqueda) {
         String platoSearch = busqueda;
@@ -53,6 +63,11 @@ public class MenuConnect implements Serializable {
         return listaProductos;
     }
 
+    /**
+     * Metodo sort para el funcionammiuento del algortmo
+     * @param menupe
+     * @return
+     */
     public DoubleLinkedList<Menu> sortMenu(DoubleLinkedList<Menu> menupe) {
         DoubleLinkedList<Menu> menFin = new DoubleLinkedList<>();
         Menu[] arryLis = toArrayMenu(menupe);
@@ -72,6 +87,11 @@ public class MenuConnect implements Serializable {
         return menFin;
     }
 
+    /**
+     * Pasar a un array de un objeto creado por nosotros. debido a que el to array de la lista no sirve con objetos
+     * @param menu
+     * @return
+     */
     private Menu[] toArrayMenu(DoubleLinkedList<Menu> menu) {
         Menu[] arryMen = new Menu[menu.size()];
         Iterator iter = menu.iterator();
@@ -136,7 +156,11 @@ public class MenuConnect implements Serializable {
         }
         return menu;
     }
-
+    /**
+     * Select para el algortmo
+     * @param idproduct
+     * @return
+     */
     public String selectIdAlgortm(int idproduct) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -159,6 +183,11 @@ public class MenuConnect implements Serializable {
         return menu.getProduct();
     }
 
+    /**
+     * Metodo de select a traves del id del producto
+     * @param idproduct
+     * @return
+     */
     public Menu selectId(int idproduct) {
         Connection conn = null;
         PreparedStatement stmt = null;

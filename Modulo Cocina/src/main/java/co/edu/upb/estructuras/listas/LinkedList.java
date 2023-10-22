@@ -10,7 +10,9 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class LinkedList<T extends Serializable> implements LinkedListInterface<T>, Cloneable, Serializable {
     private SingleListNode<T> head;
     private SingleListNode<T> tail;

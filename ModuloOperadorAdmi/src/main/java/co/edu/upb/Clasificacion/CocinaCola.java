@@ -28,9 +28,9 @@ public class CocinaCola {
         return null;
     }
     public String imprimirColaLen(){
-        return colaPrioriLento.imprimir();
+        return colaPrioriLento.toString();
     }
     public String imprimirColaRap(){
-        return colaPriorRap.imprimir();
+        return colaPriorRap.toString();
     }
 }

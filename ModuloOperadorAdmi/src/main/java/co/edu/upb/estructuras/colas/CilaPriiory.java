@@ -44,7 +44,7 @@ public class CilaPriiory<T extends Serializable> implements Serializable {
         String text = "";
 
         for (int i = arrayClasi.length-1; i >= 0; i--){
-            text += arrayClasi[i].toString() +"\n";
+            text += arrayClasi[i].print() +"\n";
         }
 
         return text;

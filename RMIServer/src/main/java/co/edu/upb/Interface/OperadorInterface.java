@@ -30,6 +30,9 @@ public interface OperadorInterface extends Remote {
     public Menu selectProuctId (int id) throws  RemoteException;
     public String verDblen() throws RemoteException;
     public  String verDbRap() throws RemoteException;
+    public String verColaDomi() throws RemoteException;
     public boolean listPedido(DoubleLinkedList<PedidosDetalle> pedi) throws RemoteException;
     public double getrValorDomiOp(String punto) throws RemoteException;
+    public boolean createGrafo () throws RemoteException;
+    public Menu getMostPedidoClient (int id) throws  RemoteException;
 }

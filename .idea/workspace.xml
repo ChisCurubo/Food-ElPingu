@@ -63,13 +63,39 @@
       <recent name="co.edu.upb.Interface" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AddPedido">
+  <component name="RunManager" selected="Application.AdminDb">
     <configuration name="AddPedido" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Operador.AddPedido" />
       <module name="ElPinguProject (2)" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="co.edu.upb.Pantallas.Operador.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminDb" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Administrador.AdminDb" />
+      <module name="ElPinguProject (2)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.upb.Pantallas.Administrador.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Cocina" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Cocina" />
+      <module name="ElPinguProject (1)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.upb.Pantallas.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -90,38 +116,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.operadorMain.Login" />
-      <module name="ModuloOperadorPingu" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="co.edu.upb.operadorMain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Domi.Main" />
+    <configuration name="IniServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Server.IniServer" />
       <module name="ElPinguProject (3)" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.upb.Domi.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Domi.Main" />
-      <module name="ModuloDomicilio" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="co.edu.upb.Domi.*" />
+          <option name="PATTERN" value="co.edu.upb.Server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,11 +131,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AddPedido" />
+        <item itemvalue="Application.AdminDb" />
+        <item itemvalue="Application.Cocina" />
         <item itemvalue="Application.Domicilio" />
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Login" />
+        <item itemvalue="Application.AddPedido" />
+        <item itemvalue="Application.IniServer" />
       </list>
     </recent_temporary>
   </component>
@@ -159,5 +159,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ProyectoElPinguEdit$AdminDb.ic" NAME="AdminDb Coverage Results" MODIFIED="1697942826727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>co.edu.upb.Pantallas.Administrador.*</FILTER>
+    </SUITE>
   </component>
 </project>

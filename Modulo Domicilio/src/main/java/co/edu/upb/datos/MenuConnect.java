@@ -11,11 +11,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Iterator;
 
+/**
+ * @author ChristianRodriguez
+ * Clase de conexion a la tabla de productos en la base de datos, comunica al servidor con la base de datos
+ */
+
 public class MenuConnect implements Serializable {
     /**
      * // estas son las instruciones para la base de datos para la tabla de productos
      */
-
     private static final String SQL_SELECT = "SELECT * FROM pingu.productos";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.productos WHERE producto = ? ";
     private static final String SQL_SELECT_WHERE_ID = "SELECT producto FROM pingu.productos WHERE idproducto = ? ";
@@ -23,6 +27,12 @@ public class MenuConnect implements Serializable {
     private static final String SQL_UPDATE = "UPDATE pingu.productos SET producto = ?, cantidad = ?, tiempoprep = ? , precio = ?, tiemporapi = ? WHERE idproducto =?";
     private static final String SQL_DELETE = "DELETE FROM pingu.productos WHERE idproducto =?";
 
+
+    /**
+     * Prototipo del algortmo de busqueda
+     * @param busqueda
+     * @return
+     */
    public DoubleLinkedList<Menu> algrDistanciaHamming(String busqueda) {
         String platoSearch = busqueda;
         String plato = "";
@@ -52,6 +62,11 @@ public class MenuConnect implements Serializable {
         return listaProductos;
     }
 
+    /**
+     * Soort objects by numdistancia hammil, utilizado en el metodo anterior
+     * @param menupe
+     * @return
+     */
     public DoubleLinkedList<Menu> sortMenu(DoubleLinkedList<Menu> menupe) {
         DoubleLinkedList<Menu> menFin = new DoubleLinkedList<>();
         Menu[] arryLis = toArrayMenu(menupe);
@@ -71,6 +86,11 @@ public class MenuConnect implements Serializable {
         return menFin;
     }
 
+    /**
+     * Pasar a un array de un objeto creado por nosotros. debido a que el to array de la lista no sirve con objetos
+     * @param menu
+     * @return
+     */
     private Menu[] toArrayMenu(DoubleLinkedList<Menu> menu) {
         Menu[] arryMen = new Menu[menu.size()];
         Iterator iter = menu.iterator();
@@ -136,6 +156,11 @@ public class MenuConnect implements Serializable {
         return menu;
     }
 
+    /**
+     * Select para el algortmo
+     * @param idproduct
+     * @return
+     */
     public String selectIdAlgortm(int idproduct) {
         Connection conn = null;
         PreparedStatement stmt = null;

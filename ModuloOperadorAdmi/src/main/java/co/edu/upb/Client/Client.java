@@ -1,6 +1,7 @@
 package co.edu.upb.Client;
 
 import co.edu.upb.Interface.OperadorInterface;
+import co.edu.upb.Modelo.ModeloLogin;
 import co.edu.upb.domain.*;
 import co.edu.upb.estructuras.colas.CilaPriiory;
 import co.edu.upb.estructuras.listas.DoubleLinkedList;
@@ -9,6 +10,7 @@ import java.rmi.RemoteException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
+import java.rmi.registry.LocateRegistry;
 
 public class Client implements OperadorInterface {
     private OperadorInterface service;
@@ -25,7 +27,6 @@ public class Client implements OperadorInterface {
         this.serviceName = serviceName;
         this.url = "rmi://" + ip + ":" + port + "/" + serviceName;
     }
-
     public boolean isConnected() throws RemoteException {
         try {
             Naming.lookup(url);
@@ -376,5 +377,53 @@ public class Client implements OperadorInterface {
        } catch (MalformedURLException e) {
            throw new RuntimeException(e);
        }
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean createGrafo() throws RemoteException {
+        try {
+            service = (OperadorInterface) Naming.lookup(url);
+            return service.createGrafo();
+        }catch (NotBoundException e) {
+            throw new RuntimeException(e);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public String verColaDomi() throws RemoteException {
+        try {
+            service = (OperadorInterface) Naming.lookup(url);
+            return service.verColaDomi();
+        }catch (NotBoundException e) {
+            throw new RuntimeException(e);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public Menu getMostPedidoClient(int id) throws RemoteException {
+        try {
+            service = (OperadorInterface) Naming.lookup(url);
+            return service.getMostPedidoClient(id);
+        }catch (NotBoundException e) {
+            throw new RuntimeException(e);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

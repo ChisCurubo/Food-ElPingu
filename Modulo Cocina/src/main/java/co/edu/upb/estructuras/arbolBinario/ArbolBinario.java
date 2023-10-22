@@ -5,7 +5,9 @@ import co.edu.upb.estructuras.colas.ColaPrioridadList;
 import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
 import java.io.Serializable;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class ArbolBinario<T extends Serializable> implements Serializable {
     private NodoArbolBinario<T> root;
     private int gradoArbol = 2;

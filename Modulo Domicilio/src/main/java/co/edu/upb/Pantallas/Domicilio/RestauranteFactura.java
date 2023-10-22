@@ -2,6 +2,9 @@ package co.edu.upb.Pantallas.Domicilio;
 
 import javax.swing.*;
 import java.awt.*;
+/**
+ *@author ChristianRodriguez
+ */
 
 public class RestauranteFactura extends JFrame {
     public RestauranteFactura() {

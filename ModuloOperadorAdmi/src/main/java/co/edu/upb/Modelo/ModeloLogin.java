@@ -20,6 +20,19 @@ import co.edu.upb.Pantallas.Operador.MenuOperador;
 public class ModeloLogin {
     public  static Client clienteOperador;
 
+    static {
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileInputStream(new File("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\ModuloOperadorAdmi\\config.properties")));
+            clienteOperador = new Client((String) properties.get("IP"), (String) properties.get("PORT"),
+                    (String) properties.get("SERVICENAME"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public ModeloLogin() {
         Properties properties = new Properties();
         try {
@@ -32,6 +45,7 @@ public class ModeloLogin {
             e.printStackTrace();
         }
     }
+
 
     public static String contra = "";
     public static String email = "";

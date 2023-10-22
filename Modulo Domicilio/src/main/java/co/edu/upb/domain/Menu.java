@@ -1,11 +1,14 @@
 package co.edu.upb.domain;
 
 import java.io.Serializable;
-
+/**
+ *@author ChristianRodriguez
+ * Clase de Menu, en esta clase estaran los productos del restaurante, precio, su coccion. Mismos que en la tabla productos en la base de datos
+ */
 public class Menu implements Serializable {
     /**
-     * // todos los atritbutos que tienen el la base de datos, y por ende el menu
-     * // seializa el objeto
+     * todos los atritbutos que tienen el la base de datos, y por ende el menu
+     *  seializa el objeto
      */
 
     private final String plate1 = "Hamburguesa";
@@ -150,6 +153,10 @@ public class Menu implements Serializable {
         this.numDistanciaHammil = numDistanciaHammil;
     }
 
+    /**
+     * to String de la clase
+     * @return
+     */
     @Override
     public String toString() {
         return "Menu{" +

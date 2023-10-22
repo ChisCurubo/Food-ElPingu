@@ -4,7 +4,10 @@ import co.edu.upb.Modelo.ModeloLogin;
 import co.edu.upb.Pantallas.Operador.InicioSesion;
 
 import java.rmi.RemoteException;
-
+/**
+ * @author ChristianRodriguez
+ * Clase para el inicio del programa
+ */
 public class ControladorLogin {
     public ControladorLogin() {
         try {

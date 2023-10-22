@@ -13,7 +13,7 @@ public class Grafo {
     public static boolean createGrafo() {
         try {
             boolean finPrograma = false;
-            grafo = crearGrafo(60);
+            grafo = crearGrafo(31);
             distance = new int[grafo.length];
             return true;
         } catch (Exception e) {

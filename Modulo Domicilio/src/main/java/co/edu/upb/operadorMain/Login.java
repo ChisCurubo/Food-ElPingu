@@ -91,13 +91,7 @@ public class Login {
 
 
  */
-        PedidosDetalleConnet pdC = new PedidosDetalleConnet();
-        int idPe = 5;
-        for (int i = 0; i < 2; i++) {
-            PedidosDetalle pdDe = pdC.selectIdDet(idPe);
-            idPe++;
-        }
-        CocinaCola newCola = new CocinaCola();
+
 
     }
 

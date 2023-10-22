@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
+/**
+ *@author ChristianRodriguez
+ */
 
 public class MenuDomi extends JFrame {
     public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package co.edu.upb.Domi;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class Grafo {
     private static int[][] grafo;
     private static int[] distance;

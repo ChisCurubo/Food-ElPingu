@@ -11,11 +11,14 @@ import co.edu.upb.domain.PedidosDetalle;
 import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Iterator;
 
-public class MethotsDomicilio implements DomicilioInterface {
+public class MethotsDomicilio extends UnicastRemoteObject implements DomicilioInterface {
 
     private static String restaurante = "PROVENZA";
+    public MethotsDomicilio() throws RemoteException {
+    }
 
     /**
      * @return

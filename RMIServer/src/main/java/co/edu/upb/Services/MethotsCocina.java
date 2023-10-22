@@ -24,14 +24,7 @@ public class MethotsCocina extends UnicastRemoteObject implements CocinaInterfac
     @Override
     public PedidosDetalle popColaLenta() throws RemoteException {
         try {
-            /*PedidosDetalle ped = CocinaCola.popOfColaCocina(0);
-            ped.setEstatuPedido("Cocina");
-            PedidosDetalleConnet pedCon = new PedidosDetalleConnet();
-            pedCon.updateEstatus(ped);
-            pedi.add(ped);
-            String str = ped.getIdDetalle() + "," + ped.getIdPedidos() + "," + ped.getIdProducto() + "," + ped.getCantidad() + "," + ped.getEstatuPedido();
-            System.out.println(str);
-            return ped;*/
+            CocinaCola.popOfColaCocina(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,14 +38,7 @@ public class MethotsCocina extends UnicastRemoteObject implements CocinaInterfac
     @Override
     public PedidosDetalle popColaRapida() throws RemoteException {
         try {
-            /*PedidosDetalle ped = CocinaCola.popOfColaCocina(1);
-            ped.setEstatuPedido("Cocina");
-            PedidosDetalleConnet pedCon = new PedidosDetalleConnet();
-            pedCon.updateEstatus(ped);
-            pedi.add(ped);
-            String str = ped.getIdDetalle() + "," + ped.getIdPedidos() + "," + ped.getIdProducto() + "," + ped.getCantidad() + "," + ped.getEstatuPedido();
-            System.out.println(str);
-            return ped;*/
+            return CocinaCola.popOfColaCocina(1);
         } catch (Exception e) {
             e.printStackTrace();
         }

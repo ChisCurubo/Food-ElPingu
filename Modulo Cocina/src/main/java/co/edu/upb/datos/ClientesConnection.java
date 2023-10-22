@@ -7,8 +7,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+/**
+ * @author ChristianRodriguez
+ * Clase de conexion a la tabla de clientes en la base de datos, comunica al servidor con la base de datos
+ */
 
 public class ClientesConnection implements Serializable {
+    /**
+     * Sentencias para la conexion a la tabla de clientes
+     */
     private static final String SQL_SELECT = "SELECT * FROM pingu.clientes";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.clientes WHERE telefono = ? ";
     private static final String SQL_SELECT_WHERE_ID = "SELECT * FROM pingu.clientes WHERE idclientes = ? ";
@@ -53,6 +60,11 @@ public class ClientesConnection implements Serializable {
         return client;
     }
 
+    /**
+     * metodo para hacer un select de la tabla atravez del numero telefonico del cliente
+     * @param telefono
+     * @return
+     */
     public Clientes selectIdCliente(int telefono) {
         Connection conn = null;
         PreparedStatement stmt = null;

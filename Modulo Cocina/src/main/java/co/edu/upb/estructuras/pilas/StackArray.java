@@ -5,7 +5,9 @@ import co.edu.upb.estructuras.interfaces.StackInterface;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class StackArray<T extends Serializable> implements StackInterface<T>, Serializable {
     public T[] arryPila;
     private int size;
