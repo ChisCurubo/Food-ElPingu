@@ -742,7 +742,7 @@ public class DoubleLinkedList<T extends Serializable> implements LinkedListInter
         Iterator<NodeInterface<T>> iterator = iterator();
         String str = "";
         for (int i = 0; i < size(); i++) {
-            str += iterator.next() + " ---> ";
+            str += iterator.next() + " --->\n ";
         }
         return str;
     }

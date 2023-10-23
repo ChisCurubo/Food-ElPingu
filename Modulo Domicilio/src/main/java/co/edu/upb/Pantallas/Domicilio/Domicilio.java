@@ -90,7 +90,7 @@ public class Domicilio extends JFrame {
         panelInfo.add(ruta);
 
         JTextArea textRuta = new JTextArea();
-        textRuta.setFont(new Font("Arial", 1, 20));
+        textRuta.setFont(new Font("Arial", 1, 12));
         textRuta.setBackground(new Color(125, 139, 192));
         textRuta.setBounds(30,320,690,225);
         textRuta.setEditable(false);

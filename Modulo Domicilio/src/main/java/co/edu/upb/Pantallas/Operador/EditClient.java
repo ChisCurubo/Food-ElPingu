@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EditClient extends JFrame {
-    public static void main(String[] args) {
-        EditClient clie = new EditClient();
-    }
+  
 
     String nombreChange = "";
     String apellidoChange = "";
