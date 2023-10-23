@@ -17,7 +17,10 @@ import java.rmi.RemoteException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Iterator;
-
+/**
+ * Pantalla de la factura del cliente
+ *@author ChristianRodriguez
+ */
 public class Factura extends JFrame {
 
 
@@ -177,7 +180,7 @@ public class Factura extends JFrame {
         }
         double totalMasDomi = totalImp + valorDomi;
         str += "\n" + "El total fue = " + total + "\n" + "Total con iva(8%) = " + totalImp;
-        str += "\n" + "El valor del domicilio fue: " + valorDomi + "\n" + "Valor de la compra más domicilio:  " + totalMasDomi;
+        str += "\n" + "El valor del domicilio fue: " + valorDomi + "\n" + "Valor de la compra más domicilio: \n " + totalMasDomi;
         str += "\n" + "Gracias por confiar en El Pingü";
         return str;
     }

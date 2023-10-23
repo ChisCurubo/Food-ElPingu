@@ -5,7 +5,15 @@ import co.edu.upb.domain.Pedido;
 import java.io.Serializable;
 import java.sql.*;
 
+/**
+ * @author ChristianRodriguez
+ * Clase de conexion a la tabla de pedidos en la base de datos, comunica al servidor con la base de datos
+ */
+
 public class PedidoConnect implements Serializable {
+    /**
+     * Sentencias para la conexion a la tabla de pedido
+     */
     private static final String SQL_SELECT = "SELECT * FROM pingu.pedidos";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.pedidos WHERE nmpedido = ? ";
     private static final String SQL_SELECT_WHERE_Client = "SELECT * FROM pingu.pedidos WHERE idclientes = ? ";
@@ -13,6 +21,11 @@ public class PedidoConnect implements Serializable {
     private static final String SQL_UPDATE = "UPDATE pingu.pedidos SET estatus = ?, fechas =? WHERE nmpedido =?";
     private static final String SQL_DELETE = "DELETE FROM pingu.pedidos WHERE nmpedido =?";
 
+    /**
+     * Metodo de select
+     * @param numped
+     * @return Pedido
+     */
     public Pedido select(int numped) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -41,6 +54,11 @@ public class PedidoConnect implements Serializable {
         }
         return client;
     }
+    /**
+     * Metodo select pero con idClientes
+     * @param numped
+     * @return
+     */
     public Pedido selectCient(int numped) {
         Connection conn = null;
         PreparedStatement stmt = null;

@@ -9,6 +9,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
+/**
+ * Pantalla para editar el cliente
+ *@author PabloBravo
+ */
 
 public class EditClient extends JFrame {
     public static void main(String[] args) {

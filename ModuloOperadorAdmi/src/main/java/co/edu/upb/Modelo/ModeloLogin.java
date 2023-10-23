@@ -16,9 +16,16 @@ import co.edu.upb.Pantallas.Administrador.MenuAdmin;
 import co.edu.upb.Pantallas.Operador.AddPedido;
 import co.edu.upb.Pantallas.Operador.InicioSesion;
 import co.edu.upb.Pantallas.Operador.MenuOperador;
+/**
+ *@author ChristianRodriguez
+ * Clase de puente entre las interfaces , funcionalidad para comunicar a la inter faz y poder concetar con el servidor
+ */
 
 public class ModeloLogin {
     public  static Client clienteOperador;
+    /**
+     * Se inicializa un objeto static  de la siguiente manera
+     */
 
     static {
         Properties properties = new Properties();

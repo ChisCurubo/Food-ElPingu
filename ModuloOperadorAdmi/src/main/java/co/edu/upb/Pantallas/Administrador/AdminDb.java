@@ -8,7 +8,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
-
+/**
+ * Clase de Administrar base de datos
+ *@author ChristianRodriguez
+ */
 public class AdminDb extends JFrame {
     public static void main(String[] args) {
         AdminDb men = new AdminDb();

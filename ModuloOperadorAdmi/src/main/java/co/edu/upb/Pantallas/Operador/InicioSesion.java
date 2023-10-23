@@ -1,14 +1,22 @@
 package co.edu.upb.Pantallas.Operador;
 
+import co.edu.upb.Modelo.ModeloLogin;
+import co.edu.upb.Pantallas.Administrador.MenuAdmin;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 /**
  * Pantalla de inicio de sesion
+ *@author ChristianRodriguez
  */
 public class InicioSesion extends JFrame {
+
     private JPanel contentPane;
     private JPasswordField pswField;
     private JTextField textCorreo;
@@ -53,6 +61,27 @@ public class InicioSesion extends JFrame {
         boton.setBounds(216, 360, 125, 33);
         miJPanel.add(boton);
         boton.setForeground(new Color(22, 22, 92));
+        boton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String email = textCorreo.getText();
+                String pas = pswField.getText();
+                try {
+                    int valTemo = ModeloLogin.clienteOperador.login(email,pas);
+                    if(valTemo == 0){
+                        setVisible(false);
+                        MenuOperador menO = new MenuOperador();
+                        menO.setVisible(true);
+                    } else if ((valTemo == 1)){
+                        setVisible(false);
+                        MenuAdmin menA = new MenuAdmin();
+                        menA.setVisible(true);
+                    }
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
         boton.setFont(new Font("Tahoma", Font.BOLD, 15));
 
         JLabel lblCorreo = new JLabel("Correo electronico:");

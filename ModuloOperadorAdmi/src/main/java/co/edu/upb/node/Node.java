@@ -3,10 +3,8 @@ package co.edu.upb.node;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 /**
- * // tipo nodo para la lista
- * @param <T>
+ *@author ChristianRodriguez
  */
 
 public class Node<T extends Serializable> implements NodeInterface<T>, Serializable {

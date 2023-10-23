@@ -21,13 +21,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2WabZPOdOG1Yz71UHvjv659ZMGs" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,12 +34,18 @@
     &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-20&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/CursoJava/Programacion/Estructuras/ProyectRes/ProyectoElPinguEdit/RMIServer/src/main/java/co/edu/upb&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CursoJava/Programacion/Estructuras/ProyectRes/ProyectoElPinguEdit&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -63,26 +65,13 @@
       <recent name="co.edu.upb.Interface" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AdminDb">
+  <component name="RunManager" selected="Application.AddPedido">
     <configuration name="AddPedido" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Operador.AddPedido" />
       <module name="ElPinguProject (2)" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="co.edu.upb.Pantallas.Operador.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminDb" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Administrador.AdminDb" />
-      <module name="ElPinguProject (2)" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="co.edu.upb.Pantallas.Administrador.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,8 +92,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Domicilio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Domicilio.Domicilio" />
+    <configuration name="MenuAdmin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Administrador.MenuAdmin" />
+      <module name="ElPinguProject (2)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.upb.Pantallas.Administrador.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MenuDomi (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Domicilio.MenuDomi" />
       <module name="ModuloDomicilio" />
       <extension name="coverage">
         <pattern>
@@ -116,12 +118,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IniServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Server.IniServer" />
-      <module name="ElPinguProject (3)" />
+    <configuration name="MenuDomi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Domicilio.MenuDomi" />
+      <module name="ModuloDomicilio" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="co.edu.upb.Server.*" />
+          <option name="PATTERN" value="co.edu.upb.Pantallas.Domicilio.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,11 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AdminDb" />
-        <item itemvalue="Application.Cocina" />
-        <item itemvalue="Application.Domicilio" />
         <item itemvalue="Application.AddPedido" />
-        <item itemvalue="Application.IniServer" />
+        <item itemvalue="Application.MenuDomi" />
+        <item itemvalue="Application.MenuDomi (1)" />
+        <item itemvalue="Application.Cocina" />
+        <item itemvalue="Application.MenuAdmin" />
       </list>
     </recent_temporary>
   </component>
@@ -147,8 +149,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696973692675</updated>
+      <workItem from="1697991266454" duration="6387000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -159,6 +165,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ProyectoElPinguEdit$AdminDb.ic" NAME="AdminDb Coverage Results" MODIFIED="1697942826727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

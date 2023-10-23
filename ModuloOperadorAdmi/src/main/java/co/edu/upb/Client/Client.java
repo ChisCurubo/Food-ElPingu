@@ -11,14 +11,27 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.registry.LocateRegistry;
-
+/**
+ * @author ChristianRodriguez
+ * Clase que implementa la interfaz de CocinaInterface, esta clase permite la comunicacion entre modulo y servidor
+ */
 public class Client implements OperadorInterface {
+    /**
+     * Atributos de la clase , el atributo service permite acceder a la interfaz y comununicarse con el servidor
+     */
     private OperadorInterface service;
     private String ip;
     private String port;
     private String serviceName;
     private String url;
     private static final long serialVersionUID = 3621271727859909664L;
+
+    /**
+     *  Contructor para inicializar el servicio
+     * @param ip
+     * @param port
+     * @param serviceName
+     */
 
     public Client(String ip, String port, String serviceName) {
         this.service = null;
@@ -27,6 +40,11 @@ public class Client implements OperadorInterface {
         this.serviceName = serviceName;
         this.url = "rmi://" + ip + ":" + port + "/" + serviceName;
     }
+    /**
+     * Metodo para saber si esta activo el servidor
+     * @return
+     * @throws RemoteException
+     */
     public boolean isConnected() throws RemoteException {
         try {
             Naming.lookup(url);
@@ -36,6 +54,15 @@ public class Client implements OperadorInterface {
             return false;
         }
     }
+
+    /**
+     * Metodo del login  del usuario , en este devolvera un entero que funcionara como una bandera para el ingres
+     * Ademas el email registrado queda logeado, y eso permite comprobar los permisos del usuario
+     * @param user
+     * @param password
+     * @return
+     * @throws RemoteException
+     */
 
     @Override
     public int login(String user, String password) throws RemoteException {
@@ -49,6 +76,13 @@ public class Client implements OperadorInterface {
         }
     }
 
+    /**
+     * Metodo de algortmo de distancia de Hamillil, este consta  de comparar cadenas de string y contar las semejasas eentre estas.
+     * Sin embargo se realizo modificaciones al algortmo que funcionara mejor.
+     * @param platoSearch
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public DoubleLinkedList<Menu> algortmoHammil(String platoSearch) throws RemoteException {
         try {
@@ -60,6 +94,13 @@ public class Client implements OperadorInterface {
             return null;
         }
     }
+
+    /**
+     * Metodo para añadir clientes a la base de datos, y añadir clientes nuevos
+     * @param clie
+     * @return
+     * @throws RemoteException
+     */
 
     @Override
     public boolean addCliente(Clientes clie) throws RemoteException {
@@ -73,6 +114,12 @@ public class Client implements OperadorInterface {
         }
     }
 
+    /**
+     * Metodo para hacer un select a la base datos segun el id del pedido
+     * @param num
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public String bringCliente(String num) throws RemoteException {
         try {
@@ -86,6 +133,7 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * MEtodo que trae el cliente, pero en vez de traerlo como un objeto lo trae como String
      * @param num
      * @return
      * @throws RemoteException
@@ -102,6 +150,13 @@ public class Client implements OperadorInterface {
         }
     }
 
+    /**
+     * Metodo para editar Clientes en la base de datos
+     * Devuelve un boolean si lo añadio bien true, si no false
+     * @param clie
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean editClient(Clientes clie) throws RemoteException {
         try {
@@ -114,6 +169,13 @@ public class Client implements OperadorInterface {
         }
     }
 
+    /**
+     * Metodo para añadir un nuevo pedidoDetalle a la base de datos, ademas en el mismo metodo lo añade a la cola de prioridad de cocina
+     * devuelve true si lo hizo, false si no
+     * @param pedidosDetalle
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean addPedidoDetalle(PedidosDetalle pedidosDetalle) throws RemoteException {
         try {
@@ -126,6 +188,13 @@ public class Client implements OperadorInterface {
         }
     }
 
+    /**
+     * Metodo para editar un pedidoDetalle (osea un pedido del cliente)
+     * devuelve true si fue editado, y false si no.
+     * @param pedidosDetalle
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean editPedidoDetalle(PedidosDetalle pedidosDetalle) throws RemoteException {
         try {
@@ -139,6 +208,8 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Metodo para crear/ añadir un pedido a la base de datos
+     * Devuelve  true si lo hizo, false si no
      * @param pedi
      * @return
      * @throws RemoteException
@@ -156,6 +227,7 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Metodo para hacer select a la tabla de pedidos detalle, trae la informacion en forma de string
      * @param pedi
      * @return
      * @throws RemoteException
@@ -173,6 +245,8 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Realiza el select a la tabla de clientes , solo que este trae el cliente serializado
+     * como parametro usa el id del cliente
      * @param id
      * @return
      * @throws RemoteException
@@ -190,6 +264,8 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Metodo que realiza el selct de la tabla pedidos , mediante el id
+     * devuelve un objeto tipo pedido
      * @param pedi
      * @return
      * @throws RemoteException
@@ -207,6 +283,8 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Select a la tabla pedidos pero por el id del cliente
+     * Devuelve un string
      * @param idCliente
      * @return
      * @throws RemoteException
@@ -223,6 +301,14 @@ public class Client implements OperadorInterface {
         }
     }
 
+    /**
+     * Metodo para añaddir un nuevo usuario a la tabla usuarios
+     * devuelve true si lo inserto, false si no
+     * @param use
+     * @return
+     * @throws RemoteException
+     */
+
     @Override
     public boolean addUser(Users use) throws RemoteException {
         try {
@@ -236,6 +322,8 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Metodo para selecionar un usuario de la tabla
+     * devuelve un objeto tipo USers
      * @param str
      * @return
      * @throws RemoteException
@@ -252,6 +340,13 @@ public class Client implements OperadorInterface {
         }
     }
 
+    /**
+     * Metodo para editar usuario de la tabla
+     * devueve true si lo editp, false si no
+     * @param user
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean editUser(Users user) throws RemoteException {
         try {
@@ -264,6 +359,13 @@ public class Client implements OperadorInterface {
         }
     }
 
+    /**
+     * Metodo para añadir productos a la tabla de products
+     * Devuelve true si lo añade, fasle si no
+     * @param men
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean addProducto(Menu men) throws RemoteException {
         try {
@@ -276,6 +378,13 @@ public class Client implements OperadorInterface {
         }
     }
 
+    /**
+     * metodo para editar El producto,
+     * devuelve true si lo hizo , false si no
+     * @param men
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean editProducto(Menu men) throws RemoteException {
         try {
@@ -289,6 +398,7 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Select de un producto, para tarer el producto por id de este
      * @param id
      * @return
      * @throws RemoteException
@@ -307,6 +417,7 @@ public class Client implements OperadorInterface {
 
 
     /**
+     * Hace select pero dependiendo del  nombre del producto
      * @param men
      * @return
      * @throws RemoteException
@@ -323,7 +434,11 @@ public class Client implements OperadorInterface {
         }
     }
 
-
+    /**
+     * Trae la cola lenta de la cocina , para poder observar el proceso dentro
+     * @return
+     * @throws RemoteException
+     */
     public String verDblen() throws RemoteException {
         try {
             service = (OperadorInterface) Naming.lookup(url);
@@ -335,6 +450,11 @@ public class Client implements OperadorInterface {
         }
     }
 
+    /**
+     * Trae la cola rapida de la cocina , para poder observar el proceso dentro, y manipularla
+     * @return
+     * @throws RemoteException
+     */
     public String verDbRap() throws RemoteException {
         try {
             service = (OperadorInterface) Naming.lookup(url);
@@ -347,6 +467,7 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Empaqueta todo el pedido de un cliente y lo envia al servidor
      * @param pedi
      * @return
      * @throws RemoteException
@@ -364,6 +485,7 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Recoge el valor del domicilio segun la ubicacion del cliente
      * @return
      * @throws RemoteException
      */
@@ -380,6 +502,7 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Crea el grafo para ser recorrido
      * @return
      * @throws RemoteException
      */
@@ -396,6 +519,7 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Trae la cola del domicilio para supervisar el estaddo de esta
      * @return
      * @throws RemoteException
      */
@@ -412,6 +536,7 @@ public class Client implements OperadorInterface {
     }
 
     /**
+     * Trae el producto mas pedido del cliente
      * @return
      * @throws RemoteException
      */

@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * Administra el acceso del usuario operador
+ *@author ChristianRodriguez
+ */
 public class MenuOperador extends JFrame {
     public static void main(String[] args) {
         MenuOperador men = new MenuOperador();

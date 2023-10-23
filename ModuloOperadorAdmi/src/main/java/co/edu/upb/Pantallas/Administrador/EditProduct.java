@@ -133,6 +133,8 @@ public class EditProduct extends JFrame {
             }
         });
         panelInfo.add(botAddToPanel);
+
+
         JTextField fielBusq = new JTextField();
         fielBusq.setBounds(1050, 50, 300, 50);
         fielBusq.setFont(new Font("Arial", 0, 20));
@@ -153,7 +155,20 @@ public class EditProduct extends JFrame {
             }
         });
         panelFondo.add(fielBusq);
-
+        JButton botRegresar = new JButton("Regresate:)");
+        botRegresar.setBackground(new Color(153, 2, 68));
+        botRegresar.setForeground(Color.WHITE);
+        botRegresar.setFont(new Font("Times New Roman", 1, 30));
+        botRegresar.setBounds(100, 700, 200, 100);
+        botRegresar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                MenuAdmin men = new MenuAdmin();
+                men.setVisible(true);
+            }
+        });
+        panelFondo.add(botRegresar);
 
     }
 }

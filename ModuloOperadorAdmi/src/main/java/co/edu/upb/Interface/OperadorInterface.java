@@ -7,6 +7,9 @@ import co.edu.upb.estructuras.listas.DoubleLinkedList;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+/**
+ * Esta es la interfaz del modulo operador , en las cuales se encontraran los metodos que se utlizan en modulo Operador
+ */
 public interface OperadorInterface extends Remote {
     public int login(String email, String contra) throws RemoteException;
     public DoubleLinkedList<Menu> algortmoHammil(String platoSearch)throws RemoteException;

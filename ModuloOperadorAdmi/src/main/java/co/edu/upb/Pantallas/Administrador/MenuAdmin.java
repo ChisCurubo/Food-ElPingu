@@ -9,6 +9,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * Panalla que administra los metodos de acceso que tiene el administrador
+ *@author ChristianRodriguez
+ */
 
 public class MenuAdmin extends JFrame {
     public static void main(String[] args) {

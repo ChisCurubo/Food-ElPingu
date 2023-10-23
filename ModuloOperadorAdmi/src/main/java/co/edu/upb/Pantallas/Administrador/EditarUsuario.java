@@ -12,7 +12,10 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
-
+/**
+ * Pantalla para editar usuario
+ *@author PabloBravo
+ */
 public class EditarUsuario extends JFrame {
 
 	private JPanel contentPane;

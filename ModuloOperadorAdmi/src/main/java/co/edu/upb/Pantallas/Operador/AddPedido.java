@@ -17,7 +17,10 @@ import java.rmi.RemoteException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Iterator;
-
+/**
+ * Pantalla para añadir un pedido
+ *@author ChristianRodriguez
+ */
 public class AddPedido extends JFrame {
     String nombreChange = "";
     String apellidoChange = "";
@@ -496,7 +499,7 @@ public class AddPedido extends JFrame {
         labelPrice.setVisible(true);
 
         JLabel image  = new JLabel();
-        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\CrazyPotato (Personalizado).jpg"));
+        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\Perro (Personalizado).jpg"));
         image.setBounds(10,45,180,150);
         panelhamburguesa.add(image);
         panelhamburguesa.setVisible(true);

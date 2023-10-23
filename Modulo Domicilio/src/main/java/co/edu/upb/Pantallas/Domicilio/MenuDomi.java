@@ -41,7 +41,7 @@ public class MenuDomi extends JFrame {
 
         JButton botonRap1 = new JButton("Entregramé");
         botonRap1.setFont(new Font("Harlow Solid Italic", Font.PLAIN, 20));
-        botonRap1.setBounds(300, 300, 300, 150);
+        botonRap1.setBounds(450, 300, 500, 250);
         botonRap1.setBackground(new Color(110,149,0));
         botonRap1.addActionListener(new ActionListener() {
             @Override

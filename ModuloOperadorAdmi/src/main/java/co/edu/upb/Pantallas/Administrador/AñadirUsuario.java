@@ -13,7 +13,10 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
-
+/**
+ * Clase para añadir usuario interfaz grafica
+ *@author ChristianRodriguez
+ */
 public class AñadirUsuario extends JFrame {
 
     private JPanel contentPane;

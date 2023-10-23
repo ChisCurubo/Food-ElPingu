@@ -1,6 +1,9 @@
 package co.edu.upb.datos;
 
-import java.sql.*;
+import java.sql.*; /**
+ * @author ChristianRodriguez
+ * Clase de pool de conexiones, con la url para entrar a la base de datos
+ */
 
 public class Conexion {
     /**

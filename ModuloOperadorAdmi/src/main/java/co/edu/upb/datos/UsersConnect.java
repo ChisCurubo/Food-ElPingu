@@ -8,15 +8,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-public class UsersConnect<T>  implements Serializable {
+/**
+ * @author ChristianRodriguez
+ * Clase de conexion a la tabla de users en la base de datos, estas permitiran comunicar el servidor con la base de datos
+ * @param <T>
+ */
+public class UsersConnect<T> implements Serializable {
     /**
      * // estas son las instruciones para la base de datos para la tabla de usuarios
      */
 
     private static final String SQL_SELECT = "SELECT * FROM pingu.usuarios";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.usuarios WHERE email = ?  AND pwd = ? ";
-    private static final String SQL_SELECT_WHERE_Clien = "SELECT * FROM pingu.usuarios WHERE email = ? ";
     private static final String SQL_INSERT = "INSERT INTO pingu.usuarios (email, pwd, tipo , nombre , apellido) VALUES ( ?, ?, ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE pingu.usuarios SET email = ?, pwd = ?, tipo = ? , nombre = ?, apellido = ? WHERE ID =?";
     private static final String SQL_DELETE = "DELETE FROM pingu.usuarios WHERE ID =?";
@@ -31,7 +34,6 @@ public class UsersConnect<T>  implements Serializable {
      * @param pswEN
      * @return
      */
-
     public Users select(String emailEn, String pswEN) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -41,30 +43,6 @@ public class UsersConnect<T>  implements Serializable {
             stmt = conn.prepareStatement(SQL_SELECT_WHERE);
             stmt.setString(1, emailEn);
             stmt.setString(2, pswEN);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                user.setNombre(rs.getString("nombre"));
-                user.setApellido(rs.getString("apellido"));
-                user.setEmail(rs.getString("email"));
-                user.setPwd(rs.getString("pwd"));
-                user.setTipo(rs.getInt("tipo"));
-            }
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        }
-        return user;
-    }
-    public Users selectEmail(String emailEn) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        Users user = new Users();
-        try {
-            conn = Conexion.getConection();
-            stmt = conn.prepareStatement(SQL_SELECT_WHERE_Clien);
-            stmt.setString(1, emailEn);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 user.setNombre(rs.getString("nombre"));
@@ -125,7 +103,6 @@ public class UsersConnect<T>  implements Serializable {
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0;
-
         try {
             conn = Conexion.getConection();
             stmt = conn.prepareStatement(SQL_UPDATE);
@@ -135,23 +112,18 @@ public class UsersConnect<T>  implements Serializable {
             stmt.setString(4, user.getNombre());
             stmt.setString(5, user.getApellido());
             stmt.setInt(6, user.getID());
-
-            // Log the SQL statement before executing it
-            System.out.println("Executing SQL statement: " + stmt.toString());
-
             registros = stmt.executeUpdate();
-            System.out.println("Records updated: " + registros);
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
             try {
                 Conexion.close(stmt);
                 Conexion.close(conn);
+
             } catch (SQLException ex) {
                 ex.printStackTrace(System.out);
             }
         }
-
         return registros;
     }
 

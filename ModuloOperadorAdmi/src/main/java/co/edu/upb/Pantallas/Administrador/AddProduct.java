@@ -12,7 +12,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
-
+/**
+ * Clase de interfaz grafica añadir prdducto
+ *@author ChristianRodriguez
+ */
 public class AddProduct extends JFrame {
     public static void main(String[] args) {
         AddProduct men = new AddProduct();

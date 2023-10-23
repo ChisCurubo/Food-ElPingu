@@ -13,6 +13,10 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+/**
+ * @author ChristianRodriguez
+ * Clase de conexion a la tabla de productos en la base de datos, comunica al servidor con la base de datos
+ */
 
 public class MenuConnect implements Serializable {
     /**
@@ -22,11 +26,18 @@ public class MenuConnect implements Serializable {
     private static final String SQL_SELECT = "SELECT * FROM pingu.productos";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.productos WHERE producto = ? ";
     private static final String SQL_SELECT_WHERE_ID = "SELECT producto FROM pingu.productos WHERE idproducto = ? ";
+    private static final String SQL_SELECT_WHERE_ID_Tipo = "SELECT * FROM pingu.productos WHERE idproducto = ? ";
     private static final String SQL_INSERT = "INSERT INTO pingu.productos (producto, cantidad, tiempoprep , precio, tiemporapi ) VALUES ( ?, ?, ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE pingu.productos SET producto = ?, cantidad = ?, tiempoprep = ? , precio = ?, tiemporapi = ? WHERE idproducto =?";
     private static final String SQL_DELETE = "DELETE FROM pingu.productos WHERE idproducto =?";
 
-   public DoubleLinkedList<Menu> algrDistanciaHamming(String busqueda) {
+    /**
+     * Prototipo del algortmo de distancia de hammil
+     * @param busqueda
+     * @return
+     */
+
+    public DoubleLinkedList<Menu> algrDistanciaHamming(String busqueda) {
         String platoSearch = busqueda;
         String plato = "";
         Menu menn;
@@ -55,6 +66,11 @@ public class MenuConnect implements Serializable {
         return listaProductos;
     }
 
+    /**
+     * Metodo sort para el funcionammiuento del algortmo
+     * @param menupe
+     * @return
+     */
     public DoubleLinkedList<Menu> sortMenu(DoubleLinkedList<Menu> menupe) {
         DoubleLinkedList<Menu> menFin = new DoubleLinkedList<>();
         Menu[] arryLis = toArrayMenu(menupe);
@@ -74,11 +90,16 @@ public class MenuConnect implements Serializable {
         return menFin;
     }
 
+    /**
+     * Pasar a un array de un objeto creado por nosotros. debido a que el to array de la lista no sirve con objetos
+     * @param menu
+     * @return
+     */
     private Menu[] toArrayMenu(DoubleLinkedList<Menu> menu) {
         Menu[] arryMen = new Menu[menu.size()];
         Iterator iter = menu.iterator();
         int cont = 0;
-        while (iter.hasNext()) {
+        while (iter.hasNext()){
             DoubleListNode<Menu> menuNode = (DoubleListNode<Menu>) iter.next();
             arryMen[cont] = menuNode.getObject();
             cont++;
@@ -138,7 +159,11 @@ public class MenuConnect implements Serializable {
         }
         return menu;
     }
-
+    /**
+     * Select para el algortmo
+     * @param idproduct
+     * @return
+     */
     public String selectIdAlgortm(int idproduct) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -159,6 +184,38 @@ public class MenuConnect implements Serializable {
             ex.printStackTrace(System.out);
         }
         return menu.getProduct();
+    }
+
+    /**
+     * Metodo de select a traves del id del producto
+     * @param idproduct
+     * @return
+     */
+    public Menu selectId(int idproduct) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        String product = "";
+        Menu menu = new Menu();
+        try {
+            conn = Conexion.getConection();
+            stmt = conn.prepareStatement(SQL_SELECT_WHERE_ID_Tipo);
+            stmt.setInt(1, idproduct);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                menu.setIdProducto(rs.getInt("idproducto"));
+                menu.setProduct(rs.getString("producto"));
+                menu.setCamtProd(rs.getInt("cantidad"));
+                menu.setTiempoPrepLen(rs.getInt("tiempoprep"));
+                menu.setTiempoPrepRapi(rs.getInt("tiemporapi"));
+                menu.setPrecio(rs.getDouble("precio"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+        return menu;
     }
 
     /**

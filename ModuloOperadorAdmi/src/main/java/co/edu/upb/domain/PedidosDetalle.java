@@ -3,15 +3,29 @@ package co.edu.upb.domain;
 import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
 import java.io.Serializable;
+/**
+ * Clase de pedidos detalle, esta clase , sera donde se llevara registro de los pedidos/ productos  que el cliente desee, Corresponde a la tabla de pedidos-detalles
+ * @author ChristianRodriguez
+ */
 
 public class PedidosDetalle implements Serializable {
+    /**
+     * Atributos de la clase pedidos detalles
+     */
     private int idDetalle;
     private  int idPedidos;
     private int idProducto;
     private int cantidad ;
     private String estatuPedido;
 
-
+    /**
+     * Contsructores de la clase
+     * @param idDetalle
+     * @param idPedidos
+     * @param idProducto
+     * @param cantidad
+     * @param estatuPedido
+     */
     public PedidosDetalle(int idDetalle, int idPedidos, int idProducto, int cantidad, String estatuPedido) {
         this.idDetalle = idDetalle;
         this.idPedidos = idPedidos;
@@ -30,7 +44,10 @@ public class PedidosDetalle implements Serializable {
     public PedidosDetalle() {
 
     }
-
+    /**
+     * Getters y setters de la clase, y atibutos
+     * @return
+     */
     public int getIdDetalle() {
         return idDetalle;
     }

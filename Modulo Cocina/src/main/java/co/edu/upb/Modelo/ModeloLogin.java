@@ -15,7 +15,7 @@ import java.rmi.RemoteException;
 import java.util.Properties;
 /**
  *@author ChristianRodriguez
- * Clase de puente entre las interfaces , funcionalidad para comunicar a la inter faz y poder concetar con el servidor
+ * Clase de puente entre las interfaces , funcionalidad para comunicar a la interfaz y poder concetar con el servidor
  */
 public class ModeloLogin {
     public static Client CocinaInterface ;

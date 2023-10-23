@@ -6,7 +6,9 @@ import co.edu.upb.estructuras.listas.LinkedList;
 import co.edu.upb.estructuras.pilas.Stack;
 
 import java.io.Serializable;
-
+/**
+ *@author ChristianRodriguez
+ */
 public class ColaPrioridadList<T extends Serializable> implements StackInterface<T> , Serializable {
 
     LinkedList<T> listDouble = new LinkedList<>();

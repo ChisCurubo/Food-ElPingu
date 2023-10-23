@@ -13,7 +13,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
-
+/**
+ * el menu del programa
+ *@author PabloBravo
+ */
 public class Menu extends JFrame {
 
 	private JPanel contentPane;

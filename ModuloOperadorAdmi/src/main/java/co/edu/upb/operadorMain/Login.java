@@ -16,7 +16,10 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.TemporalField;
-
+/**
+ * Clase main
+ *@author ChristianRodriguez
+ */
 public class Login {
     public static void main(String[] args) {
         /*

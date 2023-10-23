@@ -5,10 +5,14 @@ import co.edu.upb.Pantallas.Operador.InicioSesion;
 
 import java.rmi.RemoteException;
 
+/**
+ * @author ChristianRodriguez
+ * Clase para el inicio del programa
+ */
 public class ControladorLogin {
     public ControladorLogin() {
         try {
-            if (!ModeloLogin.clienteOperador.isConnected()) {
+            if (ModeloLogin.clienteOperador.isConnected()) {
                 InicioSesion ini = new InicioSesion();
                 ModeloLogin modeloLogin = new ModeloLogin();
 

@@ -9,7 +9,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
-
+/**
+ * PAntalla para añadir a un cliente
+ *@author ChristianRodriguez
+ */
 public class AddCliente extends JFrame {
     public static void main(String[] args) {
         AddCliente ad = new AddCliente();
