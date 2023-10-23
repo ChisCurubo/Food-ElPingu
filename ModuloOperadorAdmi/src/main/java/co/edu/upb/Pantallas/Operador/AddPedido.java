@@ -381,7 +381,7 @@ public class AddPedido extends JFrame {
 
 
         JLabel image  = new JLabel();
-        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\Hambur (Personalizado).jpg"));
+        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\CrazyHamburguer (Personalizado).jpg"));
         image.setBounds(10,45,180,150);
         panelhamburguesa.add(image);
         panelhamburguesa.setVisible(true);
@@ -421,7 +421,7 @@ public class AddPedido extends JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 contBot++;
                 cantProdutField.setText(String.valueOf(contBot));
-                busquedaProduct.setText("Crazy Potato");
+                busquedaProduct.setText("Hamburguesa ElPingü");
             }
         });
 

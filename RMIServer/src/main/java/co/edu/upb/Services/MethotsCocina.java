@@ -24,7 +24,7 @@ public class MethotsCocina extends UnicastRemoteObject implements CocinaInterfac
     @Override
     public PedidosDetalle popColaLenta() throws RemoteException {
         try {
-            CocinaCola.popOfColaCocina(0);
+            return CocinaCola.popOfColaCocina(0);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -53,19 +53,7 @@ public class Menu extends JFrame {
 	private JLabel lblNewLabel;
 	private JLabel lblMenu_1;
 	private JLabel lblMenu_2;
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Menu frame = new Menu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 	
 	public Menu() {
 		ComponentesDePagina();

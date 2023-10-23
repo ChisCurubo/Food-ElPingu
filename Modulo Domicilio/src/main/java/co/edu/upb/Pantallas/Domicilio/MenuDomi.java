@@ -1,6 +1,8 @@
 package co.edu.upb.Pantallas.Domicilio;
 
 import co.edu.upb.Modelo.ModeloLogin;
+import co.edu.upb.domain.PedidosDetalle;
+import co.edu.upb.estructuras.listas.DoubleLinkedList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +15,7 @@ import java.rmi.RemoteException;
 
 public class MenuDomi extends JFrame {
     public static void main(String[] args) {
+        ModeloLogin modelo = new ModeloLogin();
         MenuDomi men = new MenuDomi();
     }
     public MenuDomi() {

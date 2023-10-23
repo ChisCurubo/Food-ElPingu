@@ -44,9 +44,9 @@ public class MethotsDomicilio extends UnicastRemoteObject implements DomicilioIn
     public int rutaAPuntos(DoubleLinkedList<String> punto) throws RemoteException {
         int ditance = 0;
         int distance2 = 0;
-        Iterator iter = punto.iteratorObj();
+        Iterator<String> iter = punto.iteratorObj();
         while (iter.hasNext()) {
-            String valTemp = (String) iter.next();
+            String valTemp =  iter.next();
             distance2 = Grafo.dijkstrasAlgorithm(Grafo.switchStrInt("PROVENZA"), Grafo.switchStrInt(valTemp));
             if (ditance >= distance2) {
                 ditance = distance2;
@@ -55,6 +55,7 @@ public class MethotsDomicilio extends UnicastRemoteObject implements DomicilioIn
                 ditance = distance2;
                 Grafo.vertice = valTemp;
             }
+            System.out.println(ditance);
         }
         return ditance;
     }
@@ -83,12 +84,14 @@ public class MethotsDomicilio extends UnicastRemoteObject implements DomicilioIn
     public DoubleLinkedList<String> rutaTotal(DoubleLinkedList<String> punto) throws RemoteException {
         String pInin = "PROVENZA";
         DoubleLinkedList<String> listRut = new DoubleLinkedList<>();
-        Iterator iter = punto.iteratorObj();
+        Iterator<String> iter = punto.iteratorObj();
         while (iter.hasNext()) {
-            String valTem = (String) iter.next();
+            String valTem =  iter.next();
+            System.out.println(valTem);
             int[] rutaTemp = Grafo.dijkstrasAlgorithmArry(Grafo.switchStrInt(pInin), Grafo.switchStrInt(valTem));
             String[] rsStr = Grafo.switcFor(rutaTemp);
             listRut.add(rsStr);
+            System.out.println(listRut.print());
             pInin = valTem;
         }
         return listRut;

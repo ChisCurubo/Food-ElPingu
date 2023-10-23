@@ -9,9 +9,6 @@ import java.awt.event.ActionListener;
  *@author ChristianRodriguez
  */
 public class MenuOperador extends JFrame {
-    public static void main(String[] args) {
-        MenuOperador men = new MenuOperador();
-    }
     public MenuOperador() {
         initOperator();
         setVisible(true);

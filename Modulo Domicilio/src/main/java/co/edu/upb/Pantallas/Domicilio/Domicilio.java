@@ -17,9 +17,6 @@ import java.util.Iterator;
  *@author ChristianRodriguez
  */
 public class Domicilio extends JFrame {
-    public static void main(String[] args) {
-        Domicilio men = new Domicilio();
-    }
 
     /**
      * CLase de interfaz grafica apara  el domicilio
@@ -76,11 +73,16 @@ public class Domicilio extends JFrame {
         panelInfo.add(verCola);
 
         JTextArea textArea = new JTextArea();
-        textArea.setFont(new Font("Arial", 1, 20));
-        textArea.setBackground(new Color(64, 77,128));
+        textArea.setFont(new Font("Arial", 1, 12));
+        textArea.setBackground(new Color(125, 139, 192));
         textArea.setBounds(30,50,690,225);
         textArea.setEditable(false);
         panelInfo.add(textArea);
+        try {
+            textArea.setText(ModeloLogin.DomicilioInterface.imprimirCola());
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
         JLabel ruta = new JLabel("Ruta ");
         ruta.setFont(new Font("Arial", 1, 20));
         ruta.setForeground(Color.WHITE);
@@ -89,7 +91,7 @@ public class Domicilio extends JFrame {
 
         JTextArea textRuta = new JTextArea();
         textRuta.setFont(new Font("Arial", 1, 20));
-        textRuta.setBackground(new Color(64, 77,128));
+        textRuta.setBackground(new Color(125, 139, 192));
         textRuta.setBounds(30,320,690,225);
         textRuta.setEditable(false);
         panelInfo.add(textRuta);
@@ -132,9 +134,9 @@ public class Domicilio extends JFrame {
                         listStr.add(cle.getBarrio());
                     }
                     DoubleLinkedList<String> listFin = new DoubleLinkedList<>();
-                    Iterator iterar = listStr.iterator();
+                    Iterator<String> iterar = listStr.iteratorObj();
                     while (iterar.hasNext()){
-                        String str = (String) iterar.next();
+                        String str =  iterar.next();
                         if(listFin.contains(str)){
 
                         }else{
@@ -144,9 +146,15 @@ public class Domicilio extends JFrame {
                     textArea.setText(ModeloLogin.DomicilioInterface.imprimirCola());
                     int valMax = ModeloLogin.DomicilioInterface.rutaAPuntos(listStr);
                     String verticeLejano = ModeloLogin.DomicilioInterface.getrVerticeDistanciaMayor();
-                    if(listStr.contains(verticeLejano)){
+                    System.out.println(verticeLejano);
+
+                    if (verticeLejano != null && listStr.contains(verticeLejano)) {
                         listStr.remove(verticeLejano);
                         listStr.addOnHead(verticeLejano);
+                        System.out.println(listStr.imprimir());
+                    } else {
+                        // Manejar el caso en el que no se encuentra un vértice distante
+                        System.out.println("No se encontró un vértice distante o el vértice no está en la lista.");
                     }
                     textRuta.setText(ModeloLogin.DomicilioInterface.rutaTotal(listStr).print());
                 } catch (RemoteException ex) {

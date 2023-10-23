@@ -18,6 +18,7 @@ public class Client implements CocinaInterface {
     /**
      * Atributos de la clase , el atributo service permite acceder a la interfaz y comununicarse con el servidor
      */
+    private static final long serialVersionUID = 3621271727859909664L;
     private CocinaInterface service;
     private String ip;
     private String port;

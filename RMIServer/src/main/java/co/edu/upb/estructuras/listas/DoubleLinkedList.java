@@ -733,6 +733,14 @@ public class DoubleLinkedList<T extends Serializable> implements LinkedListInter
             System.out.print(iterator.next().getObject() + ", ");
         }
     }
+    public String print() {
+        Iterator<NodeInterface<T>> iterator = iterator();
+        String str = "";
+        for (int i = 0; i < size(); i++) {
+            str+= iterator.next().getObject()+  "; ";
+        }
+        return str;
+    }
 
     public boolean invertir(int k) {
         if (k > 0 && !isEmpty()) {

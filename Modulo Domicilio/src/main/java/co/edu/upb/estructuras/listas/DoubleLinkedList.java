@@ -16,6 +16,7 @@ import java.util.logging.Logger;
  *@author ChristianRodriguez
  */
 public class DoubleLinkedList<T extends Serializable> implements LinkedListInterface<T>, Cloneable , Serializable {
+    private static final long serialVersionUID = 1525693509033756841L;
     private DoubleListNode<T> head;
     private DoubleListNode<T> tail;
     private DoubleListNode<T> inode;
@@ -446,13 +447,17 @@ public class DoubleLinkedList<T extends Serializable> implements LinkedListInter
             try {
                 if (head.isEquals(object)) {
                     head = head.getNext();
-                    head.setPrev(null);
+                    if(head != null) {
+                        head.setPrev(null);
+                    }
                     size--;
                     return true;
                 } else if (tail.isEquals(object)) {
                     T nodeFin = tail.getPrev().getObject();
                     tail = (DoubleListNode<T>) nodeOf(nodeFin);
-                    tail.setNext(null);
+                    if(tail != null) {
+                        tail.setNext(null);
+                    }
                     size--;
                     return true;
                 }

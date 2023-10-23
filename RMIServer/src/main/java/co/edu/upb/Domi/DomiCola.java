@@ -13,14 +13,13 @@ public class DomiCola {
 
     public DomiCola(){
     }
-    public static   boolean adDomiCOla(DoubleLinkedList<PedidosDetalle> listDet) {
+    public static  boolean adDomiCOla(DoubleLinkedList<PedidosDetalle> listDet) {
         Iterator iter = listDet.iteratorObj();
-        boolean bu = false;
         while (iter.hasNext()){
             PedidosDetalle pedi = (PedidosDetalle) iter.next();
-             bu = colaDespacho.push(pedi);
+            colaDespacho.push(pedi);
         }
-        return bu;
+        return true;
     }
     public static PedidosDetalle popDespachoDomi() {
        return colaDespacho.pop();

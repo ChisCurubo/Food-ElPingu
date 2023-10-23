@@ -15,9 +15,6 @@ import java.awt.event.ActionListener;
  */
 
 public class MenuAdmin extends JFrame {
-    public static void main(String[] args) {
-        MenuAdmin men = new MenuAdmin();
-    }
     public MenuAdmin() {
         initOperator();
         setVisible(true);

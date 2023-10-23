@@ -41,10 +41,4 @@ public class RestauranteFactura extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            RestauranteFactura factura = new RestauranteFactura();
-            factura.setVisible(true);
-        });
-    }
 }

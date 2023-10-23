@@ -11,9 +11,6 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 public class EditProduct extends JFrame {
-    public static void main(String[] args) {
-        EditProduct men = new EditProduct();
-    }
 
     public EditProduct() {
         initOperator();

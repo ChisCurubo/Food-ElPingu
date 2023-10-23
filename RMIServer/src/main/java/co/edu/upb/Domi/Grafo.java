@@ -416,8 +416,9 @@ public class Grafo {
 
     public static String[] switcFor(int[] arryRuta){
         String[] strRut = new String[arryRuta.length];
-        for (int i = 0; i < arryRuta.length-1; i++) {
+        for (int i = 0; i < arryRuta.length; i++) {
             strRut[i] = convertNumberToString(arryRuta[i]);
+            System.out.println(strRut[i] + i);
         }
         return strRut;
     }
@@ -474,130 +475,130 @@ public class Grafo {
     public static int switchStrInt(String str) {
         switch (str) {
             case "NORTE":
-                return 1;
+                return 1-1;
             case "NORORIENTAL":
-                return 2;
+                return 2-1;
             case "SAN FRANCISCO":
-                return 3;
+                return 3-1;
             case "OCCIDENTAL":
-                return 4;
+                return 4-1;
             case "GARCIA ROVIRA":
-                return 5;
+                return 5-1;
             case "CONCORDIA":
-                return 6;
+                return 6-1;
             case "CIUDADELA":
-                return 7;
+                return 7-1;
             case "SUROCIDENTE":
-                return 8;
+                return 8-1;
             case "PEDREGOSA":
-                return 9;
+                return 9-1;
             case "PROVENZA":
-                return 10;
+                return 10-1;
             case "SUR":
-                return 11;
+                return 11-1;
             case "CABECERA":
-                return 12;
+                return 12-1;
             case "ORIENTAL":
-                return 13;
+                return 13-1;
             case "MORRORICO":
-                return 14;
+                return 14-1;
             case "CENTRO":
-                return 15;
+                return 15-1;
             case "MUTIS":
-                return 16;
+                return 16-1;
             case "LAGOS":
-                return 17;
+                return 17-1;
             case "CALDAS":
-                return 18;
+                return 18-1;
             case "MOLINOS":
-                return 19;
+                return 19-1;
             case "BUENAVISTA":
-                return 20;
+                return 20-1;
             case "CAÑAVERAL":
-                return 21;
+                return 21-1;
             case "SANTANA":
-                return 22;
+                return 22-1;
             case "CUMBRE":
-                return 23;
+                return 23-1;
             case "BUCARICA":
-                return 24;
+                return 24-1;
             case "ALTAMIRA":
-                return 25;
+                return 25-1;
             case "PALOGORDO":
-                return 26;
+                return 26-1;
             case "CHOCOITA":
-                return 27;
+                return 27-1;
             case "PEÑAS":
-                return 28;
+                return 28-1;
             case "POBLADO":
-                return 29;
+                return 29-1;
             case "CARRIZAL":
-                return 30;
+                return 30-1;
         }
         return 200000;
     }
 
     public static String convertNumberToString(int numero) {
         switch (numero) {
-            case 1:
+            case 1-1:
                 return "NORTE";
-            case 2:
+            case 2-1:
                 return "NORORIENTAL";
-            case 3:
+            case 3-1:
                 return "SAN FRANCISCO";
-            case 4:
+            case 4-1:
                 return "OCCIDENTAL";
-            case 5:
+            case 5-1:
                 return "GARCIA ROVIRA";
-            case 6:
+            case 6-1:
                 return "CONCORDIA";
-            case 7:
+            case 7-1:
                 return "CIUDADELA";
-            case 8:
+            case 8-1:
                 return "SUROCIDENTE";
-            case 9:
+            case 9-1:
                 return "PEDREGOSA";
-            case 10:
+            case 10-1:
                 return "PROVENZA";
-            case 11:
+            case 11-1:
                 return "SUR";
-            case 12:
+            case 12-1:
                 return "CABECERA";
-            case 13:
+            case 13-1:
                 return "ORIENTAL";
-            case 14:
+            case 14-1:
                 return "MORRORICO";
-            case 15:
+            case 15-1:
                 return "CENTRO";
-            case 16:
+            case 16-1:
                 return "MUTIS";
-            case 17:
+            case 17-1:
                 return "LAGOS";
-            case 18:
+            case 18-1:
                 return "CALDAS";
-            case 19:
+            case 19-1:
                 return "MOLINOS";
-            case 20:
+            case 20-1:
                 return "BUENAVISTA";
-            case 21:
+            case 21-1:
                 return "CAÑAVERAL";
-            case 22:
+            case 22-1:
                 return "SANTANA";
-            case 23:
+            case 23-1:
                 return "CUMBRE";
-            case 24:
+            case 24-1:
                 return "BUCARICA";
-            case 25:
+            case 25-1:
                 return "ALTAMIRA";
-            case 26:
+            case 26-1:
                 return "PALOGORDO";
-            case 27:
+            case 27-1:
                 return "CHOCOITA";
-            case 28:
+            case 28-1:
                 return "PEÑAS";
-            case 29:
+            case 29-1:
                 return "POBLADO";
-            case 30:
+            case 30-1:
                 return "CARRIZAL";
         }
         return "";

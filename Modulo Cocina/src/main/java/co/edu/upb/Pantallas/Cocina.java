@@ -36,6 +36,8 @@ public class Cocina extends JFrame {
      */
     DoubleLinkedList<DoubleLinkedList<PedidosDetalle>> list = new DoubleLinkedList<>();
     DoubleLinkedList<PedidosDetalle> listLIst = new DoubleLinkedList<>();
+    DoubleLinkedList<PedidosDetalle> pedi = new DoubleLinkedList<>();
+
 
     public static void main(String[] args) {
 
@@ -274,7 +276,10 @@ public class Cocina extends JFrame {
                     }
                 } else if (fogRapido[numFog] != null) {
                     listLIst.add(fogRapido[numFog]);
+                    System.out.println("olafodrap");
+                    PedidosDetalle pediTem = fogRapido[numFog];
                     fogRapido[numFog] = null;
+                    veriPedido(pediTem);
                     String strin = "";
                     for (int i = 0; i < fogRapido.length; i++) {
                         if (fogRapido[i] != null) {
@@ -317,12 +322,12 @@ public class Cocina extends JFrame {
                     } catch (RemoteException ex) {
                         throw new RuntimeException(ex);
                     }
-
-
                 } else if (fogLento[numFog] != null) {
                     botonRap.setBackground(Color.GREEN);
-                    veriPedido(fogLento[numFog]);
+                    System.out.println("ola1");
+                    PedidosDetalle pediTep = fogLento[numFog];
                     fogLento[numFog] = null;
+                    veriPedido(pediTep);
                     String strin = "";
                     for (int i = 0; i < fogLento.length; i++) {
                         if (fogLento[i] != null) {
@@ -347,67 +352,203 @@ public class Cocina extends JFrame {
      */
     public boolean veriPedido(PedidosDetalle pedidDet) {
         int cont = 0;
+
+        // Crear una lista temporal para agregar pedidos
+
+
         for (int i = 0; i < fogRapido.length; i++) {
-            if (pedidDet.getIdPedidos() == fogRapido[i].getIdPedidos()) {
+            if (fogRapido[i] != null && pedidDet.getIdPedidos() == fogRapido[i].getIdPedidos()) {
                 cont++;
-                Iterator iter = list.iteratorObj();
-                while (iter.hasNext()) {
-                    DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
-                    if (istTemp.get().getIdPedidos() == pedidDet.getIdPedidos()) {
-                        istTemp.add(pedidDet);
-                        return true;
+
+                // Verificar si ya existe un pedido con el mismo ID en la lista tempPedidosList
+                boolean pedidoExistente = false;
+                Iterator<DoubleLinkedList<PedidosDetalle>> iter = list.iteratorObj();
+                while (iter.hasNext()){
+                DoubleLinkedList<PedidosDetalle> tempLista = iter.next();
+                    if (tempLista.get().getIdPedidos() == pedidDet.getIdPedidos()) {
+                        tempLista.add(pedidDet);
+                        pedidoExistente = true;
+                        break;
                     }
                 }
-                DoubleLinkedList<PedidosDetalle> listaNohay = new DoubleLinkedList<>();
-                listaNohay.add(pedidDet);
-                list.add(listaNohay);
-                return true;
+
+                if (!pedidoExistente) {
+                    DoubleLinkedList<PedidosDetalle> nuevoPedido = new DoubleLinkedList<>();
+                    nuevoPedido.add(pedidDet);
+                    list.add(nuevoPedido);
+                }
             }
         }
+
         for (int i = 0; i < fogLento.length; i++) {
-            if (pedidDet.getIdPedidos() == fogLento[i].getIdPedidos()) {
+            if (fogLento[i] != null && pedidDet.getIdPedidos() == fogLento[i].getIdPedidos()) {
                 cont++;
-                Iterator iter = list.iteratorObj();
-                while (iter.hasNext()) {
-                    DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
-                    if (istTemp.get().getIdPedidos() == pedidDet.getIdPedidos()) {
-                        istTemp.add(pedidDet);
-                        return true;
+
+                // Verificar si ya existe un pedido con el mismo ID en la lista tempPedidosList
+                boolean pedidoExistente = false;
+                Iterator<DoubleLinkedList<PedidosDetalle>> iter = list.iteratorObj();
+                while (iter.hasNext()){
+                DoubleLinkedList<PedidosDetalle> tempLista = iter.next();
+                    if (tempLista.get().getIdPedidos() == pedidDet.getIdPedidos()) {
+                        tempLista.add(pedidDet);
+                        pedidoExistente = true;
+                        break;
                     }
                 }
-                DoubleLinkedList<PedidosDetalle> listaNohay = new DoubleLinkedList<>();
-                listaNohay.add(pedidDet);
-                list.add(listaNohay);
-                return true;
-            }
-        }
-        if (cont == 0) {
-            //Mandar a domicilio
-            Iterator iter = list.iteratorObj();
-            while (iter.hasNext()) {
-                DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
-                if (istTemp.get().getIdPedidos() == pedidDet.getIdPedidos()) {
-                    istTemp.add(pedidDet);
-                    sendToDomi(istTemp);
-                    list.remove(istTemp);
-                    return true;
+
+                if (!pedidoExistente) {
+                    DoubleLinkedList<PedidosDetalle> nuevoPedido = new DoubleLinkedList<>();
+                    nuevoPedido.add(pedidDet);
+                    list.add(nuevoPedido);
                 }
             }
-            // mandar  a domicilio
         }
+
+        if (cont == 0) {
+            // Mandar a domicilio
+            Iterator iter = list.iteratorObj();
+            if (!list.isEmpty()) {
+                while (iter.hasNext()) {
+                    DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
+                    if (istTemp.get().getIdPedidos() == pedidDet.getIdPedidos() && istTemp.get() != pedidDet) {
+                        istTemp.add(pedidDet);
+                        System.out.println("Llega");
+                        if (sendToDomi(istTemp)) {
+                            list.remove(istTemp);
+                            return true;
+                        } else {
+                            System.out.println("no");
+                            return false;
+                        }
+                    }
+                }
+            } else {
+                DoubleLinkedList<PedidosDetalle> nuevoPedido = new DoubleLinkedList<>();
+                nuevoPedido.add(pedidDet);
+                list.add(nuevoPedido);
+                if (sendToDomi(nuevoPedido)) {
+                    list.remove(nuevoPedido);
+                    return true;
+                } else {
+                    System.out.println("no");
+                    return false;
+                }
+            }
+        }
+
+        // Agregar los pedidos de la lista temporal a la lista principal
+        //list.addAll(tempPedidosList);
+
         return false;
     }
-
     /**
-     * This is the implementation of the methont to send pedidos detalles to the delivery module
+     * Este es el método para enviar los detalles del pedido al módulo de entrega.
      * @param listaDomi
      * @return
      */
+    public boolean sendToDomi(DoubleLinkedList<PedidosDetalle> listaDomi) {
+        try {
+            return ModeloLogin.CocinaInterface.sendToDomi(listaDomi);
+        } catch (RemoteException e) {
+            // Manejar la excepción de manera adecuada, como registrarla.
+            e.printStackTrace();
+            return false; // O tomar otra acción según tus requerimientos.
+        }
+    }
+/*    public boolean veriPedido(PedidosDetalle pedidDet) {
+        int cont = 0;
+        for (int i = 0; i < fogRapido.length; i++) {
+            if (fogRapido[i] != null && pedidDet.getIdPedidos() == fogRapido[i].getIdPedidos()) {
+                cont++;
+                Iterator iter = list.iteratorObj();
+                if (!list.isEmpty()) {
+                    while (iter.hasNext()) {
+                        DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
+                        if (istTemp.get().getIdPedidos() == pedidDet.getIdPedidos()) {
+                            istTemp.add(pedidDet);
+                            return true;
+                        }
+                    }
+                    DoubleLinkedList<PedidosDetalle> listaNohay = new DoubleLinkedList<>();
+                    listaNohay.add(pedidDet);
+                    list.add(listaNohay);
+                    return true;
+                }
+            } else {
+                DoubleLinkedList<PedidosDetalle> pedido = new DoubleLinkedList<>();
+                pedido.add(pedidDet);
+                list.add(pedido);
+            }
+        }
+        for (int i = 0; i < fogLento.length; i++) {
+            if (fogLento[i] != null && pedidDet.getIdPedidos() == fogLento[i].getIdPedidos()) {
+                cont++;
+                Iterator iter = list.iteratorObj();
+                if (!list.isEmpty()) {
+                    while (iter.hasNext()) {
+                        DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
+                        if (istTemp.get().getIdPedidos() == pedidDet.getIdPedidos()) {
+                            istTemp.add(pedidDet);
+                            return true;
+                        } else {
+                            DoubleLinkedList<PedidosDetalle> pedido = new DoubleLinkedList<>();
+                            pedido.add(pedidDet);
+                            list.add(pedido);
+                        }
+                    }
+                    DoubleLinkedList<PedidosDetalle> listaNohay = new DoubleLinkedList<>();
+                    listaNohay.add(pedidDet);
+                    list.add(listaNohay);
+                    return true;
+                }
+            }
+        }
+            if (cont == 0) {
+                //Mandar a domicilio
+                Iterator iter = list.iteratorObj();
+                if (!list.isEmpty()) {
+                    while (iter.hasNext()) {
+                        DoubleLinkedList<PedidosDetalle> istTemp = (DoubleLinkedList<PedidosDetalle>) iter.next();
+                        if (istTemp.get().getIdPedidos() == pedidDet.getIdPedidos() && istTemp.get() != pedidDet) {
+                            istTemp.add(pedidDet);
+                            System.out.println("LLega");
+                            if (sendToDomi(istTemp)) {
+                                list.remove(istTemp);
+                                return true;
+                            } else {
+                                System.out.println("no");
+                                return false;
+                            }
+                        }
+                    }
+                } else {
+                    DoubleLinkedList<PedidosDetalle> pedido = new DoubleLinkedList<>();
+                    pedido.add(pedidDet);
+                    list.add(pedido);
+                    if (sendToDomi(pedido)) {
+                        list.remove(pedido);
+                        return true;
+                    } else {
+                        System.out.println("no");
+                        return false;
+                    }
+                }
+
+            }
+            return false;
+        }
+
+
+    *//**
+     * This is the implementation of the methont to send pedidos detalles to the delivery module
+     * @param listaDomi
+     * @return
+     *//*
     public boolean sendToDomi(DoubleLinkedList<PedidosDetalle> listaDomi) {
         try {
            return ModeloLogin.CocinaInterface.sendToDomi(listaDomi);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 }

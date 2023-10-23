@@ -274,7 +274,7 @@ public class Main {
                     int opt = sc.nextInt() - 1;
                     System.out.println("ingrese nodo Final ");
                     int optFin = sc.nextInt() - 1;
-                    System.out.println("origen: " + (opt + 1) + "---> " + "destino: " + (optFin + 1) + " valor camino  : " + dijkstrasAlgorithmArry(opt, optFin));
+                    System.out.println("origen: " + (opt + 1) + "---> " + "destino: " + (optFin + 1) + " valor camino  : " + dijkstrasAlgorithm(opt, optFin));
                     //int[] rest = dijkstrasAlgorithmArry(opt, optFin);
                     //System.out.printf(String.valueOf(getTotalRute(rest)));
                     break;

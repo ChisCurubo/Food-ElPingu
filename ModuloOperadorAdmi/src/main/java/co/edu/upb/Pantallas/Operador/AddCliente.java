@@ -14,9 +14,7 @@ import java.rmi.RemoteException;
  *@author ChristianRodriguez
  */
 public class AddCliente extends JFrame {
-    public static void main(String[] args) {
-        AddCliente ad = new AddCliente();
-    }
+
 
     public AddCliente() {
         initOperatorAddClient();

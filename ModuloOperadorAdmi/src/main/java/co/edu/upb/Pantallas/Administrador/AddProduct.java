@@ -17,9 +17,6 @@ import java.rmi.RemoteException;
  *@author ChristianRodriguez
  */
 public class AddProduct extends JFrame {
-    public static void main(String[] args) {
-        AddProduct men = new AddProduct();
-    }
     public AddProduct() {
         initOperator();
         setVisible(true);

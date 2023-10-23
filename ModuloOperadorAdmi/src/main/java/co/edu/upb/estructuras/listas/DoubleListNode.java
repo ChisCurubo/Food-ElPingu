@@ -7,7 +7,8 @@ import java.io.Serializable;
  *@author ChristianRodriguez
  */
 public class DoubleListNode<T extends Serializable> extends Node<T> implements Serializable {
-    private static final long serialVersionUID = 2525693509033756847L;
+    private static final long serialVersionUID = 1L;
+
     DoubleListNode<T> next;
     DoubleListNode<T> prev;
 

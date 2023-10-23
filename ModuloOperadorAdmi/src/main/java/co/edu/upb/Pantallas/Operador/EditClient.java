@@ -15,9 +15,6 @@ import java.rmi.RemoteException;
  */
 
 public class EditClient extends JFrame {
-    public static void main(String[] args) {
-        EditClient clie = new EditClient();
-    }
 
     String nombreChange = "";
     String apellidoChange = "";

@@ -32,10 +32,6 @@ public class EditPedido extends JFrame {
     JLabel muestraPreView = new JLabel();
     int contBot = 0;
 
-    public static void main(String[] args) {
-        ModeloLogin  modeloLogin = new ModeloLogin();
-        EditPedido ped = new EditPedido();
-    }
 
     public EditPedido() {
         listPed = new DoubleLinkedList<>();

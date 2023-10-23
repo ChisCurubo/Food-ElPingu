@@ -24,9 +24,6 @@ import java.util.Iterator;
 public class Factura extends JFrame {
 
 
-    public static void main(String[] args) {
-        Factura ped = new Factura();
-    }
 
     public static DoubleLinkedList<PedidosDetalle> listPed = new DoubleLinkedList<>();
     JTextArea textArea;
@@ -162,9 +159,10 @@ public class Factura extends JFrame {
         while (iter.hasNext()) {
             try {
                 PedidosDetalle pediTemp = iter.next();
+                int cant = pediTemp.getCantidad();
                 Menu men = ModeloLogin.clienteOperador.selectProuctId(pediTemp.getIdProducto());
-                str += men.getProduct() + "  Precio : " + men.getPrecio() + "\n";
-                total += men.getPrecio();
+                str += men.getProduct() + " : "+ cant + "  Precio : " + men.getPrecio() + "\n";
+                total += men.getPrecio()* cant;
             } catch (RemoteException ex) {
                 throw new RuntimeException(ex);
             }
