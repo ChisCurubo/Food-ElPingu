@@ -10,9 +10,7 @@ public class AddPedido extends JFrame {
 
     JLabel muestraPreView = new JLabel();
 
-    public static void main(String[] args) {
-        AddPedido ped = new AddPedido();
-    }
+   
     public AddPedido (){
     initOperatorAddPedido();
     setVisible(true);

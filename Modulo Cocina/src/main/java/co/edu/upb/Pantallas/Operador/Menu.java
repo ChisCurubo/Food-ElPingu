@@ -41,10 +41,7 @@ public class Menu extends JFrame {
     private JLabel lblGaseosas;
     private JLabel lblLimonadas;
 
-    public Menu() {
-        ComponentesDePagina();
-        this.setExtendedState(this.MAXIMIZED_BOTH);
-    }
+  
 
     /**
      * Metodo para inilizacion de componentes

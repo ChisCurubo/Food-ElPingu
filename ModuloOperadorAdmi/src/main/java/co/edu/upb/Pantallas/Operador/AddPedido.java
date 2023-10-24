@@ -119,6 +119,13 @@ public class AddPedido extends JFrame {
                     pedido = new Pedido(Integer.parseInt(idPedido), Integer.parseInt(idCli), sqlDate, "Pedido");
                     labelNumPed.setText(idPedido);
                     Menu men = ModeloLogin.clienteOperador.getMostPedidoClient(pedido.getNmpedido());
+                    if(pedido.getNmpedido() == 0){
+                        if(ModeloLogin.clienteOperador.addPedido(pedido)){
+                            String res=  ModeloLogin.clienteOperador.selectPedidoCliente(Integer.parseInt(idCli));
+                            labelNumPed.setText(res);
+                            pedido.setNmpedido(Integer.parseInt(res));
+                        }
+                    }
                     labelPedido.setText(men.getProduct() + " " + men.getIdProducto());
 
                     if (ModeloLogin.clienteOperador.addPedido(pedido)) {

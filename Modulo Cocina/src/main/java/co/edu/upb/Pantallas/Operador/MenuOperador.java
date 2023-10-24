@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MenuOperador extends JFrame {
-    public static void main(String[] args) {
-        MenuOperador men = new MenuOperador();
-    }
+   
     public MenuOperador() {
         initOperator();
         setVisible(true);
