@@ -8,13 +8,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.rmi.RemoteException;
 /**
  *@author ChristianRodriguez
  */
 
 public class MenuDomi extends JFrame {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ModeloLogin modelo = new ModeloLogin();
         MenuDomi men = new MenuDomi();
     }

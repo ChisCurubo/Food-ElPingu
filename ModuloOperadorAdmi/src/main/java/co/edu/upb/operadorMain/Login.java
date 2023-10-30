@@ -10,6 +10,7 @@ import co.edu.upb.datos.PedidoConnect;
 import co.edu.upb.datos.PedidosDetalleConnet;
 import co.edu.upb.domain.*;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -21,7 +22,7 @@ import java.time.temporal.TemporalField;
  *@author ChristianRodriguez
  */
 public class Login {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         /*
         UsersConnect usersConnect = new UsersConnect();
 

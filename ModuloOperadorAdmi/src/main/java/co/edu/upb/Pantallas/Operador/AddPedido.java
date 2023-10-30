@@ -13,10 +13,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Iterator;
+import java.util.Properties;
 /**
  * Pantalla para añadir un pedido
  *@author ChristianRodriguez
@@ -34,24 +37,24 @@ public class AddPedido extends JFrame {
     JLabel muestraPreView = new JLabel();
     int contBot = 0;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ModeloLogin  modeloLogin = new ModeloLogin();
         AddPedido ped = new AddPedido();
     }
 
-    public AddPedido() {
+    public AddPedido() throws IOException {
         listPed = new DoubleLinkedList<>();
         initOperatorAddPedido();
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setIconImage(new ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\logo (Pequeño).jpg").getImage());
+        setIconImage(new ImageIcon("src/main/java/co/edu/upb/images/logo (Pequeño).jpg").getImage());
     }
 
     Pedido pedido;
     Menu menu = new Menu();
     PedidosDetalle pedidosDetalle;
 
-    public void initOperatorAddPedido() {
+    public void initOperatorAddPedido() throws IOException {
         setTitle("Add Pedido");
         setBounds(0, 0, 1500, 1000);
         setLocationRelativeTo(null);
@@ -326,6 +329,9 @@ public class AddPedido extends JFrame {
 
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
                 }
             }
         });
@@ -342,7 +348,7 @@ public class AddPedido extends JFrame {
 
     }
 
-    public JPanel panelesSwitc(String str, int x , int y){
+    public JPanel panelesSwitc(String str, int x , int y) throws IOException{
 
         switch (str){
             case "Hamburguesa": return panelHamburguesa(x,y);
@@ -357,7 +363,7 @@ public class AddPedido extends JFrame {
         return new JPanel();
     }
 
-    public JPanel panelHamburguesa(int x , int y){
+    public JPanel panelHamburguesa(int x , int y) throws IOException{
         contBot = 0;
         JPanel panelhamburguesa = new JPanel();
         panelhamburguesa.setBounds(x,y,200,200);
@@ -388,7 +394,9 @@ public class AddPedido extends JFrame {
 
 
         JLabel image  = new JLabel();
-        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\CrazyHamburguer (Personalizado).jpg"));
+        File archivo = new File("src/main/java/co/edu/upb/images/Hambur (Personalizado).jpg");
+        String dir = archivo.getCanonicalPath();
+        image.setIcon(new javax.swing.ImageIcon(dir));
         image.setBounds(10,45,180,150);
         panelhamburguesa.add(image);
         panelhamburguesa.setVisible(true);
@@ -398,7 +406,7 @@ public class AddPedido extends JFrame {
 
     }
 
-    public JPanel panelHamburguesaPingu(int x , int y){
+    public JPanel panelHamburguesaPingu(int x , int y) throws IOException{
         contBot = 0;
         JPanel panelhamburguesa = new JPanel();
         panelhamburguesa.setBounds(x,y,200,200);
@@ -420,7 +428,9 @@ public class AddPedido extends JFrame {
         labelPrice.setVisible(true);
 
         JLabel image  = new JLabel();
-        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\CrazyHamburguer (Personalizado).jpg"));
+        File archivo = new File("src/main/java/co/edu/upb/images/CrazyHamburguer (Personalizado).jpg");
+        String dir = archivo.getCanonicalPath();
+        image.setIcon(new javax.swing.ImageIcon(dir));
         image.setBounds(10,45,180,150);
         panelhamburguesa.add(image);
         panelhamburguesa.setVisible(true);
@@ -438,7 +448,7 @@ public class AddPedido extends JFrame {
 
     }
 
-    public JPanel panelCrayPotatoe(int x , int y){
+    public JPanel panelCrayPotatoe(int x , int y) throws IOException{
         contBot = 0;
         JPanel panelhamburguesa = new JPanel();
         panelhamburguesa.setBounds(x,y,200,200);
@@ -467,7 +477,9 @@ public class AddPedido extends JFrame {
         labelPrice.setVisible(true);
 
         JLabel image  = new JLabel();
-        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\CrazyPotato (Personalizado).jpg"));
+        File archivo = new File("src/main/java/co/edu/upb/images/CrazyPotato (Personalizado).jpg");
+        String dir = archivo.getCanonicalPath();
+        image.setIcon(new javax.swing.ImageIcon(dir));
         image.setBounds(10,45,180,150);
         panelhamburguesa.add(image);
         panelhamburguesa.setVisible(true);
@@ -477,7 +489,7 @@ public class AddPedido extends JFrame {
 
     }
 
-    public JPanel panelHotPerro(int x , int y){
+    public JPanel panelHotPerro(int x , int y) throws IOException{
         contBot = 0;
         JPanel panelhamburguesa = new JPanel();
         panelhamburguesa.setBounds(x,y,200,200);
@@ -506,8 +518,9 @@ public class AddPedido extends JFrame {
         labelPrice.setVisible(true);
 
         JLabel image  = new JLabel();
-        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\Perro (Personalizado).jpg"));
-        image.setBounds(10,45,180,150);
+       File archivo = new File("src/main/java/co/edu/upb/images/Perro (Personalizado).jpg");
+        String dir = archivo.getCanonicalPath();
+        image.setIcon(new javax.swing.ImageIcon(dir));
         panelhamburguesa.add(image);
         panelhamburguesa.setVisible(true);
         panelhamburguesa.revalidate();
@@ -515,7 +528,7 @@ public class AddPedido extends JFrame {
         return panelhamburguesa;
     }
 
-    public JPanel panelPepito(int x , int y){
+    public JPanel panelPepito(int x , int y) throws IOException{
         contBot = 0;
         JPanel panelhamburguesa = new JPanel();
         panelhamburguesa.setBounds(x,y,200,200);
@@ -544,7 +557,9 @@ public class AddPedido extends JFrame {
         labelPrice.setVisible(true);
 
         JLabel image  = new JLabel();
-        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\Pepito (Personalizado).jpg"));
+        File archivo = new File("src/main/java/co/edu/upb/images/Pepito (Personalizado).jpg");
+        String dir = archivo.getCanonicalPath();
+        image.setIcon(new javax.swing.ImageIcon(dir));
         image.setBounds(10,45,180,150);
         panelhamburguesa.add(image);
         panelhamburguesa.setVisible(true);
@@ -553,7 +568,7 @@ public class AddPedido extends JFrame {
         return panelhamburguesa;
     }
 
-    public JPanel panelSanwich(int x , int y){
+    public JPanel panelSanwich(int x , int y) throws IOException{
         contBot = 0;
         JPanel panelhamburguesa = new JPanel();
         panelhamburguesa.setBounds(x,y,200,200);
@@ -582,7 +597,9 @@ public class AddPedido extends JFrame {
         labelPrice.setVisible(true);
 
         JLabel image  = new JLabel();
-        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\Sanwich (Personalizado).jpg"));
+        File archivo = new File("src/main/java/co/edu/upb/images/Sanwich (Personalizado).jpg");
+        String dir = archivo.getCanonicalPath();
+        image.setIcon(new javax.swing.ImageIcon(dir));
         image.setBounds(10,45,180,150);
         panelhamburguesa.add(image);
         panelhamburguesa.setVisible(true);
@@ -591,7 +608,7 @@ public class AddPedido extends JFrame {
         return panelhamburguesa;
     }
 
-    public JPanel panelPipicada(int x , int y){
+    public JPanel panelPipicada(int x , int y) throws IOException{
         contBot = 0;
         JPanel panelhamburguesa = new JPanel();
         panelhamburguesa.setBounds(x,y,200,200);
@@ -621,7 +638,9 @@ public class AddPedido extends JFrame {
         labelPrice.setVisible(true);
 
         JLabel image  = new JLabel();
-        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\Picada (Personalizado).jpg"));
+       File archivo = new File("src/main/java/co/edu/upb/images/Picada (Personalizado).jpg");
+        String dir = archivo.getCanonicalPath();
+        image.setIcon(new javax.swing.ImageIcon(dir));
         image.setBounds(10,45,180,150);
         panelhamburguesa.add(image);
         panelhamburguesa.setVisible(true);
@@ -630,7 +649,7 @@ public class AddPedido extends JFrame {
         return panelhamburguesa;
     }
 
-    public JPanel panelPicana(int x , int y){
+    public JPanel panelPicana(int x , int y) throws IOException{
         contBot = 0;
         JPanel panelhamburguesa = new JPanel();
         panelhamburguesa.setBounds(x,y,200,200);
@@ -659,7 +678,9 @@ public class AddPedido extends JFrame {
         labelPrice.setVisible(true);
 
         JLabel image  = new JLabel();
-        image.setIcon(new javax.swing.ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\Picana (Personalizado).jpg"));
+        File archivo = new File("src/main/java/co/edu/upb/images/Picana (Personalizado).jpg");
+        String dir = archivo.getCanonicalPath();
+        image.setIcon(new javax.swing.ImageIcon(dir));
         image.setBounds(10,45,180,150);
         panelhamburguesa.add(image);
         panelhamburguesa.setVisible(true);

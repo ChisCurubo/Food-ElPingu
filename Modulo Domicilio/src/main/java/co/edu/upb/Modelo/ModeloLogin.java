@@ -27,9 +27,12 @@ public class ModeloLogin {
     /**
      * Se inicializa un objeto static  de la siguiente manera
      */
-    static { Properties properties = new Properties();
+    static {
+        File archivo = new File("config.properties");
+        Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream(new File("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Modulo Domicilio\\config.properties")));
+            String dir = archivo.getCanonicalPath();
+            properties.load(new FileInputStream(new File(dir)));
             DomicilioInterface = new Client((String) properties.get("IP"), (String) properties.get("PORT3"),
                     (String) properties.get("SERVICENAME3"));
         } catch (FileNotFoundException e) {
@@ -41,10 +44,12 @@ public class ModeloLogin {
     /**
      * Si se utiliza un objeto cada vez que se instancie se deberia hacer asi
      */
-    public ModeloLogin() {
+    public ModeloLogin() throws IOException {
+        File archivo = new File("config.properties");
+        String dir = archivo.getCanonicalPath();
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream(new File("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Modulo Domicilio\\config.properties")));
+            properties.load(new FileInputStream(new File(dir)));
             DomicilioInterface = new Client((String) properties.get("IP"), (String) properties.get("PORT3"),
                     (String) properties.get("SERVICENAME3"));
         } catch (FileNotFoundException e) {

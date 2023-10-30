@@ -28,22 +28,23 @@ public class ModeloLogin {
      */
 
     static {
+        File archivo = new File("config.properties");
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream(new File("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\ModuloOperadorAdmi\\config.properties")));
+            String dir = archivo.getCanonicalPath();
+            properties.load(new FileInputStream(new File(dir)));
             clienteOperador = new Client((String) properties.get("IP"), (String) properties.get("PORT"),
                     (String) properties.get("SERVICENAME"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
         }
     }
 
-    public ModeloLogin() {
+    public ModeloLogin() throws IOException {
+        File archivo = new File("config.properties");
+        String dir = archivo.getCanonicalPath();
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream(new File("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\ModuloOperadorAdmi\\config.properties")));
+            properties.load(new FileInputStream(new File(dir)));
             clienteOperador = new Client((String) properties.get("IP"), (String) properties.get("PORT"),
                     (String) properties.get("SERVICENAME"));
         } catch (FileNotFoundException e) {

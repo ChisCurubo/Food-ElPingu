@@ -33,7 +33,7 @@ public class EditClient extends JFrame {
         initOperatorAddClient();
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setIconImage(new ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\logo (Pequeño).jpg").getImage());
+        setIconImage(new ImageIcon("src/main/java/co/edu/upb/images/logo (Pequeño).jpg").getImage());
     }
 
     public void initOperatorAddClient() {

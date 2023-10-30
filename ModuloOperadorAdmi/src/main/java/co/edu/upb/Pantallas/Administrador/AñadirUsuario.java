@@ -36,6 +36,7 @@ public class AñadirUsuario extends JFrame {
      */
     public AñadirUsuario() {
         ComponentesDePagina();
+        setIconImage(new ImageIcon("src/main/java/co/edu/upb/images/logo (Pequeño).jpg").getImage());
     }
 
     public void ComponentesDePagina() {

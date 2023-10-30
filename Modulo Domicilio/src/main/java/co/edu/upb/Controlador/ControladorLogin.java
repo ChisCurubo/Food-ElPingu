@@ -3,6 +3,7 @@ package co.edu.upb.Controlador;
 import co.edu.upb.Modelo.ModeloLogin;
 import co.edu.upb.Pantallas.Operador.InicioSesion;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 
 /**
@@ -10,7 +11,7 @@ import java.rmi.RemoteException;
  * Clase para el inicio del programa
  */
 public class ControladorLogin {
-    public ControladorLogin() {
+    public ControladorLogin() throws IOException {
         try {
             if (!ModeloLogin.DomicilioInterface.isConnected()) {
                 InicioSesion ini = new InicioSesion();

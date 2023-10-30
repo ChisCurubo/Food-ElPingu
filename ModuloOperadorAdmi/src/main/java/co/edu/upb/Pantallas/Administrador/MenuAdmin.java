@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 /**
  * Panalla que administra los metodos de acceso que tiene el administrador
  *@author ChristianRodriguez
@@ -19,7 +20,7 @@ public class MenuAdmin extends JFrame {
         initOperator();
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setIconImage(new ImageIcon("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\Images\\logo (Pequeño).jpg").getImage());
+        setIconImage(new ImageIcon("src/main/java/co/edu/upb/images/logo (Pequeño).jpg").getImage());
     }
 
     public void initOperator(){
@@ -65,8 +66,14 @@ public class MenuAdmin extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                AddPedido pedi = new AddPedido();
-                pedi.setVisible(true);
+                AddPedido pedi;
+                try {
+                    pedi = new AddPedido();
+                    pedi.setVisible(true);
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
             }
         });
         //recordar que cambie de color si esta en uso o no

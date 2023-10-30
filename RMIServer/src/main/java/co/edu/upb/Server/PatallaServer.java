@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.rmi.RemoteException;
 
 public class PatallaServer extends JFrame {
@@ -45,10 +46,13 @@ public class PatallaServer extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Server server = new Server("localhost");
-                if(server.deployServices()){
-                    JOptionPane.showMessageDialog(null, "Server on ");
-                }else{
-                    JOptionPane.showMessageDialog(null, "Upsiii error");
+                try {
+                    if(server.deployServices()){
+                        JOptionPane.showMessageDialog(null, "Server on ");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Upsiii error");
+                    }
+                } catch (HeadlessException | IOException e1) {
                 }
             }
         });

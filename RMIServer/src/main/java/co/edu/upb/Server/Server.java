@@ -36,14 +36,17 @@ public class Server{
         this.serviceName = serviceName;
         this.url = "//" + ip + ":" + port + "/" + serviceName;
     }
+
     public Server(String ip) {
         this.ip = ip;
-
     }
-    public boolean deployServices() {
+
+    public boolean deployServices() throws IOException {
+        File archivo = new File("config.properties");
+        String dir = archivo.getCanonicalPath();
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream(new File("D:\\CursoJava\\Programacion\\Estructuras\\ProyectRes\\ProyectoElPinguEdit\\RMIServer\\config.properties")));
+            properties.load(new FileInputStream(new File(dir)));
             deployServiceOperador(
                     "Operador",
                     (String) properties.get("PORT"),
