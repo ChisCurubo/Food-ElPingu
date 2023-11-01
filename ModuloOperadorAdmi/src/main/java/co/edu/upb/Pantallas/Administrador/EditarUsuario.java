@@ -47,7 +47,6 @@ public class EditarUsuario extends JFrame {
 
 	public EditarUsuario() {
 		ComponentesDePagina();
-		setIconImage(new ImageIcon("src/main/java/co/edu/upb/images/logo (Pequeño).jpg").getImage());
 	}
 	public void ComponentesDePagina() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

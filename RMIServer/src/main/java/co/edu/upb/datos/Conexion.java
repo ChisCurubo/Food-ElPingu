@@ -15,7 +15,7 @@ public class Conexion {
      * // contraseña para el ingreso a la base de datos
      */
 
-    private static final String DB_PASSWORD = "admin";
+    private static final String DB_PASSWORD = "123456Vega";
 
     /**
      * // Metodo de connexion a la base de datos, recoje los atributos ateriores

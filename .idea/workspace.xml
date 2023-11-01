@@ -36,7 +36,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-20&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/CursoJava/Programacion/Estructuras/ProyectRes/ProyectoElPinguEdit&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lcuru/OneDrive/Documentos/CODEFEST/CodeFestUPB/CodeFestUPB/operario&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -65,13 +65,26 @@
       <recent name="co.edu.upb.Interface" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MenuDomi">
+  <component name="RunManager" selected="Application.IniServer">
     <configuration name="AddPedido" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Operador.AddPedido" />
       <module name="ElPinguProject (2)" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="co.edu.upb.Pantallas.Operador.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminDb" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Administrador.AdminDb" />
+      <module name="ElPinguProject (2)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.upb.Pantallas.Administrador.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,19 +118,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MenuDomi (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Domicilio.MenuDomi" />
-      <module name="ModuloDomicilio" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="co.edu.upb.Pantallas.Domicilio.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MenuDomi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.edu.upb.Pantallas.Domicilio.MenuDomi" />
       <module name="ModuloDomicilio" />
@@ -133,11 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MenuDomi" />
-        <item itemvalue="Application.Cocina" />
-        <item itemvalue="Application.AddPedido" />
         <item itemvalue="Application.IniServer" />
-        <item itemvalue="Application.MenuDomi (1)" />
+        <item itemvalue="Application.Cocina" />
+        <item itemvalue="Application.MenuDomi" />
+        <item itemvalue="Application.AddPedido" />
+        <item itemvalue="Application.AdminDb" />
       </list>
     </recent_temporary>
   </component>
