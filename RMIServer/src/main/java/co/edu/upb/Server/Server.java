@@ -40,6 +40,9 @@ public class Server{
     public Server(String ip) {
         this.ip = ip;
     }
+    public Server () throws IOException{
+        deployServices();
+    }
 
     public boolean deployServices() throws IOException {
         File archivo = new File("config.properties");

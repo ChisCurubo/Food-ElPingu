@@ -45,7 +45,10 @@ public class PatallaServer extends JFrame {
         botonEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Server server = new Server("localhost");
+                Server server;
+                try {
+                    server = new Server();
+               
                 try {
                     if(server.deployServices()){
                         JOptionPane.showMessageDialog(null, "Server on ");
@@ -53,6 +56,10 @@ public class PatallaServer extends JFrame {
                         JOptionPane.showMessageDialog(null, "Upsiii error");
                     }
                 } catch (HeadlessException | IOException e1) {
+                }
+            } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
                 }
             }
         });
