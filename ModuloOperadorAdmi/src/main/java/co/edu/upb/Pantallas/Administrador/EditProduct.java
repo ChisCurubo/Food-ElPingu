@@ -11,7 +11,10 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 public class EditProduct extends JFrame {
-
+    public static void main(String[] args) {
+        EditProduct editProduct = new EditProduct();
+        editProduct.setVisible(true);
+    }
     public EditProduct() {
         initOperator();
         setVisible(true);
@@ -20,7 +23,7 @@ public class EditProduct extends JFrame {
     }
 
     public void initOperator() {
-        setTitle("Add Producto");
+        setTitle("edit Producto");
         setBounds(0, 0, 1500, 1000);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -37,11 +40,7 @@ public class EditProduct extends JFrame {
         label.setBounds(50, 50, 600, 100);
         panelFondo.add(label);
 
-        JLabel labelBusq = new JLabel("Buscar ID: ");
-        labelBusq.setFont(new Font("Times News Roman", 1, 20));
-        labelBusq.setForeground(Color.WHITE);
-        labelBusq.setBounds(900, 30, 200, 100);
-        panelFondo.add(labelBusq);
+
 
 
         JPanel panelInfo = new JPanel();
@@ -95,10 +94,86 @@ public class EditProduct extends JFrame {
         panelInfo.add(tipoField);
 
         JPanel panelPaneles = new JPanel();
-        panelPaneles.setBounds(50, 200, 700, 450);
-        panelPaneles.setBackground(new Color(110, 149, 0));
+        panelPaneles.setBounds(50,200,700,450);
+        panelPaneles.setBackground(new Color(110,149,0));
         panelPaneles.setLayout(null);
         panelFondo.add(panelPaneles);
+
+        JLabel labelNombreProducto = new JLabel("Nombre Producto: ");
+        labelNombreProducto.setBounds(5,10,300,50);
+        labelNombreProducto.setFont(new Font("Arial", 1, 25));
+        labelNombreProducto.setForeground(Color.WHITE);
+        panelPaneles.add(labelNombreProducto);
+
+        JLabel labelNombreP = new JLabel(" ");
+        labelNombreP.setBounds(5,70,300,50);
+        labelNombreP.setFont(new Font("Arial", 1, 25));
+        labelNombreP.setForeground(Color.WHITE);
+        panelPaneles.add(labelNombreP);
+
+        JLabel labelPrecioF = new JLabel("Precio Producto: ");
+        labelPrecioF.setBounds(5,120,300,50);
+        labelPrecioF.setFont(new Font("Arial", 1, 25));
+        labelPrecioF.setForeground(Color.WHITE);
+        panelPaneles.add(labelPrecioF);
+
+        JLabel labelPrecioFil = new JLabel(" ");
+        labelPrecioFil.setBounds(5,190,300,50);
+        labelPrecioFil.setFont(new Font("Arial", 1, 25));
+        labelPrecioFil.setForeground(Color.WHITE);
+        panelPaneles.add(labelPrecioFil);
+
+        JLabel cantLabel1 = new JLabel("Cant Producto: ");
+        cantLabel1.setBounds(5,230,300,50);
+        cantLabel1.setFont(new Font("Arial", 1, 25));
+        cantLabel1.setForeground(Color.WHITE);
+        panelPaneles.add(cantLabel1);
+
+        JLabel cantLabel2 = new JLabel("");
+        cantLabel2.setBounds(5,290,300,50);
+        cantLabel2.setFont(new Font("Arial", 1, 25));
+        cantLabel2.setForeground(Color.WHITE);
+        panelPaneles.add(cantLabel2);
+
+        JLabel tipoLabelD = new JLabel("Tipo de cocción Producto: ");
+        tipoLabelD.setBounds(5,340,350,50);
+        tipoLabelD.setFont(new Font("Arial", 1, 25));
+        tipoLabelD.setForeground(Color.WHITE);
+        panelPaneles.add(tipoLabelD);
+
+        JLabel tipoLabe = new JLabel(" ");
+        tipoLabe.setBounds(5,380,350,50);
+        tipoLabe.setFont(new Font("Arial", 1, 25));
+        tipoLabe.setForeground(Color.WHITE);
+        panelPaneles.add(tipoLabe);
+
+        JLabel labelBusq = new JLabel("Buscar ID: ");
+        labelBusq.setFont(new Font("Times News Roman", 1, 20));
+        labelBusq.setForeground(Color.WHITE);
+        labelBusq.setBounds(900, 30, 200, 100);
+        panelFondo.add(labelBusq);
+        JTextField fielBusq = new JTextField();
+        fielBusq.setBounds(1050, 50, 300, 50);
+        fielBusq.setFont(new Font("Arial", 0, 20));
+        fielBusq.setBackground(new Color(185, 180, 180));
+        fielBusq.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String bus = fielBusq.getText();
+                try {
+                    Menu menuq= ModeloLogin.clienteOperador.selectProuctId(Integer.parseInt(bus));
+                    if(menuq != null){
+                        labelPrecioFil.setText(String.valueOf(menuq.getPrecio()));
+                        labelNombreP.setText(menuq.getProduct());
+                        cantLabel2.setText(String.valueOf(menuq.getCamtProd()));
+                        tipoLabe.setText(String.valueOf(menuq.getTiempoPrepRapi()));
+                    }
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+        panelFondo.add(fielBusq);
 
         JButton botAddToPanel = new JButton();
         botAddToPanel.setText("Actualizar");
@@ -115,9 +190,11 @@ public class EditProduct extends JFrame {
                 String cant = fieldCant.getText();
                 String tipo = tipoField.getText();
 
-                co.edu.upb.domain.Menu menu = new Menu(nombre, Integer.parseInt(cant), Integer.parseInt(tipo), Double.valueOf(precio));
+
+                Menu menu = new Menu(nombre, Integer.parseInt(cant), Integer.parseInt(tipo), Double.valueOf(precio));
+                menu.setIdProducto(Integer.parseInt(fielBusq.getText()));
                 try {
-                    if (ModeloLogin.clienteOperador.addProducto(menu)) {
+                    if (ModeloLogin.clienteOperador.editProducto(menu)) {
                         JOptionPane.showMessageDialog(null, "Se ingreso el nuevo Producto");
                         //actualizar paneles
                         setVisible(false);
@@ -132,26 +209,8 @@ public class EditProduct extends JFrame {
         panelInfo.add(botAddToPanel);
 
 
-        JTextField fielBusq = new JTextField();
-        fielBusq.setBounds(1050, 50, 300, 50);
-        fielBusq.setFont(new Font("Arial", 0, 20));
-        fielBusq.setBackground(new Color(185, 180, 180));
-        fielBusq.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String bus = fielBusq.getText();
-                try {
-                    DoubleLinkedList<Menu> lisdistancia = ModeloLogin.clienteOperador.algortmoHammil(bus);
-                    fieldNombre.setText(lisdistancia.get().getProduct());
-                    fieldCant.setText(String.valueOf(lisdistancia.get().getCamtProd()));
-                    fieldPrecio.setText(String.valueOf(lisdistancia.get().getPrecio()));
-                    tipoField.setText(String.valueOf(lisdistancia.get().getTiempoPrepRapi()));
-                } catch (RemoteException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        panelFondo.add(fielBusq);
+
+
         JButton botRegresar = new JButton("Regresate:)");
         botRegresar.setBackground(new Color(153, 2, 68));
         botRegresar.setForeground(Color.WHITE);

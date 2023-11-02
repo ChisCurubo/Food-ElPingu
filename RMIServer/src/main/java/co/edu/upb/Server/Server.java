@@ -40,13 +40,15 @@ public class Server{
     public Server(String ip) {
         this.ip = ip;
     }
+
     public Server () throws IOException{
          File archivo = new File("config.properties");
         String dir = archivo.getCanonicalPath();
         Properties properties = new Properties();
-        this.ip = (String) properties.get("IP");
+
         try {
             properties.load(new FileInputStream(new File(dir)));
+            this.ip = (String) properties.get("IP");
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

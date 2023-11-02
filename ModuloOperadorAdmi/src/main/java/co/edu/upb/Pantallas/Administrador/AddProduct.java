@@ -17,6 +17,7 @@ import java.rmi.RemoteException;
  *@author ChristianRodriguez
  */
 public class AddProduct extends JFrame {
+
     public AddProduct() {
         initOperator();
         setVisible(true);
@@ -98,6 +99,56 @@ public class AddProduct extends JFrame {
         panelPaneles.setLayout(null);
         panelFondo.add(panelPaneles);
 
+        JLabel labelNombreProducto = new JLabel("Nombre Producto: ");
+        labelNombreProducto.setBounds(5,10,300,50);
+        labelNombreProducto.setFont(new Font("Arial", 1, 25));
+        labelNombreProducto.setForeground(Color.WHITE);
+        panelPaneles.add(labelNombreProducto);
+
+        JLabel labelNombreP = new JLabel(" ");
+        labelNombreP.setBounds(5,70,300,50);
+        labelNombreP.setFont(new Font("Arial", 1, 25));
+        labelNombreP.setForeground(Color.WHITE);
+        panelPaneles.add(labelNombreP);
+
+        JLabel labelPrecioF = new JLabel("Precio Producto: ");
+        labelPrecioF.setBounds(5,120,300,50);
+        labelPrecioF.setFont(new Font("Arial", 1, 25));
+        labelPrecioF.setForeground(Color.WHITE);
+        panelPaneles.add(labelPrecioF);
+
+        JLabel labelPrecioFil = new JLabel(" ");
+        labelPrecioFil.setBounds(5,190,300,50);
+        labelPrecioFil.setFont(new Font("Arial", 1, 25));
+        labelPrecioFil.setForeground(Color.WHITE);
+        panelPaneles.add(labelPrecioFil);
+
+        JLabel cantLabel1 = new JLabel("Cant Producto: ");
+        cantLabel1.setBounds(5,230,300,50);
+        cantLabel1.setFont(new Font("Arial", 1, 25));
+        cantLabel1.setForeground(Color.WHITE);
+        panelPaneles.add(cantLabel1);
+
+        JLabel cantLabel2 = new JLabel("");
+        cantLabel2.setBounds(5,290,300,50);
+        cantLabel2.setFont(new Font("Arial", 1, 25));
+        cantLabel2.setForeground(Color.WHITE);
+        panelPaneles.add(cantLabel2);
+
+        JLabel tipoLabelD = new JLabel("Tipo de cocción Producto: ");
+        tipoLabelD.setBounds(5,340,350,50);
+        tipoLabelD.setFont(new Font("Arial", 1, 25));
+        tipoLabelD.setForeground(Color.WHITE);
+        panelPaneles.add(tipoLabelD);
+
+        JLabel tipoLabe = new JLabel(" ");
+        tipoLabe.setBounds(5,380,350,50);
+        tipoLabe.setFont(new Font("Arial", 1, 25));
+        tipoLabe.setForeground(Color.WHITE);
+        panelPaneles.add(tipoLabe);
+
+
+
         JButton botAddToPanel = new JButton();
         botAddToPanel.setText("Actualizar");
         botAddToPanel.setBackground(new Color(153, 2, 68));
@@ -111,6 +162,10 @@ public class AddProduct extends JFrame {
                 String precio = fieldPrecio.getText();
                 String cant = fieldCant.getText();
                 String tipo = tipoField.getText();
+                labelPrecioFil.setText(precio);
+                labelNombreP.setText(nombre);
+                tipoLabe.setText(tipo);
+                cantLabel2.setText(cant);
 
                 Menu menu = new Menu(nombre,Integer.parseInt(cant),Integer.parseInt(tipo),Double.valueOf(precio));
                 try {
@@ -127,6 +182,7 @@ public class AddProduct extends JFrame {
             }
         });
         panelInfo.add(botAddToPanel);
+
 
         JButton botRegresar = new JButton("Regresate:)");
         botRegresar.setBackground(new Color(153, 2, 68));

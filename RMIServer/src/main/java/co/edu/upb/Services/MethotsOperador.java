@@ -245,8 +245,11 @@ public class MethotsOperador extends UnicastRemoteObject implements OperadorInte
     public boolean addProducto(Menu men) throws RemoteException {
         try {
             MenuConnect menup = new MenuConnect();
-            menup.insert(men);
-            return true;
+            if(menup.insert(men) != 0){
+                return true;
+            }else {
+                return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -17,8 +17,8 @@ public class MenuConnect implements Serializable {
     private static final String SQL_SELECT_WHERE = "SELECT * FROM pingu.productos WHERE producto = ? ";
     private static final String SQL_SELECT_WHERE_ID = "SELECT producto FROM pingu.productos WHERE idproducto = ? ";
     private static final String SQL_SELECT_WHERE_ID_Tipo = "SELECT * FROM pingu.productos WHERE idproducto = ? ";
-    private static final String SQL_INSERT = "INSERT INTO pingu.productos (producto, cantidad , precio, tiemporapi ) VALUES ( ?, ?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE pingu.productos SET producto = ?, cantidad = ?, tiempoprep = ? , precio = ?, tiemporapi = ? WHERE idproducto =?";
+    private static final String SQL_INSERT = "INSERT INTO pingu.productos (producto, cantidad , precio, tiemporapi ) VALUES ( ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE pingu.productos SET producto = ?, cantidad = ? , precio = ?, tiemporapi = ? WHERE idproducto =?";
     private static final String SQL_DELETE = "DELETE FROM pingu.productos WHERE idproducto =?";
 
 
@@ -297,36 +297,37 @@ public class MenuConnect implements Serializable {
      * @return
      */
     public int insert(Menu menu) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        int registros = 0;
-        try {
-            conn = Conexion.getConection();
-            stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, menu.getProduct());
-            stmt.setInt(2, menu.getCamtProd());
-            stmt.setDouble(3, menu.getPrecio());
-            stmt.setInt(4, menu.getTiempoPrepRapi());
-            registros = stmt.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        } finally {
+            Connection conn = null;
+            PreparedStatement stmt = null;
+            int registros = 0;
             try {
-                Conexion.close(stmt);
-                Conexion.close(conn);
+                conn = Conexion.getConection();
+                stmt = conn.prepareStatement(SQL_INSERT);
+                stmt.setString(1, menu.getProduct());
+                stmt.setInt(2, menu.getCamtProd());
+                stmt.setDouble(3, menu.getPrecio());
+                stmt.setInt(4, menu.getTiempoPrepRapi());
+                registros = stmt.executeUpdate();
             } catch (SQLException ex) {
                 ex.printStackTrace(System.out);
+            } finally {
+                try {
+                    Conexion.close(stmt);
+                    Conexion.close(conn);
+                } catch (SQLException ex) {
+                    ex.printStackTrace(System.out);
+                }
             }
+            return registros;
         }
-        return registros;
-    }
 
-    /**
-     * // actualizar un producto del menu
-     *
-     * @param menu
-     * @return
-     */
+
+        /**
+         * // actualizar un producto del menu
+         *
+         * @param menu
+         * @return
+         */
     public int update(Menu menu) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -336,10 +337,9 @@ public class MenuConnect implements Serializable {
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setString(1, menu.getProduct());
             stmt.setInt(2, menu.getCamtProd());
-            stmt.setInt(3, menu.getTiempoPrepLen());
-            stmt.setDouble(4, menu.getPrecio());
-            stmt.setInt(5, menu.getTiempoPrepRapi());
-            stmt.setInt(6, menu.getIdProducto());
+            stmt.setDouble(3, menu.getPrecio());
+            stmt.setInt(4, menu.getTiempoPrepRapi());
+            stmt.setInt(5, menu.getIdProducto());
             registros = stmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);

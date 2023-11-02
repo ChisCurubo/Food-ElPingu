@@ -45,7 +45,12 @@ public class PatallaServer extends JFrame {
         botonEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Server server = new Server("10.152.164.114");
+                Server server = null;
+                try {
+                    server = new Server();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 try {
                     if(server.deployServices()){
                         JOptionPane.showMessageDialog(null, "Server on ");
